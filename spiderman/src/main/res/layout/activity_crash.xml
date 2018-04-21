@@ -1,24 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CrashActivity">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="1"
-        app:titleTextColor="@android:color/white"
-        app:title="Crash Info">
-
-    </android.support.v7.widget.Toolbar>
 
     <TextView
         android:id="@+id/textView"
@@ -42,4 +29,4 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
