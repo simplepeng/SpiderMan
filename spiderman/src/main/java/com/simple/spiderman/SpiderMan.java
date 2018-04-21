@@ -56,7 +56,6 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
             mContext.startActivity(intent);
         }
 
-//        System.exit(1);//关闭已奔溃的app进程
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
