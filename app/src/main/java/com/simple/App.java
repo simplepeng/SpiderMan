@@ -17,7 +17,8 @@ public class App extends Application {
 
         SpiderMan.getInstance()
                 .init(this)
-                .setCatchEnable(true)
+                .setEnable(true)
+                .showCrashMessage(true)
                 .setOnCrashListener(new SpiderMan.OnCrashListener() {
                     @Override
                     public void onCrash(Thread t, Throwable ex) {

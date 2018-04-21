@@ -38,7 +38,7 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         if (mBuilder.mOnCrashListener != null) {
             mBuilder.mOnCrashListener.onCrash(t, ex);
         }
-        if (mBuilder.mCatchEnable){
+        if (mBuilder.mEnable){
             handleException(ex);
         }else {
             if (mExceptionHandler != null){
@@ -48,24 +48,13 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
     }
 
     private void handleException(Throwable ex) {
-        ex.printStackTrace();
-        String message;
-        Writer writer = new StringWriter();
-        PrintWriter pw = new PrintWriter(writer);
-        ex.printStackTrace(pw);
-        Throwable cause = ex.getCause();
-        // 循环着把所有的异常信息写入writer中
-        while (cause != null) {
-            cause.printStackTrace(pw);
-            cause = cause.getCause();
-        }
-        pw.close();// 记得关闭
-        message = writer.toString();
 
-        Intent intent = new Intent(mContext, CrashActivity.class);
-        intent.putExtra(CrashActivity.EXCEPTION_MSG, message);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        mContext.startActivity(intent);
+        if (mBuilder.mEnable && mBuilder.mShowCrashMessage) {
+            Intent intent = new Intent(mContext, CrashActivity.class);
+            intent.putExtra(CrashActivity.EXCEPTION_MSG, ex);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(intent);
+        }
 
 //        System.exit(1);//关闭已奔溃的app进程
         android.os.Process.killProcess(android.os.Process.myPid());
@@ -78,17 +67,24 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     public class Builder{
 
-        private boolean mCatchEnable;
+        private boolean mEnable;
+        private boolean mShowCrashMessage;
         private OnCrashListener mOnCrashListener;
 
-        public Builder setCatchEnable(boolean enable) {
-            this.mCatchEnable = enable;
+        public Builder setEnable(boolean enable) {
+            this.mEnable = enable;
             return this;
         }
 
-        public Builder setOnCrashListener(OnCrashListener listener) {
-            this.mOnCrashListener = listener;
+        public Builder showCrashMessage(boolean show) {
+            this.mShowCrashMessage = show;
             return this;
         }
+
+        public void setOnCrashListener(OnCrashListener listener) {
+            this.mOnCrashListener = listener;
+        }
+
+
     }
 }
