@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,30 +33,43 @@ public class CrashActivity extends Activity {
         ex.printStackTrace();
 
         StringBuilder msgBuilder = new StringBuilder();
+        String exceptionMsg = null;
 
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        ex.printStackTrace(pw);
+        pw.flush();
+        String exceptionType = ex.getClass().getName();
         while (ex != null) {
+            exceptionMsg = ex.getMessage();
             msgBuilder.append(ex.getMessage());
-//            msgBuilder.append("\n");
-            Item item;
-            for (StackTraceElement element : ex.getStackTrace()) {
-                item = new Item();
+            msgBuilder.append("\n");
+            if (ex.getStackTrace() != null && ex.getStackTrace().length > 0) {
+                StackTraceElement element = ex.getStackTrace()[0];
+                Item item = new Item();
                 item.setLineNumber(element.getLineNumber());
                 item.setClassName(element.getClassName());
                 item.setFileName(element.getFileName());
                 item.setMethodName(element.getMethodName());
+                item.setExceptionType(exceptionType);
                 itemList.add(item);
             }
             ex = ex.getCause();
         }
 
-        View headerView = LayoutInflater.from(this)
-                .inflate(R.layout.header, null);
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View headerView = inflater.inflate(R.layout.header, null);
         TextView textMessage = headerView.findViewById(R.id.textMessage);
-        textMessage.setText(msgBuilder.toString());
+        textMessage.setText(exceptionMsg);
 
         ListView listView = findViewById(R.id.listView);
         listView.addHeaderView(headerView);
         listView.setAdapter(new Adpater());
+
+        View footerView = inflater.inflate(R.layout.footer, null);
+        TextView tvFooter = footerView.findViewById(R.id.tv_footer);
+        tvFooter.setText(sw.toString());
+        listView.addFooterView(footerView);
     }
 
     public class Adpater extends BaseAdapter {
@@ -90,6 +105,7 @@ public class CrashActivity extends Activity {
             holder.mTvClassName.setText(item.getFileName());
             holder.mTvMethodName.setText(item.getMethodName());
             holder.mTvLineNumber.setText(String.valueOf(item.getLineNumber()));
+            holder.mExceptionType.setText(item.getExceptionType());
             return convertView;
         }
 
@@ -98,11 +114,13 @@ public class CrashActivity extends Activity {
             public TextView mTvClassName;
             public TextView mTvMethodName;
             public TextView mTvLineNumber;
+            public TextView mExceptionType;
 
             public ViewHolder(View itemView) {
                 mTvClassName = itemView.findViewById(R.id.tv_className);
                 mTvMethodName = itemView.findViewById(R.id.tv_methodName);
                 mTvLineNumber = itemView.findViewById(R.id.tv_lineNumber);
+                mExceptionType = itemView.findViewById(R.id.tv_exceptionType);
             }
         }
     }

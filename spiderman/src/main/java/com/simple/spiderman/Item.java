@@ -11,6 +11,7 @@ public class Item {
     private String fileName;
     private String methodName;
     private int lineNumber;
+    private String exceptionType;
 
     public String getClassName() {
         return className;
@@ -42,5 +43,13 @@ public class Item {
 
     public void setLineNumber(int lineNumber) {
         this.lineNumber = lineNumber;
+    }
+
+    public String getExceptionType() {
+        return exceptionType;
+    }
+
+    public void setExceptionType(String exceptionType) {
+        this.exceptionType = exceptionType;
     }
 }
