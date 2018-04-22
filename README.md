@@ -9,4 +9,7 @@ SpiderMan能为您做的：
 * 再也不用担心某些rom禁止异常输出啦！
 * 再也不用担心开发工具log信息时灵时不灵啦
 
+![spiderman](https://ws1.sinaimg.cn/mw690/00677ch9gy1fqlv57w1jwj309g0gldft)
+
+
 
