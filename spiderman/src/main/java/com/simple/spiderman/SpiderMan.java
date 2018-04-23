@@ -34,15 +34,21 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     @Override
     public void uncaughtException(Thread t, Throwable ex) {
-        if (mBuilder == null)return;
+        if (mBuilder == null) {
+            if (mExceptionHandler == null) return;
+            mExceptionHandler.uncaughtException(t, ex);
+            return;
+        }
+
         if (mBuilder.mOnCrashListener != null) {
             mBuilder.mOnCrashListener.onCrash(t, ex);
         }
-        if (mBuilder.mEnable){
+
+        if (mBuilder.mEnable) {
             handleException(ex);
-        }else {
-            if (mExceptionHandler != null){
-                mExceptionHandler.uncaughtException(t,ex);
+        } else {
+            if (mExceptionHandler != null) {
+                mExceptionHandler.uncaughtException(t, ex);
             }
         }
     }
@@ -64,7 +70,7 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
     }
 
 
-    public class Builder{
+    public class Builder {
 
         private boolean mEnable;
         private boolean mShowCrashMessage;
