@@ -41,4 +41,6 @@ SpiderMan.getInstance()
 
 QQ群：274306954
 
+[点此快速加群](![img](file:///)https://shang.qq.com/wpa/qunwpa?idkey=cbcf9a42faf2fe730b51004d33ac70863617e6999fce7daf43231f3cf2997460)
+
 如有好的建议或意见可提issue或加群联系我
