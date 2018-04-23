@@ -9,8 +9,7 @@ SpiderMan能为您做的：
 * 再也不用担心某些rom禁止异常输出啦！
 * 再也不用担心开发工具log信息时灵时不灵啦
 
-![spiderman](https://raw.githubusercontent.com/simplepeng/SpiderMan/master/statics/spiderman.gif)
-
+![](http://p6uvwa6u4.bkt.clouddn.com/img/spiderman.png)
 
 
 ## 引入依赖
