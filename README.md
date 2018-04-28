@@ -36,6 +36,11 @@ SpiderMan.getInstance()
                 });
 ```
 
+## 版本迭代
+
+* 1.0.1 去除 allowBackup，label
+* 1.0.0 首次上传
+
 ## 联系方式
 
 QQ群：274306954

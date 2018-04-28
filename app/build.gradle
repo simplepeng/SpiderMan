@@ -26,5 +26,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 //    implementation project(':spiderman')
-    implementation 'com.simple:spiderman:1.0.0'
+    implementation 'com.simple:spiderman:1.0.1'
 }

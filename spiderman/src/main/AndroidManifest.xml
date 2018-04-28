@@ -2,8 +2,6 @@
     package="com.simple.spiderman">
 
     <application
-        android:allowBackup="true"
-        android:label="@string/app_name"
         >
         <activity android:name=".CrashActivity"
             android:theme="@style/AppTheme"
