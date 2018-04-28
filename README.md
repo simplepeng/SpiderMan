@@ -15,7 +15,7 @@ SpiderMan能为您做的：
 ## 引入依赖
 
 ```groovy
-implementation 'com.simple:spiderman:1.0.0'
+implementation 'com.simple:spiderman:1.0.1'
 ```
 
 ## 初始化
