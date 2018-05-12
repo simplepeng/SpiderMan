@@ -2,6 +2,7 @@ package com.simple;
 
 import android.app.Application;
 
+import com.simple.spiderman.CrashModel;
 import com.simple.spiderman.SpiderMan;
 
 /**
@@ -24,7 +25,7 @@ public class App extends Application {
                 //是否回调异常信息，友盟等第三方崩溃信息收集平台会用到
                 .setOnCrashListener(new SpiderMan.OnCrashListener() {
                     @Override
-                    public void onCrash(Thread t, Throwable ex) {
+                    public void onCrash(Thread t, Throwable ex, CrashModel model) {
 
                     }
                 });

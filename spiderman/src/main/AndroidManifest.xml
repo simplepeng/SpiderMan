@@ -7,8 +7,8 @@
         >
         <activity android:name=".CrashActivity"
             android:theme="@style/AppTheme"
+            android:launchMode="singleInstance"
             >
-
         </activity>
     </application>
 </manifest>
