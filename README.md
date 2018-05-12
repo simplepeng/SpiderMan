@@ -9,14 +9,13 @@ SpiderMan能为您做的：
 * 再也不用担心某些rom禁止异常输出啦！
 * 再也不用担心开发工具log信息时灵时不灵啦
 
-![spiderman](https://raw.githubusercontent.com/simplepeng/SpiderMan/master/statics/spiderman.gif)
-
+![](http://p6uvwa6u4.bkt.clouddn.com/img/spiderman.png)
 
 
 ## 引入依赖
 
 ```groovy
-implementation 'com.simple:spiderman:1.0.0'
+implementation 'com.simple:spiderman:1.0.1'
 ```
 
 ## 初始化
@@ -37,8 +36,15 @@ SpiderMan.getInstance()
                 });
 ```
 
+## 版本迭代
+
+* 1.0.1 去除 allowBackup，label
+* 1.0.0 首次上传
+
 ## 联系方式
 
 QQ群：274306954
+
+[快速加群](https://shang.qq.com/wpa/qunwpa?idkey=cbcf9a42faf2fe730b51004d33ac70863617e6999fce7daf43231f3cf2997460)
 
 如有好的建议或意见可提issue或加群联系我

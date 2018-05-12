@@ -31,7 +31,7 @@ dependencies {
 
 }
 
-version = "1.0.0"
+version = "1.0.1"
 
 def siteUrl = 'https://github.com/simplepeng/SpiderMan'   // 项目的主页
 def gitUrl = 'git@github.com:simplepeng/SpiderMan.git'   // Git仓库的url

@@ -95,7 +95,7 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         return model;
     }
 
-    public class Builder {
+    public class Builder{
 
         private boolean mEnable;
         private boolean mShowCrashMessage;
