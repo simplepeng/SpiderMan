@@ -39,6 +39,9 @@ public class CrashActivity extends Activity {
         TextView tv_exceptionType = findViewById(R.id.tv_exceptionType);
         TextView tv_fullException = findViewById(R.id.tv_fullException);
         TextView tv_time = findViewById(R.id.tv_time);
+        TextView tv_model = findViewById(R.id.tv_model);
+        TextView tv_brand = findViewById(R.id.tv_brand);
+        TextView tv_version = findViewById(R.id.tv_version);
 //
         tv_packageName.setText(model.getClassName());
         textMessage.setText(model.getExceptionMsg());
@@ -48,5 +51,9 @@ public class CrashActivity extends Activity {
         tv_exceptionType.setText(model.getExceptionType());
         tv_fullException.setText(model.getFullException());
         tv_time.setText(df.format(model.getTime()));
+
+        tv_model.setText(model.getDevice().getModel());
+        tv_brand.setText(model.getDevice().getBrand());
+        tv_version.setText(model.getDevice().getVersion());
     }
 }

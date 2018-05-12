@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="崩溃信息："
-                android:textSize="17sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textMessage"
@@ -57,21 +57,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:visibility="gone"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="包名："
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_packageName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/textColor"
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -85,14 +85,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="类名："
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
                     android:id="@+id/tv_className"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/textColor"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
 
@@ -106,14 +106,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="方法："
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
                     android:id="@+id/tv_methodName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/textColor"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
 
@@ -127,14 +127,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="行数："
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
                     android:id="@+id/tv_lineNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/textColor"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
 
@@ -148,14 +148,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="类型："
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
                     android:id="@+id/tv_exceptionType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/textColor"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
 
@@ -169,10 +169,80 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="时间："
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
                     android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/simple_text_item_size" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#efefef" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设备名称："
+                    android:textSize="@dimen/simple_text_item_size" />
+
+                <TextView
+                    android:id="@+id/tv_model"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/simple_text_item_size" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设备厂商："
+                    android:textSize="@dimen/simple_text_item_size" />
+
+                <TextView
+                    android:id="@+id/tv_brand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/simple_text_item_size" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="系统版本："
+                    android:textSize="@dimen/simple_text_item_size" />
+
+                <TextView
+                    android:id="@+id/tv_version"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/textColor"
@@ -191,14 +261,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="全部信息："
-                android:textSize="15sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tv_fullException"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/textColor"
-                android:textSize="15sp" />
+                android:textSize="@dimen/simple_text_item_size" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

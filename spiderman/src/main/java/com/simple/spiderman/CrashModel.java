@@ -1,5 +1,6 @@
 package com.simple.spiderman;
 
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -20,6 +21,7 @@ public class CrashModel implements Parcelable {
     private String exceptionType;
     private String fullException;
     private long time;
+    private Device device = new Device();
 
     protected CrashModel(Parcel in) {
         ex = (Throwable) in.readSerializable();
@@ -124,6 +126,10 @@ public class CrashModel implements Parcelable {
         this.time = time;
     }
 
+    public Device getDevice() {
+        return device;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -140,5 +146,56 @@ public class CrashModel implements Parcelable {
         dest.writeString(exceptionType);
         dest.writeString(fullException);
         dest.writeLong(time);
+    }
+
+    public static class Device implements Parcelable {
+        private String model = Build.MODEL;
+        private String brand = Build.BRAND;
+        private String version = String.valueOf(Build.VERSION.SDK_INT);
+
+        public Device() {
+        }
+
+        protected Device(Parcel in) {
+            model = in.readString();
+            brand = in.readString();
+            version = in.readString();
+        }
+
+        public static final Creator<Device> CREATOR = new Creator<Device>() {
+            @Override
+            public Device createFromParcel(Parcel in) {
+                return new Device(in);
+            }
+
+            @Override
+            public Device[] newArray(int size) {
+                return new Device[size];
+            }
+        };
+
+        public String getModel() {
+            return model;
+        }
+
+        public String getBrand() {
+            return brand;
+        }
+
+        public String getVersion() {
+            return version;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(model);
+            dest.writeString(brand);
+            dest.writeString(version);
+        }
     }
 }
