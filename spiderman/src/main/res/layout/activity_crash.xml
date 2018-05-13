@@ -246,7 +246,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/textColor"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
 

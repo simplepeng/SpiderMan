@@ -9,13 +9,13 @@ SpiderMan能为您做的：
 * 再也不用担心某些rom禁止异常输出啦！
 * 再也不用担心开发工具log信息时灵时不灵啦
 
-![](http://p6uvwa6u4.bkt.clouddn.com/img/spiderman.png)
+![](https://raw.githubusercontent.com/simplepeng/SpiderMan/master/statics/spiderman.gif)
 
 
 ## 引入依赖
 
 ```groovy
-implementation 'com.simple:spiderman:1.0.1'
+implementation 'com.simple:spiderman:1.0.2'
 ```
 
 ## 初始化
@@ -27,17 +27,19 @@ SpiderMan.getInstance()
                 .setEnable(true)
                 //设置是否显示崩溃信息展示页面
                 .showCrashMessage(true)
-                //是否回调异常信息，友盟等第三方崩溃信息收集平台会用到
+                //是否回调异常信息，友盟等第三方崩溃信息收集平台会用到,
                 .setOnCrashListener(new SpiderMan.OnCrashListener() {
                     @Override
-                    public void onCrash(Thread t, Throwable ex) {
-
+                    public void onCrash(Thread t, Throwable ex, CrashModel model) {
+                        //CrashModel 崩溃信息记录，包含设备信息
                     }
                 });
 ```
 
+
 ## 版本迭代
 
+* 1.0.2  重构，新增设备信息
 * 1.0.1 去除 allowBackup，label
 * 1.0.0 首次上传
 
