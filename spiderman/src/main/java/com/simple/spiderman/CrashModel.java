@@ -11,27 +11,49 @@ import android.os.Parcelable;
  */
 public class CrashModel implements Parcelable {
 
-    //异常的根类
+    /**
+     * 崩溃主体信息
+     */
     private Throwable ex;
-    //包名，暂时未使用
+    /**
+     * 包名，暂时未使用
+     */
     private String packageName;
-    //崩溃主信息
+    /**
+     * 崩溃主信息
+     */
     private String exceptionMsg;
-    //崩溃类
+    /**
+     * 崩溃类名
+     */
     private String className;
-    //崩溃文件
+    /**
+     * 崩溃文件名
+     */
     private String fileName;
-    //崩溃方法
+    /**
+     * 崩溃方法
+     */
     private String methodName;
-    //崩溃行数
+    /**
+     * 崩溃行数
+     */
     private int lineNumber;
-    //崩溃类型
+    /**
+     * 崩溃类型
+     */
     private String exceptionType;
-    //全部信息
+    /**
+     * 全部信息
+     */
     private String fullException;
-    //崩溃时间
+    /**
+     * 崩溃时间
+     */
     private long time;
-    //设备信息
+    /**
+     * 设备信息
+     */
     private Device device = new Device();
 
     protected CrashModel(Parcel in) {

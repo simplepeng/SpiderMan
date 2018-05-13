@@ -31,7 +31,7 @@ dependencies {
 
 }
 
-version = "1.0.1"
+version = "1.0.2"
 
 def siteUrl = 'https://github.com/simplepeng/SpiderMan'   // 项目的主页
 def gitUrl = 'git@github.com:simplepeng/SpiderMan.git'   // Git仓库的url
@@ -68,11 +68,14 @@ install {
         }
     }
 }
+
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
 }
 task javadoc(type: Javadoc) {
+    //增加编码，这行很重要，如果是windows系统，同时如果在代码中有中文的话，不加这行，上传会报错
+    options.encoding="utf-8"
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
