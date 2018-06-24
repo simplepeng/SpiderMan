@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
+    android:id="@+id/root"
     tools:ignore="ResourceName">
 
     <RelativeLayout
@@ -20,9 +21,19 @@
             android:text="崩溃信息展示"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_action_name" />
     </RelativeLayout>
 
     <ScrollView
+        android:background="@android:color/white"
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
