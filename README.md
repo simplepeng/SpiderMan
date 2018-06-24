@@ -11,11 +11,14 @@ SpiderMan能为您做的：
 
 ![](https://raw.githubusercontent.com/simplepeng/SpiderMan/master/statics/spiderman.gif)
 
+![](https://ws1.sinaimg.cn/mw690/00677ch9gy1fsmaguqpxrj30oe0e6wif)
+
+
 
 ## 引入依赖
 
 ```groovy
-implementation 'com.simple:spiderman:1.0.2'
+implementation 'com.simple:spiderman:1.0.3'
 ```
 
 ## 初始化
@@ -99,14 +102,8 @@ public class CrashModel implements Parcelable {
 
 ## 版本迭代
 
-* 1.0.2  重构，新增设备信息
+* 1.0.3 增加 拷贝/分享 崩溃文字/图片信息
+* 1.0.2 重构，新增设备信息
 * 1.0.1 去除 allowBackup，label
 * 1.0.0 首次上传
 
-## 联系方式
-
-QQ群：274306954
-
-[快速加群](https://shang.qq.com/wpa/qunwpa?idkey=cbcf9a42faf2fe730b51004d33ac70863617e6999fce7daf43231f3cf2997460)
-
-如有好的建议或意见可提issue或加群联系我

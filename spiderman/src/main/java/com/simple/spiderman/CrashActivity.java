@@ -188,6 +188,7 @@ public class CrashActivity extends AppCompatActivity {
     }
 
     public Bitmap getBitmapByView(ScrollView view) {
+        if (view == null)return null;
         int height = 0;
         for (int i = 0; i < view.getChildCount(); i++) {
             height += view.getChildAt(i).getHeight();
