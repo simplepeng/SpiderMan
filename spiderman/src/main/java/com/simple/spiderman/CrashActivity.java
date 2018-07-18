@@ -17,14 +17,17 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v4.util.LogWriter;
 import android.support.v7.app.AppCompatActivity;
 import android.util.JsonReader;
 import android.util.Log;
+import android.util.LogPrinter;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -69,7 +72,7 @@ public class CrashActivity extends AppCompatActivity {
         if (model == null) {
             return;
         }
-        model.getEx().printStackTrace();
+        Log.e("SpiderMan", Log.getStackTraceString(model.getEx()));
 
         root = findViewById(R.id.root);
         TextView tv_packageName = findViewById(R.id.tv_packageName);
@@ -188,7 +191,7 @@ public class CrashActivity extends AppCompatActivity {
     }
 
     public Bitmap getBitmapByView(ScrollView view) {
-        if (view == null)return null;
+        if (view == null) return null;
         int height = 0;
         for (int i = 0; i < view.getChildCount(); i++) {
             height += view.getChildAt(i).getHeight();
