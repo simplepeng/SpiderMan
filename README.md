@@ -102,7 +102,7 @@ public class CrashModel implements Parcelable {
 
 ## 版本迭代
 
-* 1.0.3 崩溃输出改为error级别
+* 1.0.4 崩溃输出改为error级别
 * 1.0.3 增加 拷贝/分享 崩溃文字/图片信息
 * 1.0.2 重构，新增设备信息
 * 1.0.1 去除 allowBackup，label
