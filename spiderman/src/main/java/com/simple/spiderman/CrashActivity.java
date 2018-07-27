@@ -2,8 +2,6 @@ package com.simple.spiderman;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -11,23 +9,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorSpace;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
-import android.support.v4.util.LogWriter;
 import android.support.v7.app.AppCompatActivity;
-import android.util.JsonReader;
 import android.util.Log;
-import android.util.LogPrinter;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -35,20 +26,11 @@ import android.widget.PopupMenu;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
-
-import org.json.JSONObject;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * author : ChenPeng
@@ -112,16 +94,16 @@ public class CrashActivity extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         int id = item.getItemId();
                         if (id == R.id.menu_copy_text) {
-                            String json = new Gson().toJson(modelToMap(model));
+                            String crashText = getShareText(model);
                             ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                             if (cm != null) {
-                                ClipData mClipData = ClipData.newPlainText("crash", json);
+                                ClipData mClipData = ClipData.newPlainText("crash", crashText);
                                 cm.setPrimaryClip(mClipData);
                                 showToast("拷贝成功");
                             }
                         } else if (id == R.id.menu_share_text) {
-                            String json = new Gson().toJson(modelToMap(model));
-                            shareText(json);
+                            String crashText = getShareText(model);
+                            shareText(crashText);
                         } else if (id == R.id.menu_share_image) {
                             if (ContextCompat.checkSelfPermission(CrashActivity.this,
                                     Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED ||
@@ -142,19 +124,45 @@ public class CrashActivity extends AppCompatActivity {
 
     }
 
-    private Map<String, Object> modelToMap(CrashModel model) {
-        LinkedHashMap<String, Object> map = new LinkedHashMap<>();
-        map.put("崩溃信息", model.getExceptionMsg());
-        map.put("类名", model.getFileName());
-        map.put("方法", model.getMethodName());
-        map.put("行数", model.getLineNumber());
-        map.put("类型", model.getExceptionType());
-        map.put("时间", df.format(model.getTime()));
-        map.put("设备名称", model.getDevice().getModel());
-        map.put("设备厂商", model.getDevice().getBrand());
-        map.put("系统版本", model.getDevice().getVersion());
-        map.put("全部信息", model.getFullException());
-        return map;
+    private String getShareText(CrashModel model) {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("崩溃信息:")
+                .append("\n")
+                .append(model.getExceptionMsg())
+                .append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append("类名:")
+                .append(model.getFileName()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append("方法:").append(model.getMethodName()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append("行数:").append(model.getLineNumber()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append("类型:").append(model.getExceptionType()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append("时间").append(df.format(model.getTime())).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append("设备名称:").append(model.getDevice().getModel()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append("设备厂商:").append(model.getDevice().getBrand()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append("系统版本:").append(model.getDevice().getVersion()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append("全部信息:")
+                .append("\n")
+                .append(model.getFullException()).append("\n");
+
+        return builder.toString();
     }
 
     private void shareText(String text) {

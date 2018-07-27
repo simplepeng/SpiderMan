@@ -9,16 +9,15 @@ SpiderMan能为您做的：
 * 再也不用担心某些rom禁止异常输出啦！
 * 再也不用担心开发工具log信息时灵时不灵啦
 
-![](https://raw.githubusercontent.com/simplepeng/SpiderMan/master/statics/spiderman.gif)
-
-![](https://ws1.sinaimg.cn/mw690/00677ch9gy1fsmaguqpxrj30oe0e6wif)
-
+|      |      |
+| ---- | ---- |
+|   ![](https://raw.githubusercontent.com/simplepeng/SpiderMan/master/statics/spiderman.gif)   |   ![](https://ws1.sinaimg.cn/mw690/00677ch9gy1fto9adxdd3j30nq14w108) |
 
 
 ## 引入依赖
 
 ```groovy
-implementation 'com.simple:spiderman:1.0.4'
+implementation 'com.simple:spiderman:1.0.5'
 ```
 
 ## 初始化
@@ -102,6 +101,7 @@ public class CrashModel implements Parcelable {
 
 ## 版本迭代
 
+* 1.0.5 奔溃文本分享美化排版
 * 1.0.4 崩溃输出改为error级别
 * 1.0.3 增加 拷贝/分享 崩溃文字/图片信息
 * 1.0.2 重构，新增设备信息

@@ -28,11 +28,11 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.google.code.gson:gson:2.8.5'
+//    implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.android.support:appcompat-v7:27.1.1'
 }
 
-version = "1.0.4"
+version = "1.0.5"
 
 def siteUrl = 'https://github.com/simplepeng/SpiderMan'   // 项目的主页
 def gitUrl = 'git@github.com:simplepeng/SpiderMan.git'   // Git仓库的url
