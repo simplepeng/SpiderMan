@@ -1,5 +1,7 @@
 # SpiderMan
 
+ [![Travis (.org)](https://img.shields.io/badge/jcenter-1.0.5-blue.svg)](https://bintray.com/simplepeng/maven/SpiderMan)
+
 SpiderMan能为您做的：
 
 * 正式环境不弹出难看的崩溃框啦！
