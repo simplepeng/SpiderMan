@@ -24,6 +24,8 @@ implementation 'com.simple:spiderman:1.0.5'
 
 ## 初始化
 
+> 建议放到Application的初始化中，并且放在其他Library初始化的前面
+
 ```java
 SpiderMan.getInstance()
                 .init(this)
@@ -41,6 +43,8 @@ SpiderMan.getInstance()
 ```
 
 ## CrashModel
+
+> 崩溃信息记录实体，包含设备信息
 
 ```java
 public class CrashModel implements Parcelable {
