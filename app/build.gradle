@@ -17,7 +17,7 @@ android {
             storePassword "123456"
             keyAlias "spiderman"
             keyPassword "123456"
-            v2SigningEnabled false
+            v2SigningEnabled true
         }
     }
 

@@ -24,22 +24,62 @@ implementation 'com.simple:spiderman:1.0.5'
 
 ## 初始化
 
-> 建议放到Application的初始化中，并且放在其他Library初始化的前面
+> 放到Application的初始化中，因为static了传入的context，并且放在其他Library初始化的前面
 
 ```java
-SpiderMan.getInstance()
-                .init(this)
-                //设置是否捕获异常，不弹出崩溃框
-                .setEnable(true)
-                //设置是否显示崩溃信息展示页面
-                .showCrashMessage(true)
-                //是否回调异常信息，友盟等第三方崩溃信息收集平台会用到,
+SpiderMan.init(this)
+                //设置回调异常信息，友盟等第三方崩溃信息收集平台会用到,
                 .setOnCrashListener(new SpiderMan.OnCrashListener() {
+                    /**
+                     *
+                     * @param t
+                     * @param ex
+                     * @param model 崩溃信息记录，包含设备信息
+                     */
                     @Override
                     public void onCrash(Thread t, Throwable ex, CrashModel model) {
-                        //CrashModel 崩溃信息记录，包含设备信息
+
                     }
                 });
+
+```
+
+## Demo中的示例代码
+
+```java
+public class App extends Application {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        SpiderMan.init(this)
+                //设置回调异常信息，友盟等第三方崩溃信息收集平台会用到,
+                .setOnCrashListener(new SpiderMan.OnCrashListener() {
+                    /**
+                     *
+                     * @param t
+                     * @param ex
+                     * @param model 崩溃信息记录，包含设备信息
+                     */
+                    @Override
+                    public void onCrash(Thread t, Throwable ex, CrashModel model) {
+                        showToast(model.toString());
+                    }
+                });
+
+    }
+
+    private void showToast(final String text) {
+
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
 ```
 
 ## CrashModel

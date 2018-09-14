@@ -1,7 +1,8 @@
 package com.simple.spiderman;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -13,57 +14,43 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     private static SpiderMan spiderMan = new SpiderMan();
 
-    private Context mContext;
+    private static Context mContext;
     private Thread.UncaughtExceptionHandler mExceptionHandler;
-
-    private Builder mBuilder;
+    private OnCrashListener mOnCrashListener;
 
     private SpiderMan() {
-
-    }
-
-    public static SpiderMan getInstance() {
-        return spiderMan;
-    }
-
-    public Builder init(Context context) {
-        this.mContext = context;
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Looper.loop();
+                    } catch (Throwable e) {
+                        if (mOnCrashListener != null) {
+                            CrashModel model = parseCrash(e);
+                            mOnCrashListener.onCrash(Looper.getMainLooper().getThread(), e, model);
+                        }
+                    }
+                }
+            }
+        });
         mExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(this);
-        mBuilder = new Builder();
-        return mBuilder;
+    }
+
+    public static SpiderMan init(Context context) {
+        mContext = context;
+        return spiderMan;
     }
 
     @Override
     public void uncaughtException(Thread t, Throwable ex) {
-        if (mBuilder == null) return;
+
         CrashModel model = parseCrash(ex);
-        if (mBuilder.mOnCrashListener != null) {
-            mBuilder.mOnCrashListener.onCrash(t, ex, model);
+        if (mOnCrashListener != null) {
+            mOnCrashListener.onCrash(t, ex, model);
         }
-        if (mBuilder.mEnable) {
-            handleException(model);
-        } else {
-            if (mExceptionHandler != null) {
-                mExceptionHandler.uncaughtException(t, ex);
-            }
-        }
-    }
-
-    private void handleException(CrashModel model) {
-
-        if (mBuilder.mEnable && mBuilder.mShowCrashMessage) {
-            Intent intent = new Intent(mContext, CrashActivity.class);
-            intent.putExtra(CrashActivity.CRASH_MODEL, model);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            mContext.startActivity(intent);
-        }
-
-        android.os.Process.killProcess(android.os.Process.myPid());
-    }
-
-    public interface OnCrashListener {
-        void onCrash(Thread t, Throwable ex, CrashModel model);
+        mExceptionHandler.uncaughtException(t, ex);
     }
 
     private CrashModel parseCrash(Throwable ex) {
@@ -97,26 +84,13 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         return model;
     }
 
-    public class Builder {
-
-        private boolean mEnable;
-        private boolean mShowCrashMessage;
-        private OnCrashListener mOnCrashListener;
-
-        public Builder setEnable(boolean enable) {
-            this.mEnable = enable;
-            return this;
-        }
-
-        public Builder showCrashMessage(boolean show) {
-            this.mShowCrashMessage = show;
-            return this;
-        }
-
-        public void setOnCrashListener(OnCrashListener listener) {
-            this.mOnCrashListener = listener;
-        }
-
-
+    public interface OnCrashListener {
+        void onCrash(Thread t, Throwable ex, CrashModel model);
     }
+
+    public void setOnCrashListener(OnCrashListener listener) {
+        this.mOnCrashListener = listener;
+    }
+
+
 }
