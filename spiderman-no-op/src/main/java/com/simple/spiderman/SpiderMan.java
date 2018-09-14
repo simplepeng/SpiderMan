@@ -14,7 +14,6 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     private static SpiderMan spiderMan = new SpiderMan();
 
-    private static Context mContext;
     private Thread.UncaughtExceptionHandler mExceptionHandler;
     private OnCrashListener mOnCrashListener;
 
@@ -22,7 +21,7 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                while (true) {
+                for (; ; ) {
                     try {
                         Looper.loop();
                     } catch (Throwable e) {
@@ -39,7 +38,6 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
     }
 
     public static SpiderMan init(Context context) {
-        mContext = context;
         return spiderMan;
     }
 
