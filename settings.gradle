@@ -1,1 +1,1 @@
-include ':app', ':spiderman'
+include ':app', ':spiderman','spiderman-no-op'

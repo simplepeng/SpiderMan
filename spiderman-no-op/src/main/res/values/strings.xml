@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:ignore="ResourceName">spiderman</string>
+    <string name="simpleCopyText">拷贝崩溃文本</string>
+    <string name="simpleShareText">分享崩溃文本</string>
+    <string name="simpleShareImage">分享崩溃图片</string>
+</resources>

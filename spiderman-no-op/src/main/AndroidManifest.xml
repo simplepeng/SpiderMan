@@ -1,0 +1,26 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.simple.spiderman">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application>
+
+        <provider
+            android:name="com.simple.spiderman.SpiderManFileProvider"
+            android:authorities="${applicationId}.spidermanfileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".CrashActivity"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme">
+
+        </activity>
+    </application>
+</manifest>
