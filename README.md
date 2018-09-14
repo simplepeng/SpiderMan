@@ -4,16 +4,18 @@
 
 SpiderMan能为您做的：
 
-* 正式环境不弹出难看的崩溃框啦！
-* 测试环境可以在手机上显示崩溃信息啦！
+* Release环境不弹出难看的崩溃框啦！
+* Debug环境可以在手机上显示崩溃信息啦！
 * 再也不用担心测试妹妹给你重现怎么操作崩溃的啦！
 * 再也不用担心产品相关人员给你说哪儿哪儿崩溃，但是又重现不了的尴尬啦！
 * 再也不用担心某些rom禁止异常输出啦！
 * 再也不用担心开发工具log信息时灵时不灵啦
 
-|      |      |
-| ---- | ---- |
-|   ![](https://raw.githubusercontent.com/simplepeng/SpiderMan/master/statics/spiderman.gif)   |   ![](https://ws1.sinaimg.cn/mw690/00677ch9gy1ftoekwmvl3j30af0hygof)|
+|                         Release环境                          |                          Debug环境                           |                            Share                             |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| ![](/Users/simple/Desktop/WorkSpace/ws-android/SpiderMan/statics/release.gif) | ![](/Users/simple/Desktop/WorkSpace/ws-android/SpiderMan/statics/debug.gif) | ![](https://ws1.sinaimg.cn/mw690/00677ch9gy1ftoekwmvl3j30af0hygof) |
+
+
 
 
 ## 引入依赖
