@@ -13,7 +13,7 @@ SpiderMan能为您做的：
 
 |                         Release环境                          |                          Debug环境                           |                            Share                             |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![](/Users/simple/Desktop/WorkSpace/ws-android/SpiderMan/statics/release.gif) | ![](/Users/simple/Desktop/WorkSpace/ws-android/SpiderMan/statics/debug.gif) | ![](https://ws1.sinaimg.cn/mw690/00677ch9gy1ftoekwmvl3j30af0hygof) |
+| ![](https://raw.githubusercontent.com/simplepeng/SpiderMan/3f457c754a90baa8c9b73b6953b4cb9581bb9414/statics/debug.gif) | ![](https://raw.githubusercontent.com/simplepeng/SpiderMan/3f457c754a90baa8c9b73b6953b4cb9581bb9414/statics/release.gif) | ![](https://ws1.sinaimg.cn/mw690/00677ch9gy1ftoekwmvl3j30af0hygof) |
 
 
 
@@ -21,7 +21,8 @@ SpiderMan能为您做的：
 ## 引入依赖
 
 ```groovy
-implementation 'com.simple:spiderman:1.0.5'
+ debugImplementation 'com.simple:spiderman:1.0.6'
+ releaseImplementation 'com.simple:spiderman-no-op:1.0.6'
 ```
 
 ## 初始化
@@ -29,7 +30,7 @@ implementation 'com.simple:spiderman:1.0.5'
 > 放到Application的初始化中，因为static了传入的context，并且放在其他Library初始化的前面
 
 ```java
-SpiderMan.init(this)
+        SpiderMan.init(this)
                 //设置回调异常信息，友盟等第三方崩溃信息收集平台会用到,
                 .setOnCrashListener(new SpiderMan.OnCrashListener() {
                     /**
@@ -40,7 +41,7 @@ SpiderMan.init(this)
                      */
                     @Override
                     public void onCrash(Thread t, Throwable ex, CrashModel model) {
-
+                        showToast(model.toString());
                     }
                 });
 
@@ -149,6 +150,7 @@ public class CrashModel implements Parcelable {
 
 ## 版本迭代
 
+* 1.0.6 增加spiderman-no-op
 * 1.0.5 奔溃文本分享美化排版
 * 1.0.4 崩溃输出改为error级别
 * 1.0.3 增加 拷贝/分享 崩溃文字/图片信息
