@@ -11,7 +11,7 @@ SpiderMan能为您做的：
 * 再也不用担心某些rom禁止异常输出啦！
 * 再也不用担心开发工具log信息时灵时不灵啦
 
-|                         Release环境                          |                          Debug环境                           |                            Share                             |
+|                          Debug环境                           |                         Release环境                          |                            Share                             |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | ![](https://raw.githubusercontent.com/simplepeng/SpiderMan/3f457c754a90baa8c9b73b6953b4cb9581bb9414/statics/debug.gif) | ![](https://raw.githubusercontent.com/simplepeng/SpiderMan/3f457c754a90baa8c9b73b6953b4cb9581bb9414/statics/release.gif) | ![](https://ws1.sinaimg.cn/mw690/00677ch9gy1ftoekwmvl3j30af0hygof) |
 
