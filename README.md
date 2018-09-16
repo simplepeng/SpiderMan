@@ -1,19 +1,17 @@
 # SpiderMan
 
- [![Travis (.org)](https://img.shields.io/badge/jcenter-1.0.5-blue.svg)](https://bintray.com/simplepeng/maven/SpiderMan)
-
 SpiderMan能为您做的：
 
-* Release环境不弹出难看的崩溃框啦！
-* Debug环境可以在手机上显示崩溃信息啦！
+* Release环境不弹出难看的崩溃框！崩溃了也不闪退~
+* Debug环境可以在手机上显示崩溃信息！分享给相关开发人员~
 * 再也不用担心测试妹妹给你重现怎么操作崩溃的啦！
 * 再也不用担心产品相关人员给你说哪儿哪儿崩溃，但是又重现不了的尴尬啦！
-* 再也不用担心某些rom禁止异常输出啦！
+* 再也不用担心某些Rom禁止异常输出啦！
 * 再也不用担心开发工具log信息时灵时不灵啦
 
 |                          Debug环境                           |                         Release环境                          |                            Share                             |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![](https://raw.githubusercontent.com/simplepeng/SpiderMan/3f457c754a90baa8c9b73b6953b4cb9581bb9414/statics/debug.gif) | ![](https://raw.githubusercontent.com/simplepeng/SpiderMan/3f457c754a90baa8c9b73b6953b4cb9581bb9414/statics/release.gif) | ![](https://ws1.sinaimg.cn/mw690/00677ch9gy1ftoekwmvl3j30af0hygof) |
+| ![](https://simple-bucket-1257044365.cos.ap-chongqing.myqcloud.com/debug.gif) | ![](https://simple-bucket-1257044365.cos.ap-chongqing.myqcloud.com/release.gif) | ![](https://ws1.sinaimg.cn/mw690/00677ch9gy1ftoekwmvl3j30af0hygof) |
 
 
 
@@ -41,7 +39,7 @@ SpiderMan能为您做的：
                      */
                     @Override
                     public void onCrash(Thread t, Throwable ex, CrashModel model) {
-                        showToast(model.toString());
+                      
                     }
                 });
 
@@ -67,7 +65,7 @@ public class App extends Application {
                      */
                     @Override
                     public void onCrash(Thread t, Throwable ex, CrashModel model) {
-                        showToast(model.toString());
+                       showToast("诶，虽然发送异常了，但是就是不闪退");
                     }
                 });
 
