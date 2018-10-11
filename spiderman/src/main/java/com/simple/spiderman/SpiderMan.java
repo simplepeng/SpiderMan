@@ -52,12 +52,12 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     private CrashModel parseCrash(Throwable ex) {
         CrashModel model = new CrashModel();
-        model.setExceptionMsg(ex.getMessage());
-
-        ex = ex.getCause();
         model.setEx(ex);
         model.setTime(new Date().getTime());
-
+        if (ex.getCause() != null) {
+            ex = ex.getCause();
+        }
+        model.setExceptionMsg(ex.getMessage());
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         ex.printStackTrace(pw);

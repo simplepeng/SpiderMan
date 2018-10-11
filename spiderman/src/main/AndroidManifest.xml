@@ -18,7 +18,6 @@
 
         <activity
             android:name=".CrashActivity"
-            android:launchMode="singleInstance"
             android:theme="@style/AppTheme">
 
         </activity>
