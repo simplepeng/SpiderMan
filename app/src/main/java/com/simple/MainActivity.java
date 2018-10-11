@@ -11,8 +11,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String text = null;
+        text.toUpperCase();
         setContentView(R.layout.activity_main);
-
 
         TextView tv_buildType = findViewById(R.id.tv_buildType);
         tv_buildType.setText(BuildConfig.BUILD_TYPE);
