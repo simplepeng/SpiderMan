@@ -27,7 +27,11 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
                     } catch (Throwable e) {
                         if (mOnCrashListener != null) {
                             CrashModel model = parseCrash(e);
-                            mOnCrashListener.onCrash(Looper.getMainLooper().getThread(), e, model);
+                            if (isBlackScreenException(e)) {
+                                mExceptionHandler.uncaughtException(Looper.getMainLooper().getThread(), e);
+                            } else {
+                                mOnCrashListener.onCrash(Looper.getMainLooper().getThread(), e, model);
+                            }
                         }
                     }
                 }
@@ -44,42 +48,64 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
     @Override
     public void uncaughtException(Thread t, Throwable ex) {
 
-        CrashModel model = parseCrash(ex);
-        if (mOnCrashListener != null) {
-            mOnCrashListener.onCrash(t, ex, model);
-        }
-        mExceptionHandler.uncaughtException(t, ex);
+//        CrashModel model = parseCrash(ex);
+//        if (mOnCrashListener != null) {
+//            mOnCrashListener.onCrash(t, ex, model);
+//        }
+//        mExceptionHandler.uncaughtException(t, ex);
     }
 
     private CrashModel parseCrash(Throwable ex) {
         CrashModel model = new CrashModel();
-        model.setEx(ex);
-        model.setTime(new Date().getTime());
-        StringBuilder msgBuilder = new StringBuilder();
-        String exceptionMsg = null;
+        try {
+            model.setEx(ex);
+            model.setTime(new Date().getTime());
+            if (ex.getCause() != null) {
+                ex = ex.getCause();
+            }
+            model.setExceptionMsg(ex.getMessage());
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            ex.printStackTrace(pw);
+            pw.flush();
+            String exceptionType = ex.getClass().getName();
 
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        ex.printStackTrace(pw);
-        pw.flush();
-        String exceptionType = ex.getClass().getName();
-//        while (ex != null) {
-        exceptionMsg = ex.getMessage();
-        msgBuilder.append(ex.getMessage());
-        msgBuilder.append("\n");
-        if (ex.getStackTrace() != null && ex.getStackTrace().length > 0) {
-            StackTraceElement element = ex.getStackTrace()[0];
-            model.setExceptionMsg(exceptionMsg);
-            model.setLineNumber(element.getLineNumber());
-            model.setClassName(element.getClassName());
-            model.setFileName(element.getFileName());
-            model.setMethodName(element.getMethodName());
-            model.setExceptionType(exceptionType);
+            if (ex.getStackTrace() != null && ex.getStackTrace().length > 0) {
+                StackTraceElement element = ex.getStackTrace()[0];
+
+                model.setLineNumber(element.getLineNumber());
+                model.setClassName(element.getClassName());
+                model.setFileName(element.getFileName());
+                model.setMethodName(element.getMethodName());
+                model.setExceptionType(exceptionType);
+            }
+
+            model.setFullException(sw.toString());
+        } catch (Exception e) {
+            return model;
         }
-//            ex = ex.getCause();
-//        }
-        model.setFullException(sw.toString());
         return model;
+    }
+
+    public boolean isBlackScreenException(Throwable e) {
+        if (e == null) {
+            return false;
+        }
+        StackTraceElement[] stackTrace = e.getStackTrace();
+        if (stackTrace == null || stackTrace.length == 0) {
+            return false;
+        }
+//        if (stackTrace.length > 50) {
+//            return false;
+//        }
+        for (StackTraceElement element : stackTrace) {
+            if ("android.view.Choreographer".equals(element.getClassName())
+                    && "Choreographer.java".equals(element.getFileName())
+                    && "doFrame".equals(element.getMethodName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public interface OnCrashListener {

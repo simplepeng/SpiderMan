@@ -1,5 +1,6 @@
 package com.simple;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.TextureView;
@@ -11,8 +12,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String text = null;
-        text.toUpperCase();
         setContentView(R.layout.activity_main);
 
         TextView tv_buildType = findViewById(R.id.tv_buildType);
@@ -20,8 +19,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_crash).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String text = null;
-                text.toUpperCase();
+                startActivity(new Intent(MainActivity.this,TestActivity.class));
             }
         });
     }
