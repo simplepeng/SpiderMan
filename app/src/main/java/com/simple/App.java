@@ -30,7 +30,7 @@ public class App extends Application {
                      */
                     @Override
                     public void onCrash(Thread t, Throwable ex, CrashModel model) {
-                        showToast(model.toString());
+
                     }
                 });
 

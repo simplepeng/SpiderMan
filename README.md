@@ -1,6 +1,5 @@
 # SpiderMan
 
- [![Travis (.org)](https://img.shields.io/badge/jcenter-1.0.5-blue.svg)](https://bintray.com/simplepeng/maven/SpiderMan)
 
 SpiderMan能为您做的：
 
@@ -11,18 +10,16 @@ SpiderMan能为您做的：
 * 再也不用担心某些rom禁止异常输出啦！
 * 再也不用担心开发工具log信息时灵时不灵啦
 
-|                          Debug环境                           |                         Release环境                          |                            Share                             |
+|                          Debug环境                           |                                                   Share                             |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![](https://raw.githubusercontent.com/simplepeng/SpiderMan/3f457c754a90baa8c9b73b6953b4cb9581bb9414/statics/debug.gif) | ![](https://raw.githubusercontent.com/simplepeng/SpiderMan/3f457c754a90baa8c9b73b6953b4cb9581bb9414/statics/release.gif) | ![](https://ws1.sinaimg.cn/mw690/00677ch9gy1ftoekwmvl3j30af0hygof) |
-
-
+| ![](https://raw.githubusercontent.com/simplepeng/SpiderMan/3f457c754a90baa8c9b73b6953b4cb9581bb9414/statics/debug.gif) |  ![](https://ws1.sinaimg.cn/mw690/00677ch9gy1ftoekwmvl3j30af0hygof) |
 
 
 ## 引入依赖
 
 ```groovy
- debugImplementation 'com.simple:spiderman:1.0.6'
- releaseImplementation 'com.simple:spiderman-no-op:1.0.6'
+ debugImplementation 'com.simple:spiderman:1.0.7'
+ releaseImplementation 'com.simple:spiderman-no-op:1.0.7'
 ```
 
 ## 初始化
@@ -41,48 +38,10 @@ SpiderMan能为您做的：
                      */
                     @Override
                     public void onCrash(Thread t, Throwable ex, CrashModel model) {
-                        showToast(model.toString());
+                        
                     }
                 });
 
-```
-
-## Demo中的示例代码
-
-```java
-public class App extends Application {
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        SpiderMan.init(this)
-                //设置回调异常信息，友盟等第三方崩溃信息收集平台会用到,
-                .setOnCrashListener(new SpiderMan.OnCrashListener() {
-                    /**
-                     *
-                     * @param t
-                     * @param ex
-                     * @param model 崩溃信息记录，包含设备信息
-                     */
-                    @Override
-                    public void onCrash(Thread t, Throwable ex, CrashModel model) {
-                        showToast(model.toString());
-                    }
-                });
-
-    }
-
-    private void showToast(final String text) {
-
-        new Handler(Looper.getMainLooper()).post(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-}
 ```
 
 ## CrashModel
@@ -150,6 +109,7 @@ public class CrashModel implements Parcelable {
 
 ## 版本迭代
 
+* 1.0.7 删除spiderman-no-op never-crash，优化报错类型显示
 * 1.0.6 增加spiderman-no-op
 * 1.0.5 奔溃文本分享美化排版
 * 1.0.4 崩溃输出改为error级别

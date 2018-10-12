@@ -1,8 +1,6 @@
 package com.simple.spiderman;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -18,25 +16,6 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
     private OnCrashListener mOnCrashListener;
 
     private SpiderMan() {
-        new Handler(Looper.getMainLooper()).post(new Runnable() {
-            @Override
-            public void run() {
-                for (; ; ) {
-                    try {
-                        Looper.loop();
-                    } catch (Throwable e) {
-                        if (mOnCrashListener != null) {
-                            CrashModel model = parseCrash(e);
-                            if (isBlackScreenException(e)) {
-                                mExceptionHandler.uncaughtException(Looper.getMainLooper().getThread(), e);
-                            } else {
-                                mOnCrashListener.onCrash(Looper.getMainLooper().getThread(), e, model);
-                            }
-                        }
-                    }
-                }
-            }
-        });
         mExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(this);
     }
@@ -47,13 +26,14 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     @Override
     public void uncaughtException(Thread t, Throwable ex) {
+        CrashModel model = parseCrash(ex);
+        if (mOnCrashListener != null) {
+            mOnCrashListener.onCrash(t, ex, model);
+        }
 
-//        CrashModel model = parseCrash(ex);
-//        if (mOnCrashListener != null) {
-//            mOnCrashListener.onCrash(t, ex, model);
-//        }
-//        mExceptionHandler.uncaughtException(t, ex);
+        mExceptionHandler.uncaughtException(t, ex);
     }
+
 
     private CrashModel parseCrash(Throwable ex) {
         CrashModel model = new CrashModel();
@@ -85,27 +65,6 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
             return model;
         }
         return model;
-    }
-
-    public boolean isBlackScreenException(Throwable e) {
-        if (e == null) {
-            return false;
-        }
-        StackTraceElement[] stackTrace = e.getStackTrace();
-        if (stackTrace == null || stackTrace.length == 0) {
-            return false;
-        }
-//        if (stackTrace.length > 50) {
-//            return false;
-//        }
-        for (StackTraceElement element : stackTrace) {
-            if ("android.view.Choreographer".equals(element.getClassName())
-                    && "Choreographer.java".equals(element.getFileName())
-                    && "doFrame".equals(element.getMethodName())) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public interface OnCrashListener {
