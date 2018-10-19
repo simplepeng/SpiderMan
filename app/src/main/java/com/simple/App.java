@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
-import com.simple.spiderman.CrashModel;
 import com.simple.spiderman.SpiderMan;
 
 /**
@@ -19,20 +18,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
-        SpiderMan.init(this)
-                //设置回调异常信息，友盟等第三方崩溃信息收集平台会用到,
-                .setOnCrashListener(new SpiderMan.OnCrashListener() {
-                    /**
-                     *
-                     * @param t
-                     * @param ex
-                     * @param model 崩溃信息记录，包含设备信息
-                     */
-                    @Override
-                    public void onCrash(Thread t, Throwable ex, CrashModel model) {
-
-                    }
-                });
+        SpiderMan.init(this);
 
     }
 
