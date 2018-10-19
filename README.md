@@ -3,7 +3,6 @@
 
 SpiderMan能为您做的：
 
-* Release环境不弹出难看的崩溃框~
 * Debug环境可以在手机上显示崩溃信息，分享给相关开发人员~
 * 再也不用担心测试妹妹给你重现怎么操作崩溃的啦！
 * 再也不用担心产品相关人员给你说哪儿哪儿崩溃，但是又重现不了的尴尬啦！
@@ -18,97 +17,31 @@ SpiderMan能为您做的：
 ## 引入依赖
 
 ```groovy
- debugImplementation 'com.simple:spiderman:1.0.7'
- releaseImplementation 'com.simple:spiderman-no-op:1.0.7'
+debugImplementation 'com.simple:spiderman:1.0.8'
+releaseImplementation 'com.simple:spiderman-no-op:1.0.8'
 ```
 
 ## 初始化
 
-> 放到Application的初始化中，因为static了传入的context，并且放在其他Library初始化的前面
+> 放到Application的`onCreate()初始化中，因为static了传入的context，并且放在其他Library初始化的前面
 
 ```java
-        SpiderMan.init(this)
-                //设置回调异常信息，友盟等第三方崩溃信息收集平台会用到,
-                .setOnCrashListener(new SpiderMan.OnCrashListener() {
-                    /**
-                     *
-                     * @param t
-                     * @param ex
-                     * @param model 崩溃信息记录，包含设备信息
-                     */
-                    @Override
-                    public void onCrash(Thread t, Throwable ex, CrashModel model) {
+public class App extends Application {
 
-                    }
-                });
-
-```
-
-## CrashModel
-
-> 崩溃信息记录实体，包含设备信息
-
-```java
-public class CrashModel implements Parcelable {
-
-    /**
-     * 崩溃主体信息
-     */
-    private Throwable ex;
-    /**
-     * 包名，暂时未使用
-     */
-    private String packageName;
-    /**
-     * 崩溃主信息
-     */
-    private String exceptionMsg;
-    /**
-     * 崩溃类名
-     */
-    private String className;
-    /**
-     * 崩溃文件名
-     */
-    private String fileName;
-    /**
-     * 崩溃方法
-     */
-    private String methodName;
-    /**
-     * 崩溃行数
-     */
-    private int lineNumber;
-    /**
-     * 崩溃类型
-     */
-    private String exceptionType;
-    /**
-     * 全部信息
-     */
-    private String fullException;
-    /**
-     * 崩溃时间
-     */
-    private long time;
-    /**
-     * 设备信息
-     */
-    private Device device;
-    
-    public static class Device implements Parcelable {
-        //设备名
-        private String model = Build.MODEL;
-        //设备厂商
-        private String brand = Build.BRAND;
-        //系统版本号
-        private String version = String.valueOf(Build.VERSION.SDK_INT);
+    @Override
+    public void onCreate() {
+        super.onCreate();
+		//放在其他库初始化前
+        SpiderMan.init(this);
     }
+
 }
 ```
 
+
 ## 版本迭代
 
+* 1.0.8 发现很多小伙伴不会代理异常收集，所以删除了异常回调
 * 1.0.7 删除spiderman-no-op never-crash，优化报错类型显示
 * 1.0.6 增加spiderman-no-op
 * 1.0.5 奔溃文本分享美化排版
