@@ -23,18 +23,17 @@ releaseImplementation 'com.simple:spiderman-no-op:1.0.8'
 
 ## 初始化
 
-> 放到Application的`onCreate()初始化中，因为static了传入的context，并且放在其他Library初始化的前面
+放到Application的`onCreate()`初始化中，因为static了传入的context，并且放在其他Library初始化的前面
 
 ```java
 public class App extends Application {
-
+    
     @Override
     public void onCreate() {
         super.onCreate();
 		//放在其他库初始化前
         SpiderMan.init(this);
     }
-
 }
 ```
 
