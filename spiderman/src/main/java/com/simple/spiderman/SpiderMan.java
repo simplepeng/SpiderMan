@@ -15,7 +15,6 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     private static Context mContext;
     private Thread.UncaughtExceptionHandler mExceptionHandler;
-//    private OnCrashListener mOnCrashListener;
 
     private SpiderMan() {
         mExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
@@ -32,9 +31,6 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
         CrashModel model = parseCrash(ex);
         handleException(model);
-//        if (mOnCrashListener != null) {
-//            mOnCrashListener.onCrash(t, ex, model);
-//        }
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
@@ -78,14 +74,5 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         }
         return model;
     }
-
-//    public interface OnCrashListener {
-//        void onCrash(Thread t, Throwable ex, CrashModel model);
-//    }
-//
-//    public void setOnCrashListener(OnCrashListener listener) {
-//        this.mOnCrashListener = listener;
-//    }
-
 
 }
