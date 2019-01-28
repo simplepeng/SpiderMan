@@ -1,12 +1,12 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" tools:ignore="ResourceName">
+    <style name="SimpleAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/simpleColorPrimary</item>
+        <item name="colorPrimaryDark">@color/simpleColorPrimaryDark</item>
+        <item name="colorAccent">@color/simpleColorAccent</item>
     </style>
 
 </resources>

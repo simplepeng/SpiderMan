@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
@@ -26,6 +27,7 @@ import android.widget.PopupMenu;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -57,7 +59,7 @@ public class CrashActivity extends AppCompatActivity {
         Log.e("SpiderMan", Log.getStackTraceString(model.getEx()));
 
         root = findViewById(R.id.root);
-        TextView tv_packageName = findViewById(R.id.tv_packageName);
+//        TextView tv_packageName = findViewById(R.id.tv_packageName);
         TextView textMessage = findViewById(R.id.textMessage);
         TextView tv_className = findViewById(R.id.tv_className);
         TextView tv_methodName = findViewById(R.id.tv_methodName);
@@ -70,7 +72,7 @@ public class CrashActivity extends AppCompatActivity {
         TextView tv_version = findViewById(R.id.tv_version);
         ImageView iv_more = findViewById(R.id.iv_more);
 //
-        tv_packageName.setText(model.getClassName());
+//        tv_packageName.setText(model.getClassName());
         textMessage.setText(model.getExceptionMsg());
         tv_className.setText(model.getFileName());
         tv_methodName.setText(model.getMethodName());
@@ -258,6 +260,10 @@ public class CrashActivity extends AppCompatActivity {
 
     private void showToast(String text) {
         Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showToast(@StringRes int textId) {
+        Toast.makeText(getApplicationContext(), textId, Toast.LENGTH_SHORT).show();
     }
 
 }

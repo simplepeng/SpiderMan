@@ -19,5 +19,6 @@
         <activity
             android:name=".CrashActivity"
             android:theme="@style/AppTheme"/>
+
     </application>
 </manifest>
