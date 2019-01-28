@@ -193,7 +193,7 @@ public class CrashActivity extends AppCompatActivity {
                 shareImage();
             } else {
                 //授权失败
-                showToast("请授予SD卡权限才能分享图片");
+                showToast(R.string.simplePermissionSd);
             }
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
