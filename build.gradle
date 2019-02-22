@@ -28,5 +28,5 @@ task clean(type: Delete) {
 }
 
 ext{
-    version = "1.0.8"
+    version = "1.0.9"
 }
