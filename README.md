@@ -17,8 +17,8 @@ SpiderMan能为您做的：
 ## 引入依赖
 
 ```groovy
-debugImplementation 'com.simple:spiderman:1.0.8'
-releaseImplementation 'com.simple:spiderman-no-op:1.0.8'
+debugImplementation 'com.simple:spiderman:1.0.9'
+releaseImplementation 'com.simple:spiderman-no-op:1.0.9'
 ```
 
 ## 初始化
@@ -27,19 +27,33 @@ releaseImplementation 'com.simple:spiderman-no-op:1.0.8'
 
 ```java
 public class App extends Application {
-    
+
     @Override
     public void onCreate() {
         super.onCreate();
-		//放在其他库初始化前
+        //放在其他库初始化前
         SpiderMan.init(this);
     }
 }
 ```
 
+## 冲突
+
+项目已经依赖了`com.android.support:appcompat-v7`包，如果产生冲突请使用下面的方式依赖。
+
+```java
+debugImplementation('com.simple:spiderman:1.0.9') {
+    exclude group: "com.android.support"
+}
+
+releaseImplementation('com.simple:spiderman-no-op:1.0.9') {
+    exclude group: "com.android.support"
+}
+```
 
 ## 版本迭代
 
+* 1.0.9 增加appcompat包冲突解决方案
 * 1.0.8 发现很多小伙伴不会代理异常收集，所以删除了异常回调
 * 1.0.7 删除spiderman-no-op never-crash，优化报错类型显示
 * 1.0.6 增加spiderman-no-op

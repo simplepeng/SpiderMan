@@ -16,7 +16,5 @@ public class App extends Application {
         super.onCreate();
         //放在其他库初始化前
         SpiderMan.init(this);
-
     }
-
 }
