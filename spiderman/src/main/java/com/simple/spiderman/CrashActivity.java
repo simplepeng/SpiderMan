@@ -70,7 +70,7 @@ public class CrashActivity extends AppCompatActivity {
         TextView tv_model = findViewById(R.id.tv_model);
         TextView tv_brand = findViewById(R.id.tv_brand);
         TextView tv_version = findViewById(R.id.tv_version);
-        ImageView iv_more = findViewById(R.id.iv_more);
+        TextView tv_more = findViewById(R.id.tv_more);
 //
 //        tv_packageName.setText(model.getClassName());
         textMessage.setText(model.getExceptionMsg());
@@ -85,7 +85,7 @@ public class CrashActivity extends AppCompatActivity {
         tv_brand.setText(model.getDevice().getBrand());
         tv_version.setText(model.getDevice().getVersion());
 
-        iv_more.setOnClickListener(new View.OnClickListener() {
+        tv_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PopupMenu menu = new PopupMenu(CrashActivity.this, v);

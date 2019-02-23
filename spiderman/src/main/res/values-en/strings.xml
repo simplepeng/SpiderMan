@@ -17,4 +17,5 @@
     <string name="simpleAllInfo">All Info: </string>
     <string name="simpleCopySuccess">Copy success</string>
     <string name="simplePermissionSd">Please authorize sd card permissions</string>
+    <string name="simpleShare">Share</string>
 </resources>
