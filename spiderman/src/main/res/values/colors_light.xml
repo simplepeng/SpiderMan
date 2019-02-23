@@ -5,6 +5,6 @@
     <color name="light_smToolbarText">#ffffff</color>
     <color name="light_smToolbarShareText">#ffffff</color>
     <color name="light_smContentBackground">#ffffff</color>
-    <color name="light_smIdentText">#000000</color>
-    <color name="light_smDescText">#bdbdbd</color>
+    <color name="light_smIdentText">#cbcbcb</color>
+    <color name="light_smDescText">#e71e62</color>
 </resources>

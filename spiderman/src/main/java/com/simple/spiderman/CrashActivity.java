@@ -44,12 +44,11 @@ public class CrashActivity extends AppCompatActivity {
     @SuppressLint("SimpleDateFormat")
     private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     private CrashModel model;
-    private View root;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.SpiderManTheme_Light);
         super.onCreate(savedInstanceState);
+        setTheme(SpiderMan.mThemeId);
         setContentView(R.layout.activity_crash);
         model = getIntent().getParcelableExtra(CRASH_MODEL);
         if (model == null) {
@@ -57,7 +56,6 @@ public class CrashActivity extends AppCompatActivity {
         }
         Log.e("SpiderMan", Log.getStackTraceString(model.getEx()));
 
-        root = findViewById(R.id.root);
 //        TextView tv_packageName = findViewById(R.id.tv_packageName);
         TextView textMessage = findViewById(R.id.textMessage);
         TextView tv_className = findViewById(R.id.tv_className);

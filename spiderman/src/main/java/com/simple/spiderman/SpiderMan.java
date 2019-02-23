@@ -10,6 +10,7 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
     private static SpiderMan spiderMan = new SpiderMan();
 
     private static Context mContext;
+    public static int mThemeId = R.style.SpiderManTheme_Light;
 
     private SpiderMan() {
         Thread.setDefaultUncaughtExceptionHandler(this);
@@ -27,6 +28,10 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         handleException(model);
         android.os.Process.killProcess(android.os.Process.myPid());
 
+    }
+
+    public void setTheme(int themeId){
+        mThemeId = themeId;
     }
 
     private void handleException(CrashModel model) {

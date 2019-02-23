@@ -50,7 +50,7 @@ public class App extends Application {
 
 项目已经依赖了`com.android.support:appcompat-v7`包，如果产生冲突请使用下面的方式依赖。
 
-```java
+```groovy
 debugImplementation('com.simple:spiderman:1.0.9') {
     exclude group: "com.android.support"
 }
@@ -71,6 +71,21 @@ releaseImplementation('com.simple:spiderman-no-op:1.0.9') {
     public static final Android.os.Parcelable$Creator *;
 }
 ```
+
+## 自定义界面
+
+```java
+SpiderMan.init(this)
+         .setTheme(R.style.SpiderManTheme_Dark);
+```
+
+`SpiderMan`内置了两个`theme`。
+
+|                            light                             |                             dark                             |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| ![](https://simple-bucket-1257044365.cos.ap-chongqing.myqcloud.com/Screenshot_1550939525.png) | ![](https://simple-bucket-1257044365.cos.ap-chongqing.myqcloud.com/Screenshot_1550939525.png) |
+
+
 
 ## 版本迭代
 
