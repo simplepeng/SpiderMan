@@ -43,12 +43,12 @@ public class App extends Application {
 
 ```java
 debugImplementation('com.simple:spiderman:1.0.9') {
-        exclude group: "com.android.support"
-    }
+    exclude group: "com.android.support"
+}
 
-    releaseImplementation('com.simple:spiderman-no-op:1.0.9') {
-        exclude group: "com.android.support"
-    }
+releaseImplementation('com.simple:spiderman-no-op:1.0.9') {
+    exclude group: "com.android.support"
+}
 ```
 
 ## 版本迭代
