@@ -2,6 +2,8 @@ package com.simple.spiderman;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.StringRes;
+import android.support.annotation.StyleRes;
 
 public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
@@ -30,7 +32,7 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     }
 
-    public void setTheme(int themeId){
+    public void setTheme(@StyleRes int themeId){
         mThemeId = themeId;
     }
 

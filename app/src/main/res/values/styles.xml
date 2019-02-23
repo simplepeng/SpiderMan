@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CustomTheme" parent="SpiderManTheme.Light">
+        <item name="colorPrimaryDark">#e34b27</item>
+        <item name="smToolbar">#fc582f</item>
+        <item name="smDescText">#fc582f</item>
+    </style>
+
 </resources>
