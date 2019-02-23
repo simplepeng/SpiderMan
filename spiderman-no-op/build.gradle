@@ -5,34 +5,24 @@ apply plugin: 'com.jfrog.bintray'
 android {
     resourcePrefix "simple"
 
-    compileSdkVersion 27
+    compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+//        targetSdkVersion 27
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
     }
 
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-//    implementation 'com.google.code.gson:gson:2.8.5'
-//    implementation 'com.android.support:appcompat-v7:27.1.1'
+    api 'com.android.support:appcompat-v7:27.1.1'
 }
 
-version = rootProject.ext.version
+version = rootProject.ext.sm_no_op_version
 
 def siteUrl = 'https://github.com/simplepeng/SpiderMan'   // 项目的主页
 def gitUrl = 'git@github.com:simplepeng/SpiderMan.git'   // Git仓库的url
@@ -99,7 +89,7 @@ bintray {
         name = "SpiderMan-no-op"   //发布到JCenter上的项目名字
         websiteUrl = siteUrl
         vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
+        licenses = ["MIT"]
         publish = true
     }
 }
