@@ -1,11 +1,18 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ResourceName">
 
-    <style name="SpiderManTheme" parent="Theme.AppCompat.Light.NoActionBar" tools:ignore="ResourceName">
-        <!-- Customize your theme here. -->
+    <style name="SpiderManTheme.Light" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/simpleColorPrimary</item>
-        <item name="colorPrimaryDark">@color/simpleColorPrimaryDark</item>
-        <item name="colorAccent">@color/simpleColorAccent</item>
+    </style>
+
+    <style name="SpiderManTheme.Dark" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/dark_colorPrimaryDark</item>
+        <item name="smToolbar">@color/dark_smToolbar</item>
+        <item name="smToolbarText">@color/dark_smToolbarText</item>
+        <item name="smToolbarShareText">@color/dark_smToolbarShareText</item>
+        <item name="smContentBackground">@color/dark_smContentBackground</item>
+        <item name="smIdentText">@color/dark_smIdentText</item>
+        <item name="smDescText">@color/dark_smDescText</item>
     </style>
 
 </resources>

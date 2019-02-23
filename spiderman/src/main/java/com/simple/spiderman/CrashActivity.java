@@ -22,7 +22,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -49,9 +48,9 @@ public class CrashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.SpiderManTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crash);
-
         model = getIntent().getParcelableExtra(CRASH_MODEL);
         if (model == null) {
             return;

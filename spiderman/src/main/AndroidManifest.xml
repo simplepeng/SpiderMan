@@ -16,9 +16,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity
-            android:name=".CrashActivity"
-            android:theme="@style/SpiderManTheme"/>
+        <activity android:name=".CrashActivity" />
 
     </application>
 </manifest>
