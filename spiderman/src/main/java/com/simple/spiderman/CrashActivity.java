@@ -48,7 +48,7 @@ public class CrashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.SpiderManTheme_Dark);
+        setTheme(R.style.SpiderManTheme_Light);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crash);
         model = getIntent().getParcelableExtra(CRASH_MODEL);

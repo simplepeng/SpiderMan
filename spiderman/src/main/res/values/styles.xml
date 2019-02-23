@@ -2,6 +2,13 @@
 
     <style name="SpiderManTheme.Light" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/light_colorPrimaryDark</item>
+        <item name="smToolbar">@color/light_smToolbar</item>
+        <item name="smToolbarText">@color/light_smToolbarText</item>
+        <item name="smToolbarShareText">@color/light_smToolbarShareText</item>
+        <item name="smContentBackground">@color/light_smContentBackground</item>
+        <item name="smIdentText">@color/light_smIdentText</item>
+        <item name="smDescText">@color/light_smDescText</item>
     </style>
 
     <style name="SpiderManTheme.Dark" parent="Theme.AppCompat.Light.NoActionBar">
