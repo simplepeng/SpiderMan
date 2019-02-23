@@ -1,29 +1,38 @@
 # SpiderMan
 
 
-SpiderMan能为您做的：
+SpiderMan能为您做的事：
 
-* Debug环境可以在手机上显示崩溃信息，分享给相关开发人员~
+* 在Android手机上显示崩溃信息，直接分享给相关开发人员!
 * 再也不用担心测试妹妹给你重现怎么操作崩溃的啦！
 * 再也不用担心产品相关人员给你说哪儿哪儿崩溃，但是又重现不了的尴尬啦！
 * 再也不用担心某些Rom禁止异常输出啦！
-* 再也不用担心开发工具log信息时灵时不灵啦
+* 再也不用担心开发工具log信息时灵时不灵啦！
 
 |                          Debug环境                           |                            Share                             |      |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | ---- |
 | ![](https://simple-bucket-1257044365.cos.ap-chongqing.myqcloud.com/debug.gif) | ![](https://ws1.sinaimg.cn/mw690/00677ch9gy1ftoekwmvl3j30af0hygof) |      |
 
-
 ## 引入依赖
+
+### 方式一
 
 ```groovy
 debugImplementation 'com.simple:spiderman:1.0.9'
 releaseImplementation 'com.simple:spiderman-no-op:1.0.9'
 ```
 
+### 方式二
+
+```java
+implementation 'com.simple:spiderman:1.0.9'
+```
+
+上面`方式一`debug环境有奔溃信息提示，release环境则没有，`方式二`都有，但是记得添加混淆。
+
 ## 初始化
 
-放到Application的`onCreate()`初始化中，因为static了传入的context，并且放在其他Library初始化的前面
+放到Application的`onCreate()`初始化中，因为static了传入的context，并且放在其他Library初始化的前面。
 
 ```java
 public class App extends Application {
@@ -48,6 +57,18 @@ debugImplementation('com.simple:spiderman:1.0.9') {
 
 releaseImplementation('com.simple:spiderman-no-op:1.0.9') {
     exclude group: "com.android.support"
+}
+```
+
+## 混淆
+
+```java
+-keep class com.simple.spiderman.** { *; }
+-keepnames class com.simple.spiderman.** { *; }
+-keep public class * extends android.app.Activity
+-keep public class * extends android.support.v4.content.FileProvider
+-keep class * implements Android.os.Parcelable {
+    public static final Android.os.Parcelable$Creator *;
 }
 ```
 

@@ -19,3 +19,13 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep class com.simple.spiderman.** { *; }
+-keepnames class com.simple.spiderman.** { *; }
+-keep public class * extends android.app.Activity
+-keep public class * extends android.support.v4.content.FileProvider
+-keep class * implements Android.os.Parcelable {
+    public static final Android.os.Parcelable$Creator *;
+}
+
+
