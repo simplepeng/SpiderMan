@@ -44,9 +44,13 @@ dependencies {
 
 //    implementation project(':spiderman')
 
-    debugImplementation project(':spiderman')
-    releaseImplementation project(':spiderman-no-op')
+//    debugImplementation project(':spiderman')
+//    releaseImplementation project(':spiderman-no-op')
 
-//    debugImplementation 'com.simple:spiderman:1.0.9'
-//    releaseImplementation 'com.simple:spiderman-no-op:1.0.9'
+    debugImplementation ('com.simple:spiderman:1.1.0'){
+        exclude group: "com.android.support"
+    }
+    releaseImplementation ('com.simple:spiderman-no-op:1.1.0'){
+        exclude group: "com.android.support"
+    }
 }

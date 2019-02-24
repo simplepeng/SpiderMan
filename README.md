@@ -1,5 +1,7 @@
 # SpiderMan
 
+![MIT](https://img.shields.io/badge/license-MIT-blue.svg)![](https://img.shields.io/badge/JCenter-1.1.0-blue.svg)
+
 
 SpiderMan能为您做的事：
 
@@ -51,11 +53,11 @@ public class App extends Application {
 项目已经依赖了`com.android.support:appcompat-v7`包，如果产生冲突请使用下面的方式依赖。
 
 ```groovy
-debugImplementation('com.simple:spiderman:1.1.0') {
+debugImplementation('com.simple:spiderman:x.y.z') {
     exclude group: "com.android.support"
 }
 
-releaseImplementation('com.simple:spiderman-no-op:1.1.0') {
+releaseImplementation('com.simple:spiderman-no-op:x.y.z') {
     exclude group: "com.android.support"
 }
 ```
