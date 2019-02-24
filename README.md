@@ -9,9 +9,9 @@ SpiderMan能为您做的事：
 * 再也不用担心某些Rom禁止异常输出啦！
 * 再也不用担心开发工具log信息时灵时不灵啦！
 
-|                          Debug环境                           |                            Share                             |      |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | ---- |
-| ![](https://simple-bucket-1257044365.cos.ap-chongqing.myqcloud.com/Screenshot_1550939983.png) | ![](https://simple-bucket-1257044365.cos.ap-chongqing.myqcloud.com/Screenshot_1550939869.png) |      |
+|                      Debug环境                       |                        Share                         |      |
+| :--------------------------------------------------: | :--------------------------------------------------: | ---- |
+| ![](https://i.loli.net/2019/02/24/5c726eacdd5b4.png) | ![](https://i.loli.net/2019/02/24/5c726ecdedd97.png) |      |
 
 ## 引入依赖
 
@@ -82,9 +82,9 @@ SpiderMan.init(this)
 
 `SpiderMan`内置了两种主题样式。
 
-|                            light                             |                             dark                             |
-| :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![](https://simple-bucket-1257044365.cos.ap-chongqing.myqcloud.com/Screenshot_1550939525.png) | ![](https://simple-bucket-1257044365.cos.ap-chongqing.myqcloud.com/Screenshot_1550939567.png) |
+|                        light                         |                         dark                         |
+| :--------------------------------------------------: | :--------------------------------------------------: |
+| ![](https://i.loli.net/2019/02/24/5c726ef04a909.png) | ![](https://i.loli.net/2019/02/24/5c726f0dc7159.png) |
 
 所有自定义属性定义在`attrs.xml`中
 
