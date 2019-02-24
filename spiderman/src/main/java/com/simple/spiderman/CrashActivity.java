@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.PopupMenu;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -45,6 +47,10 @@ public class CrashActivity extends AppCompatActivity {
     private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     private CrashModel model;
 
+    private ViewGroup root;
+    private ScrollView scrollView;
+    private ViewGroup toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +62,9 @@ public class CrashActivity extends AppCompatActivity {
         }
         Log.e("SpiderMan", Log.getStackTraceString(model.getEx()));
 
+        root = findViewById(R.id.root);
+        scrollView = findViewById(R.id.scrollView);
+        toolbar = findViewById(R.id.toolbar);
 //        TextView tv_packageName = findViewById(R.id.tv_packageName);
         TextView textMessage = findViewById(R.id.textMessage);
         TextView tv_className = findViewById(R.id.tv_className);
@@ -197,17 +206,33 @@ public class CrashActivity extends AppCompatActivity {
         }
     }
 
-    public Bitmap getBitmapByView(ScrollView view) {
-        if (view == null) return null;
-        int height = 0;
-        for (int i = 0; i < view.getChildCount(); i++) {
-            height += view.getChildAt(i).getHeight();
+    public Bitmap getBitmapByView(ViewGroup toolbar, ScrollView scrollView) {
+        if (toolbar == null || scrollView == null) return null;
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        int svHeight = 0;
+        for (int i = 0; i < scrollView.getChildCount(); i++) {
+            svHeight += scrollView.getChildAt(i).getHeight();
         }
-        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), height, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        canvas.drawRGB(255, 255, 255);
-        view.draw(canvas);
-        return bitmap;
+        int height = svHeight + toolbar.getHeight();
+        //
+        Bitmap resultBitmap = Bitmap.createBitmap(toolbar.getWidth(), height, Bitmap.Config.ARGB_8888);
+        Canvas rootCanvas = new Canvas(resultBitmap);
+        //
+        Bitmap toolbarBitmap = Bitmap.createBitmap(toolbar.getWidth(), toolbar.getHeight(),
+                Bitmap.Config.ARGB_8888);
+        Canvas toolbarCanvas = new Canvas(toolbarBitmap);
+        toolbarCanvas.drawRGB(255, 255, 255);
+        toolbar.draw(toolbarCanvas);
+        //
+        Bitmap svBitmap = Bitmap.createBitmap(toolbar.getWidth(), svHeight,
+                Bitmap.Config.ARGB_8888);
+        Canvas svCanvas = new Canvas(svBitmap);
+        svCanvas.drawRGB(255, 255, 255);
+        scrollView.draw(svCanvas);
+
+        rootCanvas.drawBitmap(toolbarBitmap, 0, 0, paint);
+        rootCanvas.drawBitmap(svBitmap, 0, toolbar.getHeight(), paint);
+        return resultBitmap;
     }
 
     private File BitmapToFile(Bitmap bitmap) {
@@ -234,7 +259,7 @@ public class CrashActivity extends AppCompatActivity {
             showToast("未插入sd卡");
             return;
         }
-        File file = BitmapToFile(getBitmapByView((ScrollView) findViewById(R.id.scrollView)));
+        File file = BitmapToFile(getBitmapByView(toolbar, scrollView));
         if (file == null || !file.exists()) {
             showToast("图片文件不存在");
             return;

@@ -3,6 +3,7 @@ package com.simple.spiderman;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 /**
  * author : ChenPeng
@@ -108,7 +109,7 @@ public class CrashModel implements Parcelable {
     }
 
     public String getFileName() {
-        return fileName;
+        return TextUtils.isEmpty(fileName) ? className : fileName;
     }
 
     public void setFileName(String fileName) {
