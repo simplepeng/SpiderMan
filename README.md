@@ -82,11 +82,11 @@ SpiderMan.init(this)
          .setTheme(R.style.SpiderManTheme_Dark);
 ```
 
-`SpiderMan`内置了两种主题样式。
+`SpiderMan`内置了两种主题样式`light`和`dark`。
 
-|                        light                         |                         dark                         |
-| :--------------------------------------------------: | :--------------------------------------------------: |
-| ![](https://i.loli.net/2019/02/24/5c726ef04a909.png) | ![](https://i.loli.net/2019/02/24/5c726f0dc7159.png) |
+|                        light                         |                         dark                         |                        custom                        |
+| :--------------------------------------------------: | :--------------------------------------------------: | :--------------------------------------------------: |
+| ![](https://i.loli.net/2019/02/24/5c726ef04a909.png) | ![](https://i.loli.net/2019/02/24/5c726f0dc7159.png) | ![](https://i.loli.net/2019/02/24/5c72a0f278b9b.png) |
 
 所有自定义属性定义在`attrs.xml`中
 
@@ -97,7 +97,7 @@ SpiderMan.init(this)
 * smIdentText：标签名字的颜色
 * smDescText：标签描述的颜色
 
-具体可以参考demo中`style.xml`的用法。
+具体可以参考`app`中的用法。
 
 ## 版本迭代
 
