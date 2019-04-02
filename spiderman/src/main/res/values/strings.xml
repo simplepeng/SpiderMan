@@ -2,9 +2,9 @@
 <resources>
     <string name="simpleAppName">SpiderMan</string>
     <string name="simpleTitle">崩溃信息展示</string>
-    <string name="simpleCopyText">拷贝崩溃文本</string>
-    <string name="simpleShareText">分享崩溃文本</string>
-    <string name="simpleShareImage">分享崩溃图片</string>
+    <string name="simpleCopyText">拷贝文本</string>
+    <string name="simpleShareText">分享文本</string>
+    <string name="simpleShareImage">分享长图</string>
     <string name="simpleCrashInfo">崩溃信息: </string>
     <string name="simpleClassName">类名: </string>
     <string name="simpleFunName">方法: </string>
