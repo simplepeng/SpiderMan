@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.simple.spiderman.SpiderMan;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -22,6 +24,18 @@ public class MainActivity extends AppCompatActivity {
                 text.toUpperCase();
 //                startActivity(new Intent(MainActivity.this,TestActivity.class));
 
+            }
+        });
+
+        findViewById(R.id.btn_show).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    String text = null;
+                    text.toUpperCase();
+                } catch (Exception e) {
+                    SpiderMan.show(e);
+                }
             }
         });
     }

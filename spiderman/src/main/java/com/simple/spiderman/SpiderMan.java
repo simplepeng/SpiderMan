@@ -32,11 +32,11 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     }
 
-    public void setTheme(@StyleRes int themeId){
+    public void setTheme(@StyleRes int themeId) {
         mThemeId = themeId;
     }
 
-    private void handleException(CrashModel model) {
+    private static void handleException(CrashModel model) {
 
         Intent intent = new Intent(mContext, CrashActivity.class);
         intent.putExtra(CrashActivity.CRASH_MODEL, model);
@@ -45,5 +45,8 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     }
 
-
+    public static void show(Throwable e) {
+        CrashModel model = Utils.parseCrash(e);
+        handleException(model);
+    }
 }

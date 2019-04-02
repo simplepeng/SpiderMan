@@ -19,7 +19,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api 'com.android.support:appcompat-v7:27.1.1'
+    api "com.android.support:appcompat-v7:${rootProject.ext.appcompat}"
 }
 
 version = rootProject.ext.sm_version
@@ -66,7 +66,7 @@ task sourcesJar(type: Jar) {
 }
 task javadoc(type: Javadoc) {
     //增加编码，这行很重要，如果是windows系统，同时如果在代码中有中文的话，不加这行，上传会报错
-    options.encoding="utf-8"
+    options.encoding = "utf-8"
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }

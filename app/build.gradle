@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "com.simple"
-        minSdkVersion 16
-        targetSdkVersion 27
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -36,7 +36,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.appcompat}"
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
@@ -44,13 +44,13 @@ dependencies {
 
 //    implementation project(':spiderman')
 
-//    debugImplementation project(':spiderman')
-//    releaseImplementation project(':spiderman-no-op')
+    debugImplementation project(':spiderman')
+    releaseImplementation project(':spiderman-no-op')
 
-    debugImplementation ('com.simple:spiderman:1.1.0'){
-        exclude group: "com.android.support"
-    }
-    releaseImplementation ('com.simple:spiderman-no-op:1.1.0'){
-        exclude group: "com.android.support"
-    }
+//    debugImplementation ('com.simple:spiderman:1.1.0'){
+//        exclude group: "com.android.support"
+//    }
+//    releaseImplementation ('com.simple:spiderman-no-op:1.1.0'){
+//        exclude group: "com.android.support"
+//    }
 }
