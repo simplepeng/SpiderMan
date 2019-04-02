@@ -18,4 +18,8 @@ public class SpiderMan {
 
     }
 
+    public static void show(Throwable e) {
+
+    }
+
 }
