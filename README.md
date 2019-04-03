@@ -17,17 +17,21 @@ SpiderMan能为您做的事：
 
 ## 引入依赖
 
+```groovy
+def spider_man = "1.1.0"
+```
+
 ### 方式一
 
 ```groovy
-debugImplementation 'com.simple:spiderman:1.1.0'
-releaseImplementation 'com.simple:spiderman-no-op:1.1.0'
+debugImplementation "com.simple:spiderman:$spider_man"
+releaseImplementation "com.simple:spiderman-no-op:$spider_man"
 ```
 
 ### 方式二
 
 ```java
-implementation 'com.simple:spiderman:1.1.0'
+implementation "com.simple:spiderman:$spider_man"
 ```
 
 上面`方式一`debug环境有奔溃信息提示，release环境则没有，`方式二`都有，但是记得添加混淆。
@@ -58,7 +62,7 @@ try {
       text.toUpperCase();
     } catch (Exception e) {
       SpiderMan.show(e);
-    }
+}
 ```
 
 ## 冲突
@@ -66,11 +70,11 @@ try {
 项目已经依赖了`com.android.support:appcompat-v7`包，如果产生冲突请使用下面的方式依赖。
 
 ```groovy
-debugImplementation('com.simple:spiderman:1.1.0') {
+debugImplementation("com.simple:spiderman:$spider_man") {
     exclude group: "com.android.support"
 }
 
-releaseImplementation('com.simple:spiderman-no-op:1.1.0') {
+releaseImplementation("com.simple:spiderman-no-op:$spider_man") {
     exclude group: "com.android.support"
 }
 ```
@@ -88,7 +92,7 @@ releaseImplementation('com.simple:spiderman-no-op:1.1.0') {
 }
 ```
 
-## 自定义界面
+## 自定义界面样式
 
 ```java
 SpiderMan.init(this)
