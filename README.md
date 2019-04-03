@@ -1,6 +1,6 @@
 # SpiderMan
 
-![MIT](https://img.shields.io/badge/license-MIT-blue.svg)	![](https://img.shields.io/badge/JCenter-1.1.0-blue.svg)
+![MIT](https://img.shields.io/badge/license-MIT-blue.svg)	![](https://img.shields.io/badge/Jcenter-1.1.1-blue.svg)
 
 
 SpiderMan能为您做的事：
@@ -18,7 +18,7 @@ SpiderMan能为您做的事：
 ## 引入依赖
 
 ```groovy
-def spider_man = "1.1.0"
+def spider_man = "1.1.1"
 ```
 
 ### 方式一
@@ -119,7 +119,7 @@ SpiderMan.init(this)
 ## 版本迭代
 
 * 1.1.1 新增直接显示错误页面的方法`SpiderMan.show(Throwable e)`，优化错误类型
-* 1.1.0  增加自定义界面和国际化
+* 1.1.0  增加自定义界面主题和国际化
 * 1.0.9 增加appcompat包冲突解决方案
 * 1.0.8 发现很多小伙伴不会代理异常收集，所以删除了异常回调
 * 1.0.7 删除spiderman-no-op never-crash，优化报错类型显示
