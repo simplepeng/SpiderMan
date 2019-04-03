@@ -11,9 +11,9 @@ SpiderMan能为您做的事：
 * 再也不用担心某些Rom禁止异常输出啦！
 * 再也不用担心开发工具log信息时灵时不灵啦！
 
-|                      Debug环境                       |                        Share                         |      |
-| :--------------------------------------------------: | :--------------------------------------------------: | ---- |
-| ![](https://i.loli.net/2019/02/24/5c726eacdd5b4.png) | ![](https://i.loli.net/2019/02/24/5c726ecdedd97.png) |      |
+|                      Debug环境                       |                        Share                         |
+| :--------------------------------------------------: | :--------------------------------------------------: |
+| ![](https://i.loli.net/2019/02/24/5c726eacdd5b4.png) | ![](https://i.loli.net/2019/02/24/5c726ecdedd97.png) |
 
 ## 引入依赖
 
@@ -46,6 +46,19 @@ public class App extends Application {
         SpiderMan.init(this);
     }
 }
+```
+
+## 直接显示错误页面
+
+调用`SpiderMan.show(Throwable e)`方法
+
+```java
+try {
+      String text = null;
+      text.toUpperCase();
+    } catch (Exception e) {
+      SpiderMan.show(e);
+    }
 ```
 
 ## 冲突
@@ -101,6 +114,7 @@ SpiderMan.init(this)
 
 ## 版本迭代
 
+* 1.1.1 新增直接显示错误页面的方法`SpiderMan.show(Throwable e)`，优化错误类型
 * 1.1.0  增加自定义界面和国际化
 * 1.0.9 增加appcompat包冲突解决方案
 * 1.0.8 发现很多小伙伴不会代理异常收集，所以删除了异常回调
