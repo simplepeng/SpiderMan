@@ -118,6 +118,7 @@ SpiderMan.init(this)
 
 ## 版本迭代
 
+* 1.1.2 解决FileProvider file_path重名bug(bug来源LuckSiege/PictureSelector)
 * 1.1.1 新增直接显示错误页面的方法`SpiderMan.show(Throwable e)`，优化错误类型
 * 1.1.0  增加自定义界面主题和国际化
 * 1.0.9 增加appcompat包冲突解决方案

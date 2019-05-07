@@ -28,8 +28,8 @@ task clean(type: Delete) {
 }
 
 ext{
-    sm_version = "1.1.1"
-    sm_no_op_version = "1.1.1"
+    sm_version = "1.1.2"
+    sm_no_op_version = "1.1.2"
 
     compileSdkVersion = 28
     minSdkVersion = 16
