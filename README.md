@@ -18,7 +18,7 @@ SpiderMan能为您做的事：
 ## 引入依赖
 
 ```groovy
-def spider_man = "1.1.2"
+def spider_man = "1.1.3"
 ```
 
 ### 方式一
