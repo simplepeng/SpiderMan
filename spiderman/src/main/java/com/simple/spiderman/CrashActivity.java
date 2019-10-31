@@ -1,6 +1,5 @@
 package com.simple.spiderman;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -14,14 +13,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.StringRes;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +21,12 @@ import android.widget.PopupMenu;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -46,7 +43,7 @@ public class CrashActivity extends AppCompatActivity {
 
     public static final String CRASH_MODEL = "crash_model";
     @SuppressLint("SimpleDateFormat")
-    private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH:mm");
     private CrashModel model;
 
     private ViewGroup root;
@@ -193,23 +190,23 @@ public class CrashActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, permissions, REQUEST_CODE);
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        //判断请求码，确定当前申请的权限
-        if (requestCode == REQUEST_CODE) {
-            //判断权限是否申请通过
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //授权成功
-                shareImage();
-            } else {
-                //授权失败
-                showToast(R.string.simplePermissionSd);
-            }
-        } else {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+//                                           @NonNull int[] grantResults) {
+//        //判断请求码，确定当前申请的权限
+//        if (requestCode == REQUEST_CODE) {
+//            //判断权限是否申请通过
+//            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                //授权成功
+//                shareImage();
+//            } else {
+//                //授权失败
+//                showToast(R.string.simplePermissionSd);
+//            }
+//        } else {
+//            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        }
+//    }
 
     public Bitmap getBitmapByView(ViewGroup toolbar, ScrollView scrollView) {
         if (toolbar == null || scrollView == null) return null;
@@ -244,6 +241,7 @@ public class CrashActivity extends AppCompatActivity {
         if (bitmap == null) return null;
 //        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
 //                .getAbsolutePath();
+//        String path = Environment.getExternalStorageDirectory().getAbsolutePath();
         String path = Utils.getCachePath();
         File imageFile = new File(path, "SpiderMan-" + df.format(model.getTime()) + ".png");
         try {
@@ -252,9 +250,7 @@ public class CrashActivity extends AppCompatActivity {
             out.flush();
             out.close();
             bitmap.recycle();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return imageFile;

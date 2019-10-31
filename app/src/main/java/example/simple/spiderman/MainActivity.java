@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.simple.spiderman.SpiderMan;
 
-import exmaple.simple.spiderman.BuildConfig;
 
 public class MainActivity extends AppCompatActivity {
 

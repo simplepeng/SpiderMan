@@ -56,11 +56,6 @@ class Utils {
     }
 
     static String getCachePath() {
-        if (TextUtils.equals(Environment.getExternalStorageState(), Environment.MEDIA_MOUNTED)) {
-            File cacheDir = SpiderMan.getContext().getExternalCacheDir();
-            if (cacheDir == null) return SpiderMan.getContext().getCacheDir().getAbsolutePath();
-            return cacheDir.getAbsolutePath();
-        }
         return SpiderMan.getContext().getCacheDir().getAbsolutePath();
     }
 }
