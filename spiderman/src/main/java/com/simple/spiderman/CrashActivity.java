@@ -118,15 +118,7 @@ public class CrashActivity extends AppCompatActivity {
                     String crashText = getShareText(model);
                     shareText(crashText);
                 } else if (id == R.id.menu_share_image) {
-//                    if (ContextCompat.checkSelfPermission(CrashActivity.this,
-//                            Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED ||
-//                            ContextCompat.checkSelfPermission(CrashActivity.this,
-//                                    Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-//                        requestPermission(Manifest.permission.READ_EXTERNAL_STORAGE,
-//                                Manifest.permission.WRITE_EXTERNAL_STORAGE);
-//                    } else {
                     shareImage();
-//                    }
                 }
                 return true;
             }
@@ -186,28 +178,6 @@ public class CrashActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE = 110;
 
-    private void requestPermission(String... permissions) {
-        ActivityCompat.requestPermissions(this, permissions, REQUEST_CODE);
-    }
-
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-//                                           @NonNull int[] grantResults) {
-//        //判断请求码，确定当前申请的权限
-//        if (requestCode == REQUEST_CODE) {
-//            //判断权限是否申请通过
-//            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                //授权成功
-//                shareImage();
-//            } else {
-//                //授权失败
-//                showToast(R.string.simplePermissionSd);
-//            }
-//        } else {
-//            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        }
-//    }
-
     public Bitmap getBitmapByView(ViewGroup toolbar, ScrollView scrollView) {
         if (toolbar == null || scrollView == null) return null;
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -239,9 +209,6 @@ public class CrashActivity extends AppCompatActivity {
 
     private File BitmapToFile(Bitmap bitmap) {
         if (bitmap == null) return null;
-//        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-//                .getAbsolutePath();
-//        String path = Environment.getExternalStorageDirectory().getAbsolutePath();
         String path = Utils.getCachePath();
         File imageFile = new File(path, "SpiderMan-" + df.format(model.getTime()) + ".png");
         try {
@@ -257,10 +224,6 @@ public class CrashActivity extends AppCompatActivity {
     }
 
     private void shareImage() {
-//        if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-//            showToast(R.string.simpleNoSdCard);
-//            return;
-//        }
         File file = BitmapToFile(getBitmapByView(toolbar, scrollView));
         if (file == null || !file.exists()) {
             showToast(R.string.simpleImageNotExist);

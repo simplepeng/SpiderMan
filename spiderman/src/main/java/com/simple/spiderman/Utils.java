@@ -1,9 +1,5 @@
 package com.simple.spiderman;
 
-import android.os.Environment;
-import android.text.TextUtils;
-
-import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Date;
