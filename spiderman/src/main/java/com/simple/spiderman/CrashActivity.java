@@ -14,12 +14,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -94,43 +96,46 @@ public class CrashActivity extends AppCompatActivity {
         tv_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupMenu menu = new PopupMenu(CrashActivity.this, v);
-                menu.inflate(R.menu.menu_more);
-                menu.show();
-                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        int id = item.getItemId();
-                        if (id == R.id.menu_copy_text) {
-                            String crashText = getShareText(model);
-                            ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                            if (cm != null) {
-                                ClipData mClipData = ClipData.newPlainText("crash", crashText);
-                                cm.setPrimaryClip(mClipData);
-                                showToast(getString(R.string.simpleCopied));
-                            }
-                        } else if (id == R.id.menu_share_text) {
-                            String crashText = getShareText(model);
-                            shareText(crashText);
-                        } else if (id == R.id.menu_share_image) {
-                            if (ContextCompat.checkSelfPermission(CrashActivity.this,
-                                    Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED ||
-                                    ContextCompat.checkSelfPermission(CrashActivity.this,
-                                            Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                                requestPermission(Manifest.permission.READ_EXTERNAL_STORAGE,
-                                        Manifest.permission.WRITE_EXTERNAL_STORAGE);
-                            } else {
-                                shareImage();
-                            }
-                        }
-                        return true;
-                    }
-                });
-
+                showMenu(v);
             }
         });
-
     }
+
+    private void showMenu(View v) {
+        PopupMenu menu = new PopupMenu(CrashActivity.this, v);
+        menu.inflate(R.menu.menu_more);
+        menu.show();
+        menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+                if (id == R.id.menu_copy_text) {
+                    String crashText = getShareText(model);
+                    ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                    if (cm != null) {
+                        ClipData mClipData = ClipData.newPlainText("crash", crashText);
+                        cm.setPrimaryClip(mClipData);
+                        showToast(getString(R.string.simpleCopied));
+                    }
+                } else if (id == R.id.menu_share_text) {
+                    String crashText = getShareText(model);
+                    shareText(crashText);
+                } else if (id == R.id.menu_share_image) {
+//                    if (ContextCompat.checkSelfPermission(CrashActivity.this,
+//                            Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED ||
+//                            ContextCompat.checkSelfPermission(CrashActivity.this,
+//                                    Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+//                        requestPermission(Manifest.permission.READ_EXTERNAL_STORAGE,
+//                                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+//                    } else {
+                    shareImage();
+//                    }
+                }
+                return true;
+            }
+        });
+    }
+
 
     private String getShareText(CrashModel model) {
         StringBuilder builder = new StringBuilder();
@@ -237,12 +242,13 @@ public class CrashActivity extends AppCompatActivity {
 
     private File BitmapToFile(Bitmap bitmap) {
         if (bitmap == null) return null;
-        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-                .getAbsolutePath();
-        File imageFile = new File(path, "spiderMan-" + df.format(model.getTime()) + ".jpg");
+//        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+//                .getAbsolutePath();
+        String path = Utils.getCachePath();
+        File imageFile = new File(path, "SpiderMan-" + df.format(model.getTime()) + ".png");
         try {
             FileOutputStream out = new FileOutputStream(imageFile);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
             out.flush();
             out.close();
             bitmap.recycle();
@@ -255,10 +261,10 @@ public class CrashActivity extends AppCompatActivity {
     }
 
     private void shareImage() {
-        if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            showToast(R.string.simpleNoSdCard);
-            return;
-        }
+//        if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+//            showToast(R.string.simpleNoSdCard);
+//            return;
+//        }
         File file = BitmapToFile(getBitmapByView(toolbar, scrollView));
         if (file == null || !file.exists()) {
             showToast(R.string.simpleImageNotExist);

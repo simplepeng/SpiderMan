@@ -2,8 +2,8 @@ package com.simple.spiderman;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.StringRes;
-import android.support.annotation.StyleRes;
+import androidx.annotation.StringRes;
+import androidx.annotation.StyleRes;
 
 public class SpiderMan implements Thread.UncaughtExceptionHandler {
 

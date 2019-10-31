@@ -1,5 +1,9 @@
 package com.simple.spiderman;
 
+import android.os.Environment;
+import android.text.TextUtils;
+
+import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Date;
@@ -49,5 +53,14 @@ class Utils {
         }
         element = ex.getStackTrace()[0];
         return element;
+    }
+
+    static String getCachePath() {
+        if (TextUtils.equals(Environment.getExternalStorageState(), Environment.MEDIA_MOUNTED)) {
+            File cacheDir = SpiderMan.getContext().getExternalCacheDir();
+            if (cacheDir == null) return SpiderMan.getContext().getCacheDir().getAbsolutePath();
+            return cacheDir.getAbsolutePath();
+        }
+        return SpiderMan.getContext().getCacheDir().getAbsolutePath();
     }
 }
