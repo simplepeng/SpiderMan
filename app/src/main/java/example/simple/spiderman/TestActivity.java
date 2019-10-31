@@ -1,8 +1,9 @@
-package com.simple;
+package example.simple.spiderman;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 
 
 public class TestActivity extends AppCompatActivity {

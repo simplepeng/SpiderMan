@@ -1,8 +1,9 @@
-package com.simple;
+package example.simple.spiderman;
 
 import android.app.Application;
 
 import com.simple.spiderman.SpiderMan;
+
 
 /**
  * author : ChenPeng

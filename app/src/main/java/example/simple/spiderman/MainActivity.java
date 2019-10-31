@@ -1,4 +1,4 @@
-package com.simple;
+package example.simple.spiderman;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.simple.spiderman.SpiderMan;
+
+import exmaple.simple.spiderman.BuildConfig;
 
 public class MainActivity extends AppCompatActivity {
 
