@@ -176,8 +176,6 @@ public class CrashActivity extends AppCompatActivity {
         startActivity(Intent.createChooser(intent, getString(R.string.simpleShareTo)));
     }
 
-    private static final int REQUEST_CODE = 110;
-
     public Bitmap getBitmapByView(ViewGroup toolbar, ScrollView scrollView) {
         if (toolbar == null || scrollView == null) return null;
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
