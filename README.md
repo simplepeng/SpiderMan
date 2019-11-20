@@ -17,6 +17,8 @@ SpiderMan能为您做的事：
 
 ## 引入依赖
 
+从`1.1.4`版本开始全面迁移到`androidx`，如不想迁移到`androidx`请继续使用`1.1.3`版本。
+
 ```groovy
 def spider_man = "1.1.4"
 ```
