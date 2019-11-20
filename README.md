@@ -1,15 +1,15 @@
 # SpiderMan
 
-![MIT](https://img.shields.io/badge/license-MIT-blue.svg)	![](https://img.shields.io/badge/Jcenter-1.1.1-blue.svg)
+![MIT](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square) ![](https://img.shields.io/badge/Jcenter-v1.1.4-orange.svg?style=flat-square) ![](https://img.shields.io/badge/API-14%2B-brightgreen?style=flat-square) ![](https://img.shields.io/badge/Size-40k-yellow?style=flat-square) ![](https://img.shields.io/badge/Author-simplepeng-red?style=flat-square)
 
 
 SpiderMan能为您做的事：
 
 * 在Android手机上显示闪退崩溃信息，直接分享给相关开发人员!
-* 再也不用担心测试妹妹给你重现怎么操作崩溃的啦！
-* 再也不用担心产品相关人员给你说哪儿哪儿崩溃，但是又重现不了的尴尬啦！
-* 再也不用担心某些Rom禁止异常输出啦！
-* 再也不用担心开发工具log信息时灵时不灵啦！
+* 再也不用担心测试妹妹给你重现怎样操作才能触发闪退崩溃的尴尬！
+* 再也不用担心产品给你说哪儿哪儿会闪退崩溃，但是又不能场景还原的无奈！
+* 再也不用担心某些国产Rom禁止异常log输出！
+* 再也不用担心开发工具异常log信息输出时灵时不灵！
 
 |                      Debug环境                       |                        Share                         |
 | :--------------------------------------------------: | :--------------------------------------------------: |
@@ -18,7 +18,7 @@ SpiderMan能为您做的事：
 ## 引入依赖
 
 ```groovy
-def spider_man = "1.1.3"
+def spider_man = "1.1.4"
 ```
 
 ### 方式一
@@ -67,6 +67,21 @@ try {
 
 ## 冲突
 
+### androidx
+
+项目已经依赖了`androidx.appcompat:appcompat`包，如果产生冲突请使用下面的方式依赖。
+
+```groovy
+debugImplementation("com.simple:spiderman:$spider_man") {
+        exclude group: "androidx.appcompat"
+    }
+    releaseImplementation("com.simple:spiderman-no-op:$spider_man") {
+        exclude group: "androidx.appcompat"
+    }
+```
+
+### support
+
 项目已经依赖了`com.android.support:appcompat-v7`包，如果产生冲突请使用下面的方式依赖。
 
 ```groovy
@@ -85,11 +100,15 @@ releaseImplementation("com.simple:spiderman-no-op:$spider_man") {
 -keep class com.simple.spiderman.** { *; }
 -keepnames class com.simple.spiderman.** { *; }
 -keep public class * extends android.app.Activity
--keep public class * extends android.support.annotation.** { *; }
--keep public class * extends android.support.v4.content.FileProvider
 -keep class * implements Android.os.Parcelable {
     public static final Android.os.Parcelable$Creator *;
 }
+# support
+-keep public class * extends android.support.annotation.** { *; }
+-keep public class * extends android.support.v4.content.FileProvider
+# androidx
+-keep public class * extends androidx.annotation.** { *; }
+-keep public class * extends androidx.core.content.FileProvider
 ```
 
 ## 自定义界面样式
@@ -118,6 +137,7 @@ SpiderMan.init(this)
 
 ## 版本迭代
 
+* 1.1.4 切换到androidx
 * 1.1.3 change minSdkVersion to 14
 * 1.1.2 解决FileProvider file_path重名bug(bug来源LuckSiege/PictureSelector)
 * 1.1.1 新增直接显示错误页面的方法`SpiderMan.show(Throwable e)`，优化错误类型
