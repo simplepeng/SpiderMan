@@ -137,6 +137,16 @@ SpiderMan.init(this)
 
 具体可以参考`app`中的用法。
 
+## 赞助
+
+如果您觉得`SpideMan`帮助了您，可否扶贫一下作者，要是能`10.24`就太👍👍👍啦！
+
+您的支持是作者继续努力创作的动力😁😁😁。
+
+萌戳下方链接精准扶贫⤵️⤵️⤵️
+
+**[扶贫方式](https://simplepeng.github.io/merge_pay_code/)**
+
 ## 版本迭代
 
 * 1.1.4 切换到androidx
