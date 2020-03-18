@@ -77,6 +77,8 @@ public class CrashActivity extends AppCompatActivity {
         TextView tv_version = findViewById(R.id.tv_version);
         TextView tv_more = findViewById(R.id.tv_more);
         TextView tv_cpuAbi = findViewById(R.id.tv_cpuAbi);
+        TextView tv_versionCode = findViewById(R.id.tv_versionCode);
+        TextView tv_versionName = findViewById(R.id.tv_versionName);
 //
 //        tv_packageName.setText(model.getClassName());
         textMessage.setText(model.getExceptionMsg());
@@ -95,6 +97,9 @@ public class CrashActivity extends AppCompatActivity {
 
         String cpuAbi = device.getCpuAbi();
         tv_cpuAbi.setText(cpuAbi);
+
+        tv_versionCode.setText(model.getVersionCode());
+        tv_versionName.setText(model.getVersionName());
 
         tv_more.setOnClickListener(new View.OnClickListener() {
             @Override

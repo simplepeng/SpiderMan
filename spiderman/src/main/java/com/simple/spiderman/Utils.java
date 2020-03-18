@@ -1,5 +1,8 @@
 package com.simple.spiderman;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Date;
@@ -31,6 +34,9 @@ class Utils {
             model.setExceptionType(exceptionType);
 
             model.setFullException(sw.toString());
+
+            model.setVersionCode(Utils.getVersionCode());
+            model.setVersionName(Utils.getVersionName());
         } catch (Exception e) {
             return model;
         }
@@ -53,5 +59,29 @@ class Utils {
 
     static String getCachePath() {
         return SpiderMan.getContext().getCacheDir().getAbsolutePath();
+    }
+
+    static String getVersionCode() {
+        String versionCode = "";
+        try {
+            PackageManager pm = SpiderMan.getContext().getPackageManager();
+            PackageInfo packageInfo = pm.getPackageInfo(SpiderMan.getContext().getPackageName(), 0);
+            versionCode = String.valueOf(packageInfo.versionCode);
+        } catch (Exception e) {
+
+        }
+        return versionCode;
+    }
+
+    static String getVersionName() {
+        String versionName = "";
+        try {
+            PackageManager pm = SpiderMan.getContext().getPackageManager();
+            PackageInfo packageInfo = pm.getPackageInfo(SpiderMan.getContext().getPackageName(), 0);
+            versionName = String.valueOf(packageInfo.versionName);
+        } catch (Exception e) {
+
+        }
+        return versionName;
     }
 }

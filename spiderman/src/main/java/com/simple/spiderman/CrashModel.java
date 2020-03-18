@@ -56,6 +56,11 @@ public class CrashModel implements Parcelable {
      * 设备信息
      */
     private Device device = new Device();
+    /**
+     *
+     */
+    private String versionCode;
+    private String versionName;
 
     protected CrashModel(Parcel in) {
         ex = (Throwable) in.readSerializable();
@@ -67,6 +72,8 @@ public class CrashModel implements Parcelable {
         exceptionType = in.readString();
         fullException = in.readString();
         time = in.readLong();
+        versionCode = in.readString();
+        versionName = in.readString();
     }
 
     public CrashModel() {
@@ -164,6 +171,22 @@ public class CrashModel implements Parcelable {
         return device;
     }
 
+    public String getVersionCode() {
+        return versionCode;
+    }
+
+    public void setVersionCode(String versionCode) {
+        this.versionCode = versionCode;
+    }
+
+    public String getVersionName() {
+        return versionName;
+    }
+
+    public void setVersionName(String versionName) {
+        this.versionName = versionName;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -180,6 +203,8 @@ public class CrashModel implements Parcelable {
         dest.writeString(exceptionType);
         dest.writeString(fullException);
         dest.writeLong(time);
+        dest.writeString(versionCode);
+        dest.writeString(versionName);
     }
 
     public static class Device implements Parcelable {
