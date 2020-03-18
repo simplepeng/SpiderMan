@@ -86,9 +86,11 @@ public class CrashActivity extends AppCompatActivity {
         tv_fullException.setText(model.getFullException());
         tv_time.setText(df.format(model.getTime()));
 
+        CrashModel.Device device = model.getDevice();
         tv_model.setText(model.getDevice().getModel());
         tv_brand.setText(model.getDevice().getBrand());
-        tv_version.setText(model.getDevice().getVersion());
+        String platform = "Android " + device.getRelease() + "-" + device.getVersion();
+        tv_version.setText(platform);
 
         tv_more.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -187,8 +187,10 @@ public class CrashModel implements Parcelable {
         private String model = Build.MODEL;
         //设备厂商
         private String brand = Build.BRAND;
-        //系统版本号
+        //系统sdk-code
         private String version = String.valueOf(Build.VERSION.SDK_INT);
+        //系统版本号-Android5.0
+        private String release = Build.VERSION.RELEASE;
 
         public Device() {
         }
@@ -197,6 +199,7 @@ public class CrashModel implements Parcelable {
             model = in.readString();
             brand = in.readString();
             version = in.readString();
+            release = in.readString();
         }
 
         public static final Creator<Device> CREATOR = new Creator<Device>() {
@@ -223,6 +226,10 @@ public class CrashModel implements Parcelable {
             return version;
         }
 
+        public String getRelease() {
+            return release;
+        }
+
         @Override
         public int describeContents() {
             return 0;
@@ -233,23 +240,8 @@ public class CrashModel implements Parcelable {
             dest.writeString(model);
             dest.writeString(brand);
             dest.writeString(version);
+            dest.writeString(release);
         }
     }
 
-    @Override
-    public String toString() {
-        return "CrashModel{" +
-                "ex=" + ex +
-                ", packageName='" + packageName + '\'' +
-                ", exceptionMsg='" + exceptionMsg + '\'' +
-                ", className='" + className + '\'' +
-                ", fileName='" + fileName + '\'' +
-                ", methodName='" + methodName + '\'' +
-                ", lineNumber=" + lineNumber +
-                ", exceptionType='" + exceptionType + '\'' +
-                ", fullException='" + fullException + '\'' +
-                ", time=" + time +
-                ", device=" + device +
-                '}';
-    }
 }
