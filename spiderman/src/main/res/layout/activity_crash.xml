@@ -263,6 +263,29 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/simpleCpuAbi"
+                    android:textColor="?attr/smIdentText"
+                    android:textSize="@dimen/simple_text_item_size" />
+
+                <TextView
+                    android:id="@+id/tv_cpuAbi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/smDescText"
+                    android:layout_marginLeft="7dp"
+                    android:textSize="@dimen/simple_text_item_size" />
+
+            </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"

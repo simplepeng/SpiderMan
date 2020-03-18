@@ -14,6 +14,7 @@
     <string name="simpleModel">设备名称: </string>
     <string name="simpleBrand">设备厂商: </string>
     <string name="simpleVersion">系统版本: </string>
+    <string name="simpleCpuAbi">CPU-ABI: </string>
     <string name="simpleAllInfo">全部信息: </string>
     <string name="simplePermissionSd">请授予SD卡权限才能分享图片</string>
     <string name="simpleShare">分享</string>

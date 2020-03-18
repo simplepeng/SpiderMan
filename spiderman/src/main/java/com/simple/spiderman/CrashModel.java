@@ -191,6 +191,8 @@ public class CrashModel implements Parcelable {
         private String version = String.valueOf(Build.VERSION.SDK_INT);
         //系统版本号-Android5.0
         private String release = Build.VERSION.RELEASE;
+        //
+        private String cpuAbi = Build.CPU_ABI;
 
         public Device() {
         }
@@ -200,6 +202,7 @@ public class CrashModel implements Parcelable {
             brand = in.readString();
             version = in.readString();
             release = in.readString();
+            cpuAbi = in.readString();
         }
 
         public static final Creator<Device> CREATOR = new Creator<Device>() {
@@ -230,6 +233,10 @@ public class CrashModel implements Parcelable {
             return release;
         }
 
+        public String getCpuAbi() {
+            return cpuAbi;
+        }
+
         @Override
         public int describeContents() {
             return 0;
@@ -241,6 +248,7 @@ public class CrashModel implements Parcelable {
             dest.writeString(brand);
             dest.writeString(version);
             dest.writeString(release);
+            dest.writeString(cpuAbi);
         }
     }
 

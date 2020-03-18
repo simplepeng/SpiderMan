@@ -14,6 +14,7 @@
     <string name="simpleModel">Device: </string>
     <string name="simpleBrand">Brand: </string>
     <string name="simpleVersion">Version: </string>
+    <string name="simpleCpuAbi">CPU-ABI: </string>
     <string name="simpleAllInfo">All Info: </string>
     <string name="simplePermissionSd">Please authorize sd card permissions</string>
     <string name="simpleShare">Share</string>
