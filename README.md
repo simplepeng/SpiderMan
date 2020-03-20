@@ -148,6 +148,10 @@ SpiderMan.init(this)
 
 **[扶贫方式](https://simplepeng.github.io/merge_pay_code/)**
 
+## 技术支持Q群：1078185041
+
+<img src="statics/q_group.jpg" width="270px" height="370px">
+
 ## 版本迭代
 
 * 1.1.5 增加`cpu-abi`，`versionCode`，`versionName`输出
