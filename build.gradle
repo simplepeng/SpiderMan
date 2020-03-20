@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    
+
     repositories {
         google()
         jcenter()
@@ -27,8 +27,8 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-ext{
-    sm_version = "1.1.4"
+ext {
+    sm_version = "1.1.5"
     sm_no_op_version = "1.1.4"
 
     compileSdkVersion = 28

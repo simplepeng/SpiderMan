@@ -11,23 +11,24 @@ SpiderMan能为您做的事：
 * 再也不用担心某些国产Rom禁止异常log输出！
 * 再也不用担心开发工具异常log信息输出时灵时不灵！
 
-|                      Debug环境                       |                        Share                         |
-| :--------------------------------------------------: | :--------------------------------------------------: |
-| ![](https://i.loli.net/2019/02/24/5c726eacdd5b4.png) | ![](https://i.loli.net/2019/02/24/5c726ecdedd97.png) |
+|               Debug环境               |                       Share                        |
+| :-----------------------------------: | :------------------------------------------------: |
+| ![crash_info](statics/crash_info.png) | ![crash_info_share](statics/crash_info_share.png) |
 
 ## 引入依赖
 
 从`1.1.4`版本开始全面迁移到`androidx`，如不想迁移到`androidx`请继续使用`1.1.3`版本。
 
 ```groovy
-def spider_man = "1.1.4"
+def spider_man = "1.1.5"
+def spider_man_no_op = "1.1.4"
 ```
 
 ### 方式一
 
 ```groovy
 debugImplementation "com.simple:spiderman:$spider_man"
-releaseImplementation "com.simple:spiderman-no-op:$spider_man"
+releaseImplementation "com.simple:spiderman-no-op:$spider_man_no_op"
 ```
 
 ### 方式二
