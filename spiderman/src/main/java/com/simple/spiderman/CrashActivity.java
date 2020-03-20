@@ -162,13 +162,25 @@ public class CrashActivity extends AppCompatActivity {
         builder.append(getString(R.string.simpleTime)).append(df.format(model.getTime())).append("\n");
         builder.append("\n");//空一行，好看点，(#^.^#)
 
+        CrashModel.Device device = model.getDevice();
+
         builder.append(getString(R.string.simpleModel)).append(model.getDevice().getModel()).append("\n");
         builder.append("\n");//空一行，好看点，(#^.^#)
 
         builder.append(getString(R.string.simpleBrand)).append(model.getDevice().getBrand()).append("\n");
         builder.append("\n");//空一行，好看点，(#^.^#)
 
-        builder.append(getString(R.string.simpleVersion)).append(model.getDevice().getVersion()).append("\n");
+        String platform = "Android " + device.getRelease() + "-" + device.getVersion();
+        builder.append(getString(R.string.simpleVersion)).append(platform).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append("CPU-ABI:").append(device.getCpuAbi()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append("versionCode:").append(model.getVersionCode()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append("versionName:").append(model.getVersionName()).append("\n");
         builder.append("\n");//空一行，好看点，(#^.^#)
 
         builder.append(getString(R.string.simpleAllInfo))
