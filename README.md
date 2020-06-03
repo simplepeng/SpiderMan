@@ -1,6 +1,6 @@
 # SpiderMan
 
-![MIT](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square) ![](https://img.shields.io/badge/Jcenter-v1.1.5-orange.svg?style=flat-square) ![](https://img.shields.io/badge/API-14%2B-brightgreen?style=flat-square) ![](https://img.shields.io/badge/Size-40k-yellow?style=flat-square) ![](https://img.shields.io/badge/Author-simplepeng-red?style=flat-square)
+![MIT](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square) ![](https://img.shields.io/badge/Jcenter-v1.1.6-orange.svg?style=flat-square) ![](https://img.shields.io/badge/API-14%2B-brightgreen?style=flat-square) ![](https://img.shields.io/badge/Size-40k-yellow?style=flat-square) ![](https://img.shields.io/badge/Author-simplepeng-red?style=flat-square)
 
 
 SpiderMan能为您做的事：
@@ -20,7 +20,7 @@ SpiderMan能为您做的事：
 从`1.1.4`版本开始全面迁移到`androidx`，如不想迁移到`androidx`请继续使用`1.1.3`版本。
 
 ```groovy
-def spider_man = "1.1.5"
+def spider_man = "1.1.6"
 def spider_man_no_op = "1.1.4"
 ```
 
@@ -154,6 +154,7 @@ SpiderMan.init(this)
 
 ## 版本迭代
 
+* 1.1.6 解决view id重名引发的bug
 * 1.1.5 增加`cpu-abi`，`versionCode`，`versionName`输出
 * 1.1.4 切换到androidx
 * 1.1.3 change minSdkVersion to 14
