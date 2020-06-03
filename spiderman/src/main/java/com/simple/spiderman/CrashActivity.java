@@ -5,14 +5,12 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,16 +20,12 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 /**
@@ -46,9 +40,8 @@ public class CrashActivity extends AppCompatActivity {
     private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH:mm");
     private CrashModel model;
 
-    private ViewGroup root;
-    private ScrollView scrollView;
-    private ViewGroup toolbar;
+    private ScrollView sScrollView;
+    private ViewGroup sToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,24 +54,23 @@ public class CrashActivity extends AppCompatActivity {
         }
         Log.e("SpiderMan", Log.getStackTraceString(model.getEx()));
 
-        root = findViewById(R.id.root);
-        scrollView = findViewById(R.id.scrollView);
-        toolbar = findViewById(R.id.toolbar);
+        sScrollView = findViewById(R.id.sScrollView);
+        sToolbar = findViewById(R.id.sToolbar);
 //        TextView tv_packageName = findViewById(R.id.tv_packageName);
-        TextView textMessage = findViewById(R.id.textMessage);
-        TextView tv_className = findViewById(R.id.tv_className);
-        TextView tv_methodName = findViewById(R.id.tv_methodName);
-        TextView tv_lineNumber = findViewById(R.id.tv_lineNumber);
-        TextView tv_exceptionType = findViewById(R.id.tv_exceptionType);
-        TextView tv_fullException = findViewById(R.id.tv_fullException);
-        TextView tv_time = findViewById(R.id.tv_time);
-        TextView tv_model = findViewById(R.id.tv_model);
-        TextView tv_brand = findViewById(R.id.tv_brand);
-        TextView tv_version = findViewById(R.id.tv_version);
-        TextView tv_more = findViewById(R.id.tv_more);
-        TextView tv_cpuAbi = findViewById(R.id.tv_cpuAbi);
-        TextView tv_versionCode = findViewById(R.id.tv_versionCode);
-        TextView tv_versionName = findViewById(R.id.tv_versionName);
+        TextView textMessage = findViewById(R.id.sTextMessage);
+        TextView tv_className = findViewById(R.id.sTvClassName);
+        TextView tv_methodName = findViewById(R.id.sTvMethodName);
+        TextView tv_lineNumber = findViewById(R.id.sTvLineNumber);
+        TextView tv_exceptionType = findViewById(R.id.sTvExceptionType);
+        TextView tv_fullException = findViewById(R.id.sTvFullException);
+        TextView tv_time = findViewById(R.id.sTvTime);
+        TextView tv_model = findViewById(R.id.sTvModel);
+        TextView tv_brand = findViewById(R.id.sTvBrand);
+        TextView tv_version = findViewById(R.id.sTvVersion);
+        TextView tv_more = findViewById(R.id.sTvMore);
+        TextView tv_cpuAbi = findViewById(R.id.sTvCpuAbi);
+        TextView tv_versionCode = findViewById(R.id.sTvVersionCode);
+        TextView tv_versionName = findViewById(R.id.sTvVersionName);
 //
 //        tv_packageName.setText(model.getClassName());
         textMessage.setText(model.getExceptionMsg());
@@ -245,7 +237,7 @@ public class CrashActivity extends AppCompatActivity {
     }
 
     private void shareImage() {
-        File file = BitmapToFile(getBitmapByView(toolbar, scrollView));
+        File file = BitmapToFile(getBitmapByView(sToolbar, sScrollView));
         if (file == null || !file.exists()) {
             showToast(R.string.simpleImageNotExist);
             return;

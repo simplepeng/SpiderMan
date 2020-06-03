@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root"
+    android:id="@+id/sRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
@@ -9,7 +9,7 @@
     tools:ignore="ResourceName">
 
     <RelativeLayout
-        android:id="@+id/toolbar"
+        android:id="@+id/sToolbar"
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:background="?attr/smToolbar">
@@ -24,7 +24,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_more"
+            android:id="@+id/sTvMore"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
@@ -39,7 +39,7 @@
     </RelativeLayout>
 
     <ScrollView
-        android:id="@+id/scrollView"
+        android:id="@+id/sScrollView"
         android:layout_width="match_parent"
         android:background="?attr/smContentBackground"
         android:layout_height="wrap_content">
@@ -58,7 +58,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/textMessage"
+                android:id="@+id/sTextMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17sp"
@@ -86,7 +86,7 @@
                     android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
-                    android:id="@+id/tv_className"
+                    android:id="@+id/sTvClassName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="?attr/smDescText"
@@ -109,7 +109,7 @@
                     android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
-                    android:id="@+id/tv_methodName"
+                    android:id="@+id/sTvMethodName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="?attr/smDescText"
@@ -132,7 +132,7 @@
                     android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
-                    android:id="@+id/tv_lineNumber"
+                    android:id="@+id/sTvLineNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="?attr/smDescText"
@@ -155,7 +155,7 @@
                     android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
-                    android:id="@+id/tv_exceptionType"
+                    android:id="@+id/sTvExceptionType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="?attr/smDescText"
@@ -178,7 +178,7 @@
                     android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
-                    android:id="@+id/tv_time"
+                    android:id="@+id/sTvTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="?attr/smDescText"
@@ -208,7 +208,7 @@
                     android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
-                    android:id="@+id/tv_model"
+                    android:id="@+id/sTvModel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="?attr/smDescText"
@@ -231,7 +231,7 @@
                     android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
-                    android:id="@+id/tv_brand"
+                    android:id="@+id/sTvBrand"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="?attr/smDescText"
@@ -254,7 +254,7 @@
                     android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
-                    android:id="@+id/tv_version"
+                    android:id="@+id/sTvVersion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="?attr/smDescText"
@@ -277,7 +277,7 @@
                     android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
-                    android:id="@+id/tv_cpuAbi"
+                    android:id="@+id/sTvCpuAbi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="?attr/smDescText"
@@ -307,7 +307,7 @@
                     android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
-                    android:id="@+id/tv_versionCode"
+                    android:id="@+id/sTvVersionCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="?attr/smDescText"
@@ -330,7 +330,7 @@
                     android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
-                    android:id="@+id/tv_versionName"
+                    android:id="@+id/sTvVersionName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="?attr/smDescText"
@@ -354,7 +354,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/tv_fullException"
+                android:id="@+id/sTvFullException"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/smDescText"
