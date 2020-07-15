@@ -41,7 +41,7 @@ implementation "com.simple:spiderman:$spider_man"
 
 ## 初始化
 
-放到Application的`onCreate()`初始化中，因为static了传入的context，并且放在其他Library初始化的前面。
+放到Application的`onCreate()`初始化中，因为static了传入的context，并且最好放在其他Library初始化的前面，当发生异常的时候就会自动弹出崩溃提示页面。
 
 ```java
 public class App extends Application {
@@ -57,7 +57,7 @@ public class App extends Application {
 
 ## 直接显示错误页面
 
-调用`SpiderMan.show(Throwable e)`方法
+有时候可能因为一些特殊环境下才会发生的崩溃很难复现，所以我们不得以会将一些代码放到`try/catch`中运行，这样虽然保证了可以不崩溃，但是当发生崩溃时又会很容易忽略掉错误信息。现在我们可以直接在`catch`代码块中调用`SpiderMan.show(Throwable e)`方法，这样就可以直接显示崩溃提示页面。
 
 ```java
 try {
