@@ -44,18 +44,18 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
-    def spider_man = "1.1.6"
-    def spider_man_no_op = "1.1.4"
+    def spider_man = "1.1.7"
+    def spider_man_no_op = "1.1.5"
 
 //    implementation project(':spiderman')
 
-    debugImplementation project(':spiderman')
-    releaseImplementation project(':spiderman-no-op')
+//    debugImplementation project(':spiderman')
+//    releaseImplementation project(':spiderman-no-op')
 
 //    debugImplementation project(':spiderman-no-op')
 
-//    debugImplementation "com.simple:spiderman:$spider_man"
-//    releaseImplementation "com.simple:spiderman-no-op:$spider_man_no_op"
+    debugImplementation "com.simple:spiderman:$spider_man"
+    releaseImplementation "com.simple:spiderman-no-op:$spider_man_no_op"
 
 //    debugImplementation ("com.simple:spiderman:$spider_man"){
 //        exclude group: "com.android.support"
