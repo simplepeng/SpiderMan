@@ -46,6 +46,7 @@ implementation "com.simple:spiderman:$spider_man"
 ~~放到Application的`onCreate()`初始化中，因为static了传入的context，并且最好放在其他Library初始化的前面。~~
 
 ```java
+//从1.1.7版本开始不需要下面的初始化代码了
 public class App extends Application {
 
     @Override
