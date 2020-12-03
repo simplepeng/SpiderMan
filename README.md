@@ -1,11 +1,11 @@
 # SpiderMan
 
-![MIT](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square) ![](https://img.shields.io/badge/Jcenter-v1.1.6-orange.svg?style=flat-square) ![](https://img.shields.io/badge/API-14%2B-brightgreen?style=flat-square) ![](https://img.shields.io/badge/Size-40k-yellow?style=flat-square) ![](https://img.shields.io/badge/Author-simplepeng-red?style=flat-square)
+![MIT](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square) ![](https://img.shields.io/badge/Jcenter-v1.1.7-orange.svg?style=flat-square) ![](https://img.shields.io/badge/API-14%2B-brightgreen?style=flat-square) ![](https://img.shields.io/badge/Size-40k-yellow?style=flat-square) ![](https://img.shields.io/badge/Author-simplepeng-red?style=flat-square)
 
 
 SpiderMan能为您做的事：
 
-* 在Android手机上显示闪退崩溃信息，直接分享给相关开发人员!
+* 在Android手机上自动显示闪退崩溃信息，直接分享给相关开发人员!
 * 再也不用担心测试妹妹给你重现怎样操作才能触发闪退崩溃的尴尬！
 * 再也不用担心产品给你说哪儿哪儿会闪退崩溃，但是又不能场景还原的无奈！
 * 再也不用担心某些国产Rom禁止异常log输出！
@@ -17,11 +17,11 @@ SpiderMan能为您做的事：
 
 ## 引入依赖
 
-从`1.1.4`版本开始全面迁移到`androidx`，如不想迁移到`androidx`请继续使用`1.1.3`版本。
+从`1.1.4`版本开始全面迁移到`androidx`（如不想迁移到`androidx`请继续使用`1.1.3`版本，并且需要自己初始化SpiderMan）。
 
 ```groovy
-def spider_man = "1.1.6"
-def spider_man_no_op = "1.1.4"
+def spider_man = "1.1.7"
+def spider_man_no_op = "1.1.5"
 ```
 
 ### 方式一
@@ -41,7 +41,9 @@ implementation "com.simple:spiderman:$spider_man"
 
 ## 初始化
 
-放到Application的`onCreate()`初始化中，因为static了传入的context，并且最好放在其他Library初始化的前面，当发生异常的时候就会自动弹出崩溃提示页面。
+从`1.1.7`版本开始使用自动初始化，所以就不需要下面的初始化代码了，没错就是这么简单，你只需要正确的引入依赖库就行了。
+
+~~放到Application的`onCreate()`初始化中，因为static了传入的context，并且最好放在其他Library初始化的前面。~~
 
 ```java
 public class App extends Application {
@@ -117,8 +119,7 @@ releaseImplementation("com.simple:spiderman-no-op:$spider_man") {
 ## 自定义界面样式
 
 ```java
-SpiderMan.init(this)
-         .setTheme(R.style.SpiderManTheme_Dark);
+SpiderMan.setTheme(R.style.SpiderManTheme_Dark);
 ```
 
 `SpiderMan`内置了两种主题样式`light`和`dark`。
@@ -154,6 +155,7 @@ SpiderMan.init(this)
 
 ## 版本迭代
 
+* 1.1.7 自动初始化
 * 1.1.6 解决view id重名引发的bug
 * 1.1.5 增加`cpu-abi`，`versionCode`，`versionName`输出
 * 1.1.4 切换到androidx
