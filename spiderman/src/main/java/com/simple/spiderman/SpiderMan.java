@@ -17,7 +17,7 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         Thread.setDefaultUncaughtExceptionHandler(this);
     }
 
-    public static SpiderMan init(Context context) {
+    protected static SpiderMan init(Context context) {
         mContext = context;
         spiderMan = new SpiderMan();
         return spiderMan;
@@ -32,7 +32,7 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     }
 
-    public void setTheme(@StyleRes int themeId) {
+    public static void setTheme(@StyleRes int themeId) {
         mThemeId = themeId;
     }
 

@@ -18,5 +18,11 @@
 
         <activity android:name=".CrashActivity" />
 
+        <provider
+            android:name=".SpiderManInitProvider"
+            android:authorities="${applicationId}.spiderman-init-provider"
+            android:exported="false"
+            android:multiprocess="true" />
+
     </application>
 </manifest>

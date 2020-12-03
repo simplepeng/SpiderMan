@@ -15,8 +15,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        //放在其他库初始化前
-        SpiderMan.init(this)
-                .setTheme(R.style.SpiderManTheme_Dark);
+
+        //更改主题颜色
+        SpiderMan.setTheme(R.style.SpiderManTheme_Dark);
     }
 }

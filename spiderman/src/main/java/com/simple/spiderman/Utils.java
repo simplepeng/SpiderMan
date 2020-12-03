@@ -1,5 +1,7 @@
 package com.simple.spiderman;
 
+import android.annotation.SuppressLint;
+import android.app.Application;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
@@ -83,5 +85,21 @@ class Utils {
 
         }
         return versionName;
+    }
+
+    static Application getApplicationByReflect() {
+        try {
+            @SuppressLint("PrivateApi")
+            Class<?> activityThread = Class.forName("android.app.ActivityThread");
+            Object thread = activityThread.getMethod("currentActivityThread").invoke(null);
+            Object app = activityThread.getMethod("getApplication").invoke(thread);
+            if (app == null) {
+                throw new NullPointerException("you should init first");
+            }
+            return (Application) app;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        throw new NullPointerException("you should init first");
     }
 }
