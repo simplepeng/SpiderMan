@@ -17,10 +17,9 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         Thread.setDefaultUncaughtExceptionHandler(this);
     }
 
-    protected static SpiderMan init(Context context) {
+    protected static void init(Context context) {
         mContext = context;
         spiderMan = new SpiderMan();
-        return spiderMan;
     }
 
     @Override
