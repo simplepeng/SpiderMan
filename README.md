@@ -1,6 +1,6 @@
 # SpiderMan
 
-![MIT](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square) ![](https://img.shields.io/badge/Jcenter-v1.1.7-orange.svg?style=flat-square) ![](https://img.shields.io/badge/API-14%2B-brightgreen?style=flat-square) ![](https://img.shields.io/badge/Size-40k-yellow?style=flat-square) ![](https://img.shields.io/badge/Author-simplepeng-red?style=flat-square)
+[![](https://jitpack.io/v/simplepeng/SpiderMan.svg)](https://jitpack.io/#simplepeng/SpiderMan)![MIT](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square) ![](https://img.shields.io/badge/API-14%2B-brightgreen?style=flat-square) ![](https://img.shields.io/badge/Size-40k-yellow?style=flat-square) ![](https://img.shields.io/badge/Author-simplepeng-red?style=flat-square)
 
 
 SpiderMan能为您做的事：
@@ -17,27 +17,39 @@ SpiderMan能为您做的事：
 
 ## 引入依赖
 
-从`1.1.4`版本开始全面迁移到`androidx`（如不想迁移到`androidx`请继续使用`1.1.3`版本，并且需要自己初始化SpiderMan）。
+从`v1.1.8`开始使用`jitpack`仓库，记得在`项目根目录`的`build.gradle`添加`jitpack`仓库的引用。
 
 ```groovy
-def spider_man = "1.1.7"
-def spider_man_no_op = "1.1.5"
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+```
+
+在`app`的`build.gradle`引入依赖：
+
+```groovy
+def spider_man = "v1.1.8"
 ```
 
 ### 方式一
 
 ```groovy
-debugImplementation "com.simple:spiderman:$spider_man"
-releaseImplementation "com.simple:spiderman-no-op:$spider_man_no_op"
+debugImplementation "com.github.simplepeng.SpiderMan:spiderman:${spider_man}"
+releaseImplementation "com.github.simplepeng.SpiderMan:spiderman-no-op:${spider_man}"
 ```
 
 ### 方式二
 
 ```java
-implementation "com.simple:spiderman:$spider_man"
+implementation "com.github.simplepeng.SpiderMan:spiderman:${spider_man}"
 ```
 
 上面`方式一`debug环境有奔溃信息提示，release环境则没有，`方式二`都有，但是记得添加混淆。
+
+从`v1.1.4`版本开始全面迁移到`androidx`（如不想迁移到`androidx`请继续使用`1.1.3`版本，并且需要自己初始化SpiderMan）。
 
 ## 初始化
 
@@ -52,7 +64,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        //放在其他库初始化前
+        //放在其他库初始化前，v1.1.7不需要了，自动初始化
         SpiderMan.init(this);
     }
 }
@@ -78,12 +90,12 @@ try {
 项目已经依赖了`androidx.appcompat:appcompat`包，如果产生冲突请使用下面的方式依赖。
 
 ```groovy
-debugImplementation("com.simple:spiderman:$spider_man") {
-        exclude group: "androidx.appcompat"
-    }
-    releaseImplementation("com.simple:spiderman-no-op:$spider_man") {
-        exclude group: "androidx.appcompat"
-    }
+debugImplementation("com.github.simplepeng.SpiderMan:spiderman:${spider_man}") {
+    exclude group: "androidx.appcompat"
+}
+releaseImplementation("com.github.simplepeng.SpiderMan:spiderman-no-op:${spider_man}") {
+    exclude group: "androidx.appcompat"
+}
 ```
 
 ### support
@@ -91,11 +103,11 @@ debugImplementation("com.simple:spiderman:$spider_man") {
 项目已经依赖了`com.android.support:appcompat-v7`包，如果产生冲突请使用下面的方式依赖。
 
 ```groovy
-debugImplementation("com.simple:spiderman:$spider_man") {
+debugImplementation("com.github.simplepeng.SpiderMan:spiderman:${spider_man}") {
     exclude group: "com.android.support"
 }
 
-releaseImplementation("com.simple:spiderman-no-op:$spider_man") {
+releaseImplementation("com.github.simplepeng.SpiderMan:spiderman-no-op:${spider_man}") {
     exclude group: "com.android.support"
 }
 ```
@@ -156,6 +168,7 @@ SpiderMan.setTheme(R.style.SpiderManTheme_Dark);
 
 ## 版本迭代
 
+* v1.1.8：使用`jitpack`仓库
 * 1.1.7 自动初始化
 * 1.1.6 解决view id重名引发的bug
 * 1.1.5 增加`cpu-abi`，`versionCode`，`versionName`输出
