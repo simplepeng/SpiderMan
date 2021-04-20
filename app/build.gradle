@@ -44,8 +44,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
-    def spider_man = "1.1.7"
-    def spider_man_no_op = "1.1.5"
+//    def spider_man = "1.1.7"
+//    def spider_man_no_op = "1.1.5"
 
 //    implementation project(':spiderman')
 
@@ -54,8 +54,8 @@ dependencies {
 
 //    debugImplementation project(':spiderman-no-op')
 
-    debugImplementation "com.simple:spiderman:$spider_man"
-    releaseImplementation "com.simple:spiderman-no-op:$spider_man_no_op"
+//    debugImplementation "com.simple:spiderman:$spider_man"
+//    releaseImplementation "com.simple:spiderman-no-op:$spider_man_no_op"
 
 //    debugImplementation ("com.simple:spiderman:$spider_man"){
 //        exclude group: "com.android.support"
@@ -71,4 +71,9 @@ dependencies {
 //    releaseImplementation("com.simple:spiderman-no-op:$spider_man") {
 //        exclude group: "androidx.appcompat"
 //    }
+
+    //开始使用jitpack
+    def spider_man = "v1.1.8"
+    debugImplementation "com.github.simplepeng.SpiderMan:spiderman:${spider_man}"
+    releaseImplementation "com.github.simplepeng.SpiderMan:spiderman-no-op:${spider_man}"
 }
