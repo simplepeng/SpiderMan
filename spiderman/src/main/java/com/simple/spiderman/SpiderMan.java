@@ -2,6 +2,7 @@ package com.simple.spiderman;
 
 import android.content.Context;
 import android.content.Intent;
+
 import androidx.annotation.StyleRes;
 
 public class SpiderMan implements Thread.UncaughtExceptionHandler {
@@ -13,7 +14,10 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
     private static Context mContext;
     public static int mThemeId = R.style.SpiderManTheme_Light;
 
+    private Thread.UncaughtExceptionHandler mOtherExceptionHandler;
+
     private SpiderMan() {
+        mOtherExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(this);
     }
 
@@ -24,7 +28,11 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     @Override
     public void uncaughtException(Thread t, Throwable ex) {
-
+        //如果有其他框架已经设置了ExceptionHandler，就转发给它
+        if (mOtherExceptionHandler != null) {
+            mOtherExceptionHandler.uncaughtException(t, ex);
+        }
+        //处理自己的逻辑
         CrashModel model = Utils.parseCrash(ex);
         handleException(model);
         android.os.Process.killProcess(android.os.Process.myPid());
