@@ -1,42 +1,39 @@
 package com.simple.spiderman;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 
 import androidx.annotation.StyleRes;
 
+@SuppressLint("StaticFieldLeak")
 public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     public static final String TAG = "SpiderMan";
 
-    private static SpiderMan spiderMan;
-
     private static Context mContext;
     public static int mThemeId = R.style.SpiderManTheme_Light;
 
-    private Thread.UncaughtExceptionHandler mOtherExceptionHandler;
+    private static OnCrashListener mOnCrashListener;
 
     private SpiderMan() {
-        mOtherExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(this);
     }
 
     protected static void init(Context context) {
         mContext = context;
-        spiderMan = new SpiderMan();
+        new SpiderMan();
     }
 
     @Override
     public void uncaughtException(Thread t, Throwable ex) {
-        //如果有其他框架已经设置了ExceptionHandler，就转发给它
-        if (mOtherExceptionHandler != null) {
-            mOtherExceptionHandler.uncaughtException(t, ex);
-        }
-        //处理自己的逻辑
-        CrashModel model = Utils.parseCrash(ex);
-        handleException(model);
-        android.os.Process.killProcess(android.os.Process.myPid());
 
+        //处理自己的逻辑
+        CrashModel model = SpiderManUtils.parseCrash(ex);
+        handleException(model);
+
+        //杀掉App进程
+        SpiderManUtils.killApp();
     }
 
     public static void setTheme(@StyleRes int themeId) {
@@ -48,11 +45,12 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         intent.putExtra(CrashActivity.CRASH_MODEL, model);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
-
+        //回调crash
+        callbackCrash(model);
     }
 
     public static void show(Throwable e) {
-        CrashModel model = Utils.parseCrash(e);
+        CrashModel model = SpiderManUtils.parseCrash(e);
         handleException(model);
     }
 
@@ -61,5 +59,18 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
             throw new NullPointerException("Please call init method in Application onCreate");
         }
         return mContext;
+    }
+
+    public static void setOnCrashListener(OnCrashListener listener) {
+        mOnCrashListener = listener;
+    }
+
+    public interface OnCrashListener {
+        void onCrash(CrashModel model);
+    }
+
+    private static void callbackCrash(CrashModel model) {
+        if (mOnCrashListener == null) return;
+        mOnCrashListener.onCrash(model);
     }
 }

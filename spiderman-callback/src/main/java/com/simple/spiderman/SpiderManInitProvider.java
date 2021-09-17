@@ -14,7 +14,7 @@ public class SpiderManInitProvider extends ContentProvider {
     public boolean onCreate() {
         Context application = getContext().getApplicationContext();
         if (application == null) {
-            application = SpiderManUtils.getApplicationByReflect();
+            application = Utils.getApplicationByReflect();
         }
         SpiderMan.init(application);
         return true;

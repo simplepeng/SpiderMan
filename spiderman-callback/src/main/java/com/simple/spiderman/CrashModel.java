@@ -277,22 +277,4 @@ public class CrashModel implements Parcelable {
         }
     }
 
-    @Override
-    public String toString() {
-        return "CrashModel{" +
-                "ex=" + ex +
-                ", packageName='" + packageName + '\'' +
-                ", exceptionMsg='" + exceptionMsg + '\'' +
-                ", className='" + className + '\'' +
-                ", fileName='" + fileName + '\'' +
-                ", methodName='" + methodName + '\'' +
-                ", lineNumber=" + lineNumber +
-                ", exceptionType='" + exceptionType + '\'' +
-                ", fullException='" + fullException + '\'' +
-                ", time=" + time +
-                ", device=" + device +
-                ", versionCode='" + versionCode + '\'' +
-                ", versionName='" + versionName + '\'' +
-                '}';
-    }
 }

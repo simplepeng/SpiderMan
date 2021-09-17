@@ -222,7 +222,7 @@ public class CrashActivity extends AppCompatActivity {
 
     private File BitmapToFile(Bitmap bitmap) {
         if (bitmap == null) return null;
-        String path = Utils.getCachePath();
+        String path = SpiderManUtils.getCachePath();
         File imageFile = new File(path, "SpiderMan-" + df.format(model.getTime()) + ".png");
         try {
             FileOutputStream out = new FileOutputStream(imageFile);

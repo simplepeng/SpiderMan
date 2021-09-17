@@ -1,1 +1,2 @@
 include ':app', ':spiderman','spiderman-no-op'
+include ':spiderman-callback'

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.simple.spiderman">
+
+    <application>
+        <provider
+            android:name=".SpiderManInitProvider"
+            android:authorities="${applicationId}.spiderman-init-provider"
+            android:exported="false"
+            android:multiprocess="true" />
+    </application>
+</manifest>
