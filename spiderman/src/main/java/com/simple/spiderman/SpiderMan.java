@@ -6,15 +6,17 @@ import android.content.Intent;
 
 import androidx.annotation.StyleRes;
 
+import com.simple.spiderman.utils.CrashModel;
+import com.simple.spiderman.utils.SpiderManUtils;
+
 @SuppressLint("StaticFieldLeak")
 public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     public static final String TAG = "SpiderMan";
 
     private static Context mContext;
-    public static int mThemeId = R.style.SpiderManTheme_Light;
 
-    private static OnCrashListener mOnCrashListener;
+    public static int mThemeId = R.style.SpiderManTheme_Light;
 
     private SpiderMan() {
         Thread.setDefaultUncaughtExceptionHandler(this);
@@ -29,7 +31,7 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
     public void uncaughtException(Thread t, Throwable ex) {
 
         //处理自己的逻辑
-        CrashModel model = SpiderManUtils.parseCrash(ex);
+        CrashModel model = SpiderManUtils.parseCrash(mContext, ex);
         handleException(model);
 
         //杀掉App进程
@@ -45,12 +47,11 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         intent.putExtra(CrashActivity.CRASH_MODEL, model);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
-        //回调crash
-        callbackCrash(model);
+
     }
 
     public static void show(Throwable e) {
-        CrashModel model = SpiderManUtils.parseCrash(e);
+        CrashModel model = SpiderManUtils.parseCrash(mContext, e);
         handleException(model);
     }
 
@@ -62,15 +63,11 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
     }
 
     public static void setOnCrashListener(OnCrashListener listener) {
-        mOnCrashListener = listener;
+
     }
 
     public interface OnCrashListener {
-        void onCrash(CrashModel model);
+        void onCrash(Thread t, Throwable ex);
     }
 
-    private static void callbackCrash(CrashModel model) {
-        if (mOnCrashListener == null) return;
-        mOnCrashListener.onCrash(model);
-    }
 }

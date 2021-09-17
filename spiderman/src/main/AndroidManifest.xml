@@ -7,7 +7,7 @@
     <application>
 
         <provider
-            android:name="com.simple.spiderman.SpiderManFileProvider"
+            android:name=".SpiderManFileProvider"
             android:authorities="${applicationId}.spidermanfileprovider"
             android:exported="false"
             android:grantUriPermissions="true">

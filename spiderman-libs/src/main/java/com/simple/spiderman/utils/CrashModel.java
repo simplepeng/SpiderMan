@@ -1,4 +1,4 @@
-package com.simple.spiderman;
+package com.simple.spiderman.utils;
 
 import android.os.Build;
 import android.os.Parcel;

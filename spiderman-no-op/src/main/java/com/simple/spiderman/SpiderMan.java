@@ -20,12 +20,12 @@ public class SpiderMan {
     public static void show(Throwable e) {
 
     }
+
     public static void setOnCrashListener(OnCrashListener listener) {
 
     }
 
-
     public interface OnCrashListener {
-        void onCrash(CrashModel model);
+        void onCrash(Thread model, Throwable ex);
     }
 }

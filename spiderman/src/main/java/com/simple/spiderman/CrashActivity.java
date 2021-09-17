@@ -24,6 +24,9 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import com.simple.spiderman.utils.CrashModel;
+import com.simple.spiderman.utils.SpiderManUtils;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
@@ -36,8 +39,10 @@ import java.text.SimpleDateFormat;
 public class CrashActivity extends AppCompatActivity {
 
     public static final String CRASH_MODEL = "crash_model";
+
     @SuppressLint("SimpleDateFormat")
     private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH:mm");
+
     private CrashModel model;
 
     private ScrollView sScrollView;
@@ -222,7 +227,7 @@ public class CrashActivity extends AppCompatActivity {
 
     private File BitmapToFile(Bitmap bitmap) {
         if (bitmap == null) return null;
-        String path = SpiderManUtils.getCachePath();
+        String path = SpiderManUtils.getCachePath(this.getApplicationContext());
         File imageFile = new File(path, "SpiderMan-" + df.format(model.getTime()) + ".png");
         try {
             FileOutputStream out = new FileOutputStream(imageFile);

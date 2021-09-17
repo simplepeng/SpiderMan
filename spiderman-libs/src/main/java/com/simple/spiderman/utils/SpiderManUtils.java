@@ -1,7 +1,8 @@
-package com.simple.spiderman;
+package com.simple.spiderman.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
@@ -11,7 +12,7 @@ import java.util.Date;
 
 public class SpiderManUtils {
 
-    public static CrashModel parseCrash(Throwable ex) {
+    public static CrashModel parseCrash(Context context, Throwable ex) {
         CrashModel model = new CrashModel();
         try {
             model.setEx(ex);
@@ -26,7 +27,7 @@ public class SpiderManUtils {
             pw.flush();
             String exceptionType = ex.getClass().getName();
 
-            StackTraceElement element = parseThrowable(ex);
+            StackTraceElement element = parseThrowable(context, ex);
             if (element == null) return model;
 
             model.setLineNumber(element.getLineNumber());
@@ -37,18 +38,18 @@ public class SpiderManUtils {
 
             model.setFullException(sw.toString());
 
-            model.setVersionCode(SpiderManUtils.getVersionCode());
-            model.setVersionName(SpiderManUtils.getVersionName());
+            model.setVersionCode(SpiderManUtils.getVersionCode(context));
+            model.setVersionName(SpiderManUtils.getVersionName(context));
         } catch (Exception e) {
             return model;
         }
         return model;
     }
 
-    public static StackTraceElement parseThrowable(Throwable ex) {
+    public static StackTraceElement parseThrowable(Context context, Throwable ex) {
         if (ex == null || ex.getStackTrace() == null || ex.getStackTrace().length == 0) return null;
         StackTraceElement element;
-        String packageName = SpiderMan.getContext().getPackageName();
+        String packageName = context.getPackageName();
         for (StackTraceElement ele : ex.getStackTrace()) {
             if (ele.getClassName().contains(packageName)) {
                 element = ele;
@@ -59,15 +60,15 @@ public class SpiderManUtils {
         return element;
     }
 
-    public static String getCachePath() {
-        return SpiderMan.getContext().getCacheDir().getAbsolutePath();
+    public static String getCachePath(Context context) {
+        return context.getCacheDir().getAbsolutePath();
     }
 
-    public static String getVersionCode() {
+    public static String getVersionCode(Context context) {
         String versionCode = "";
         try {
-            PackageManager pm = SpiderMan.getContext().getPackageManager();
-            PackageInfo packageInfo = pm.getPackageInfo(SpiderMan.getContext().getPackageName(), 0);
+            PackageManager pm = context.getPackageManager();
+            PackageInfo packageInfo = pm.getPackageInfo(context.getPackageName(), 0);
             versionCode = String.valueOf(packageInfo.versionCode);
         } catch (Exception e) {
 
@@ -75,11 +76,11 @@ public class SpiderManUtils {
         return versionCode;
     }
 
-    public static String getVersionName() {
+    public static String getVersionName(Context context) {
         String versionName = "";
         try {
-            PackageManager pm = SpiderMan.getContext().getPackageManager();
-            PackageInfo packageInfo = pm.getPackageInfo(SpiderMan.getContext().getPackageName(), 0);
+            PackageManager pm = context.getPackageManager();
+            PackageInfo packageInfo = pm.getPackageInfo(context.getPackageName(), 0);
             versionName = String.valueOf(packageInfo.versionName);
         } catch (Exception e) {
 
