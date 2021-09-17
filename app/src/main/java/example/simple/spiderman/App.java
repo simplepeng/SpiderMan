@@ -5,6 +5,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.simple.spiderman.SpiderMan;
+import com.simple.spiderman.utils.CrashModel;
+import com.simple.spiderman.utils.SpiderManUtils;
+
+import java.io.File;
+import java.io.FileWriter;
 
 
 /**
@@ -22,25 +27,34 @@ public class App extends Application {
         SpiderMan.setTheme(R.style.SpiderManTheme_Dark);
 
         //回调crash
-//        SpiderMan.setOnCrashListener(new SpiderMan.OnCrashListener() {
-//            @Override
-//            public void onCrash(CrashModel model) {
-//                printCrash(model);
-//            }
-//        });
+        SpiderMan.setOnCrashListener(new SpiderMan.OnCrashListener() {
+            @Override
+            public void onCrash(Thread t, Throwable ex) {
+                saveCrash(t, ex);
+                SpiderManUtils.killApp();
+            }
+        });
+
     }
 
-//    private void printCrash(final CrashModel model) {
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                Log.d("App", model.toString());
-//            }
-//        }).start();
-//
-////        Log.d("App","");
-////        showToast(model.toString());
-//    }
+    private void saveCrash(Thread t, Throwable ex) {
+        CrashModel model = SpiderManUtils.parseCrash(this, ex);
+        String logPath = this.getApplicationContext().getCacheDir().getAbsolutePath() + File.separator + "log.txt";
+        saveToFile(model.toString(), logPath);
+//        showToast(model.toString());
+    }
+
+    public static void saveToFile(String text, String filePath) {
+        try {
+            File logFile = new File(filePath);
+            FileWriter writer = new FileWriter(logFile);
+            writer.write(text);
+            writer.flush();
+            writer.close();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
 
     private void showToast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();

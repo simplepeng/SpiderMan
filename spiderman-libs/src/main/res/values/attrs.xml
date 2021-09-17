@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ResourceName">
+
+    <attr name="smToolbar" format="reference|color" />
+    <attr name="smToolbarText" format="reference|color" />
+    <attr name="smToolbarShareText" format="reference|color" />
+    <attr name="smContentBackground" format="reference|color" />
+    <attr name="smIdentText" format="reference|color" />
+    <attr name="smDescText" format="reference|color" />
+
+</resources>

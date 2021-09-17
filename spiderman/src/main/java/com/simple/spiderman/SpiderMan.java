@@ -16,7 +16,9 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     private static Context mContext;
 
-    public static int mThemeId = R.style.SpiderManTheme_Light;
+    private static int mThemeId = R.style.SpiderManTheme_Light;
+
+    private static OnCrashListener mOnCrashListener;
 
     private SpiderMan() {
         Thread.setDefaultUncaughtExceptionHandler(this);
@@ -34,6 +36,9 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         CrashModel model = SpiderManUtils.parseCrash(mContext, ex);
         handleException(model);
 
+        //
+        callbackCrash(t, ex);
+
         //杀掉App进程
         SpiderManUtils.killApp();
     }
@@ -42,12 +47,15 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         mThemeId = themeId;
     }
 
+    protected static int getThemeId() {
+        return mThemeId;
+    }
+
     private static void handleException(CrashModel model) {
         Intent intent = new Intent(getContext(), CrashActivity.class);
         intent.putExtra(CrashActivity.CRASH_MODEL, model);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
-
     }
 
     public static void show(Throwable e) {
@@ -63,11 +71,15 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
     }
 
     public static void setOnCrashListener(OnCrashListener listener) {
-
+        mOnCrashListener = listener;
     }
 
     public interface OnCrashListener {
         void onCrash(Thread t, Throwable ex);
     }
 
+    private static void callbackCrash(Thread t, Throwable ex) {
+        if (mOnCrashListener == null) return;
+        mOnCrashListener.onCrash(t, ex);
+    }
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ResourceName">
+    <color name="dark_colorPrimaryDark">#465a64</color>
+    <color name="dark_smToolbar">#617d8a</color>
+    <color name="dark_smToolbarText">#ffffff</color>
+    <color name="dark_smToolbarShareText">#ffffff</color>
+    <color name="dark_smContentBackground">#ffffff</color>
+    <color name="dark_smIdentText">#000000</color>
+    <color name="dark_smDescText">#617d8a</color>
+</resources>

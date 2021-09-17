@@ -12,6 +12,9 @@ import java.util.Date;
 
 public class SpiderManUtils {
 
+    /**
+     * 把Throwable解析成CrashModel实体
+     */
     public static CrashModel parseCrash(Context context, Throwable ex) {
         CrashModel model = new CrashModel();
         try {
@@ -46,6 +49,9 @@ public class SpiderManUtils {
         return model;
     }
 
+    /**
+     * 把Throwable解析成StackTraceElement
+     */
     public static StackTraceElement parseThrowable(Context context, Throwable ex) {
         if (ex == null || ex.getStackTrace() == null || ex.getStackTrace().length == 0) return null;
         StackTraceElement element;
@@ -60,10 +66,16 @@ public class SpiderManUtils {
         return element;
     }
 
+    /**
+     * 获取缓存目录
+     */
     public static String getCachePath(Context context) {
         return context.getCacheDir().getAbsolutePath();
     }
 
+    /**
+     * 获取versionCode
+     */
     public static String getVersionCode(Context context) {
         String versionCode = "";
         try {
@@ -76,6 +88,9 @@ public class SpiderManUtils {
         return versionCode;
     }
 
+    /**
+     * 获取versionName
+     */
     public static String getVersionName(Context context) {
         String versionName = "";
         try {
@@ -88,6 +103,9 @@ public class SpiderManUtils {
         return versionName;
     }
 
+    /**
+     * 用反射获取Application
+     */
     public static Application getApplicationByReflect() {
         try {
             @SuppressLint("PrivateApi")

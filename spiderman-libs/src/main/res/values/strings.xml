@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="simpleAppName">SpiderMan</string>
+    <string name="simpleTitle">崩溃信息展示</string>
+    <string name="simpleCopyText">拷贝文本</string>
+    <string name="simpleShareText">分享文本</string>
+    <string name="simpleShareImage">分享长图</string>
+    <string name="simpleCrashInfo">崩溃信息: </string>
+    <string name="simpleClassName">类名: </string>
+    <string name="simpleFunName">方法: </string>
+    <string name="simpleLineNum">行数: </string>
+    <string name="simpleExceptionType">类型: </string>
+    <string name="simpleTime">时间: </string>
+    <string name="simpleModel">设备名称: </string>
+    <string name="simpleBrand">设备厂商: </string>
+    <string name="simpleVersion">系统版本: </string>
+    <string name="simpleCpuAbi">CPU-ABI: </string>
+    <string name="simpleAllInfo">全部信息: </string>
+    <string name="simplePermissionSd">请授予SD卡权限才能分享图片</string>
+    <string name="simpleShare">分享</string>
+    <string name="simpleNoSdCard">未插入sd卡</string>
+    <string name="simpleImageNotExist">图片文件不存在</string>
+    <string name="simpleShareTo">分享到: </string>
+    <string name="simpleCopied">拷贝成功</string>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="simpleAppName">SpiderMan</string>
+    <string name="simpleTitle">Crash Info Display</string>
+    <string name="simpleCopyText">Copy Text</string>
+    <string name="simpleShareText">Share Text</string>
+    <string name="simpleShareImage">Share Image</string>
+    <string name="simpleCrashInfo">Crash Info: </string>
+    <string name="simpleClassName">Class Name: </string>
+    <string name="simpleFunName">Fun Name: </string>
+    <string name="simpleExceptionType">Exception Type: </string>
+    <string name="simpleLineNum">Line Num: </string>
+    <string name="simpleTime">Time: </string>
+    <string name="simpleModel">Device: </string>
+    <string name="simpleBrand">Brand: </string>
+    <string name="simpleVersion">Version: </string>
+    <string name="simpleCpuAbi">CPU-ABI: </string>
+    <string name="simpleAllInfo">All Info: </string>
+    <string name="simplePermissionSd">Please authorize sd card permissions</string>
+    <string name="simpleShare">Share</string>
+    <string name="simpleNoSdCard">Please insert SD card</string>
+    <string name="simpleImageNotExist">Image file does not exist</string>
+    <string name="simpleShareTo">ShareTo: </string>
+    <string name="simpleCopied">Copy Success</string>
+</resources>

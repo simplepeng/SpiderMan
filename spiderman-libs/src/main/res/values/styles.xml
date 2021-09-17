@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ResourceName">
+
+    <style name="SpiderManTheme.Light" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/light_colorPrimaryDark</item>
+        <item name="smToolbar">@color/light_smToolbar</item>
+        <item name="smToolbarText">@color/light_smToolbarText</item>
+        <item name="smToolbarShareText">@color/light_smToolbarShareText</item>
+        <item name="smContentBackground">@color/light_smContentBackground</item>
+        <item name="smIdentText">@color/light_smIdentText</item>
+        <item name="smDescText">@color/light_smDescText</item>
+    </style>
+
+    <style name="SpiderManTheme.Dark" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/dark_colorPrimaryDark</item>
+        <item name="smToolbar">@color/dark_smToolbar</item>
+        <item name="smToolbarText">@color/dark_smToolbarText</item>
+        <item name="smToolbarShareText">@color/dark_smToolbarShareText</item>
+        <item name="smContentBackground">@color/dark_smContentBackground</item>
+        <item name="smIdentText">@color/dark_smIdentText</item>
+        <item name="smDescText">@color/dark_smDescText</item>
+    </style>
+
+</resources>

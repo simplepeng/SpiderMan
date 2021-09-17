@@ -9,12 +9,14 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.simple.spiderman.utils.SpiderManUtils;
+
 public class SpiderManInitProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
         Context application = getContext().getApplicationContext();
         if (application == null) {
-            application = Utils.getApplicationByReflect();
+            application = SpiderManUtils.getApplicationByReflect();
         }
         SpiderMan.init(application);
         return true;

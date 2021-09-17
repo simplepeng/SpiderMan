@@ -1,67 +1,40 @@
 package com.simple.spiderman;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 
 import androidx.annotation.StyleRes;
 
+@SuppressLint("StaticFieldLeak")
 public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     public static final String TAG = "SpiderMan";
 
-    private static SpiderMan spiderMan;
-
     private static Context mContext;
-//    public static int mThemeId = R.style.SpiderManTheme_Light;
-
-    private Thread.UncaughtExceptionHandler mOtherExceptionHandler;
 
     private static OnCrashListener mOnCrashListener;
 
     private SpiderMan() {
-        mOtherExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(this);
     }
 
     protected static void init(Context context) {
         mContext = context;
-        spiderMan = new SpiderMan();
+        new SpiderMan();
     }
 
     @Override
     public void uncaughtException(Thread t, Throwable ex) {
-        //如果有其他框架已经设置了ExceptionHandler，就转发给它
-        if (mOtherExceptionHandler != null) {
-            mOtherExceptionHandler.uncaughtException(t, ex);
-        }
-        //处理自己的逻辑
-        CrashModel model = Utils.parseCrash(ex);
-        handleException(model);
-        android.os.Process.killProcess(android.os.Process.myPid());
-
+        callbackCrash(t, ex);
     }
 
     public static void setTheme(@StyleRes int themeId) {
-//        mThemeId = themeId;
-    }
 
-    private static void handleException(CrashModel model) {
-//        Intent intent = new Intent(getContext(), CrashActivity.class);
-//        intent.putExtra(CrashActivity.CRASH_MODEL, model);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        mContext.startActivity(intent);
-        if (mOnCrashListener != null) {
-            mOnCrashListener.onCrash(model);
-        }
-    }
-
-    public static void setOnCrashListener(OnCrashListener listener) {
-        mOnCrashListener = listener;
     }
 
     public static void show(Throwable e) {
-        CrashModel model = Utils.parseCrash(e);
-        handleException(model);
+        callbackCrash(Thread.currentThread(), e);
     }
 
     public static Context getContext() {
@@ -71,7 +44,16 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         return mContext;
     }
 
-    interface OnCrashListener {
-        void onCrash(CrashModel model);
+    public static void setOnCrashListener(OnCrashListener listener) {
+        mOnCrashListener = listener;
+    }
+
+   public interface OnCrashListener {
+        void onCrash(Thread t, Throwable ex);
+    }
+
+    private static void callbackCrash(Thread t, Throwable ex) {
+        if (mOnCrashListener == null) return;
+        mOnCrashListener.onCrash(t, ex);
     }
 }

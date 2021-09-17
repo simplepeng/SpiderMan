@@ -1,7 +1,3 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.simple.spiderman">
-
-    <application>
-
-    </application>
 </manifest>

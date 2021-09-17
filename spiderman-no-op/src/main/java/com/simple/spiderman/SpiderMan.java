@@ -26,6 +26,6 @@ public class SpiderMan {
     }
 
     public interface OnCrashListener {
-        void onCrash(Thread model, Throwable ex);
+        void onCrash(Thread t, Throwable ex);
     }
 }
