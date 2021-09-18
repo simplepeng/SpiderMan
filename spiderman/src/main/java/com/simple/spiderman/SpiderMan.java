@@ -36,7 +36,7 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         CrashModel model = SpiderManUtils.parseCrash(mContext, ex);
         handleException(model);
 
-        //
+        //回调异常
         callbackCrash(t, ex);
 
         //杀掉App进程

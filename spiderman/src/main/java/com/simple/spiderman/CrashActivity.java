@@ -1,6 +1,5 @@
 package com.simple.spiderman;
 
-import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -30,6 +29,7 @@ import com.simple.spiderman.utils.SpiderManUtils;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 /**
  * author : ChenPeng
@@ -40,8 +40,7 @@ public class CrashActivity extends AppCompatActivity {
 
     public static final String CRASH_MODEL = "crash_model";
 
-    @SuppressLint("SimpleDateFormat")
-    private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH:mm");
+    private final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH:mm", Locale.getDefault());
 
     private CrashModel model;
 
@@ -135,56 +134,7 @@ public class CrashActivity extends AppCompatActivity {
 
 
     private String getShareText(CrashModel model) {
-        StringBuilder builder = new StringBuilder();
-
-        builder.append(getString(R.string.simpleCrashInfo))
-                .append("\n")
-                .append(model.getExceptionMsg())
-                .append("\n");
-        builder.append("\n");//空一行，好看点，(#^.^#)
-
-        builder.append(getString(R.string.simpleClassName))
-                .append(model.getFileName()).append("\n");
-        builder.append("\n");//空一行，好看点，(#^.^#)
-
-        builder.append(getString(R.string.simpleFunName)).append(model.getMethodName()).append("\n");
-        builder.append("\n");//空一行，好看点，(#^.^#)
-
-        builder.append(getString(R.string.simpleLineNum)).append(model.getLineNumber()).append("\n");
-        builder.append("\n");//空一行，好看点，(#^.^#)
-
-        builder.append(getString(R.string.simpleExceptionType)).append(model.getExceptionType()).append("\n");
-        builder.append("\n");//空一行，好看点，(#^.^#)
-
-        builder.append(getString(R.string.simpleTime)).append(df.format(model.getTime())).append("\n");
-        builder.append("\n");//空一行，好看点，(#^.^#)
-
-        CrashModel.Device device = model.getDevice();
-
-        builder.append(getString(R.string.simpleModel)).append(model.getDevice().getModel()).append("\n");
-        builder.append("\n");//空一行，好看点，(#^.^#)
-
-        builder.append(getString(R.string.simpleBrand)).append(model.getDevice().getBrand()).append("\n");
-        builder.append("\n");//空一行，好看点，(#^.^#)
-
-        String platform = "Android " + device.getRelease() + "-" + device.getVersion();
-        builder.append(getString(R.string.simpleVersion)).append(platform).append("\n");
-        builder.append("\n");//空一行，好看点，(#^.^#)
-
-        builder.append("CPU-ABI:").append(device.getCpuAbi()).append("\n");
-        builder.append("\n");//空一行，好看点，(#^.^#)
-
-        builder.append("versionCode:").append(model.getVersionCode()).append("\n");
-        builder.append("\n");//空一行，好看点，(#^.^#)
-
-        builder.append("versionName:").append(model.getVersionName()).append("\n");
-        builder.append("\n");//空一行，好看点，(#^.^#)
-
-        builder.append(getString(R.string.simpleAllInfo))
-                .append("\n")
-                .append(model.getFullException()).append("\n");
-
-        return builder.toString();
+        return SpiderManUtils.getShareText(this.getApplicationContext(), model);
     }
 
     private void shareText(String text) {

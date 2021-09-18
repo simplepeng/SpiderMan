@@ -6,9 +6,14 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class SpiderManUtils {
 
@@ -122,7 +127,85 @@ public class SpiderManUtils {
         throw new NullPointerException("you should init first");
     }
 
+    /**
+     * 杀掉App进程
+     */
     public static void killApp() {
         android.os.Process.killProcess(android.os.Process.myPid());
+    }
+
+    /**
+     * 获取分享的文本
+     */
+    public static String getShareText(Context context, CrashModel model) {
+        StringBuilder builder = new StringBuilder();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH:mm", Locale.getDefault());
+
+        builder.append(context.getString(R.string.simpleCrashInfo))
+                .append("\n")
+                .append(model.getExceptionMsg())
+                .append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append(context.getString(R.string.simpleClassName))
+                .append(model.getFileName()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append(context.getString(R.string.simpleFunName)).append(model.getMethodName()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append(context.getString(R.string.simpleLineNum)).append(model.getLineNumber()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append(context.getString(R.string.simpleExceptionType)).append(model.getExceptionType()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append(context.getString(R.string.simpleTime)).append(df.format(model.getTime())).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        CrashModel.Device device = model.getDevice();
+
+        builder.append(context.getString(R.string.simpleModel)).append(model.getDevice().getModel()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append(context.getString(R.string.simpleBrand)).append(model.getDevice().getBrand()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        String platform = "Android " + device.getRelease() + "-" + device.getVersion();
+        builder.append(context.getString(R.string.simpleVersion)).append(platform).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append("CPU-ABI:").append(device.getCpuAbi()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append("versionCode:").append(model.getVersionCode()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append("versionName:").append(model.getVersionName()).append("\n");
+        builder.append("\n");//空一行，好看点，(#^.^#)
+
+        builder.append(context.getString(R.string.simpleAllInfo))
+                .append("\n")
+                .append(model.getFullException()).append("\n");
+
+        return builder.toString();
+    }
+
+    /**
+     * 保存文本到文件
+     */
+    public static void saveTextToFile(String text, File file) throws IOException {
+        FileWriter writer = new FileWriter(file);
+        writer.write(text);
+        writer.flush();
+        writer.close();
+    }
+
+    /**
+     * 保存文本到文件
+     */
+    public static void saveTextToFile(String text, String path) throws IOException {
+        File file = new File(path);
+        saveTextToFile(text, file);
     }
 }

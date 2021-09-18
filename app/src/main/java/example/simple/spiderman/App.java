@@ -39,18 +39,16 @@ public class App extends Application {
 
     private void saveCrash(Thread t, Throwable ex) {
         CrashModel model = SpiderManUtils.parseCrash(this, ex);
-        String logPath = this.getApplicationContext().getCacheDir().getAbsolutePath() + File.separator + "log.txt";
-        saveToFile(model.toString(), logPath);
+        String time = String.valueOf(System.currentTimeMillis());
+        String logPath = this.getApplicationContext().getCacheDir().getAbsolutePath() + File.separator + "log-" + time + ".txt";
+        String text = SpiderManUtils.getShareText(this.getApplicationContext(), model);
+        saveToFile(text, logPath);
 //        showToast(model.toString());
     }
 
     public static void saveToFile(String text, String filePath) {
         try {
-            File logFile = new File(filePath);
-            FileWriter writer = new FileWriter(logFile);
-            writer.write(text);
-            writer.flush();
-            writer.close();
+            SpiderManUtils.saveTextToFile(text, filePath);
         } catch (Throwable e) {
             e.printStackTrace();
         }
