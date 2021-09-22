@@ -29,7 +29,6 @@ public class App extends Application {
             @Override
             public void onCrash(Thread t, Throwable ex) {
                 saveCrash(t, ex);
-                SpiderManUtils.killApp();
             }
         });
 

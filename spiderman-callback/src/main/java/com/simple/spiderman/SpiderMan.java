@@ -6,6 +6,8 @@ import android.content.Intent;
 
 import androidx.annotation.StyleRes;
 
+import com.simple.spiderman.utils.SpiderManUtils;
+
 @SuppressLint("StaticFieldLeak")
 public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
@@ -27,6 +29,7 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
     @Override
     public void uncaughtException(Thread t, Throwable ex) {
         callbackCrash(t, ex);
+        SpiderManUtils.killApp();
     }
 
     public static void setTheme(@StyleRes int themeId) {
@@ -48,7 +51,7 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         mOnCrashListener = listener;
     }
 
-   public interface OnCrashListener {
+    public interface OnCrashListener {
         void onCrash(Thread t, Throwable ex);
     }
 
