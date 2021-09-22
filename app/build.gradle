@@ -47,8 +47,8 @@ dependencies {
 //    implementation project(':spiderman')
 
     debugImplementation project(':spiderman')
-//    releaseImplementation project(':spiderman-no-op')
-    releaseImplementation project(':spiderman-callback')
+    releaseImplementation project(':spiderman-no-op')
+//    debugImplementation project(':spiderman-callback')
 
 //    debugImplementation project(':spiderman-no-op')
 
