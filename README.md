@@ -22,7 +22,6 @@ SpiderMan能为您做的事：
 ```groovy
 allprojects {
 	repositories {
-		...
 		maven { url 'https://jitpack.io' }
 	}
 }
@@ -31,7 +30,7 @@ allprojects {
 在`app`的`build.gradle`引入依赖：
 
 ```groovy
-def spider_man = "v1.1.8"
+def spider_man = "v1.1.9"
 ```
 
 ### 方式一
@@ -82,6 +81,22 @@ try {
       SpiderMan.show(e);
 }
 ```
+
+## Crash回调
+
+发生crash时，如果你希望能拿到异常信息，保存到本地或者其他自定义操作，那么你可以使用下面的回调方法。
+
+```java
+//回调crash
+SpiderMan.setOnCrashListener(new SpiderMan.OnCrashListener() {
+    @Override
+    public void onCrash(Thread t, Throwable ex) {
+        saveCrash(t, ex);
+    }
+});
+```
+
+`SpiderManUtils`提供了一些封装好的方法，例如`saveTextToFile`，`parseCrash`，自行按需使用。
 
 ## 冲突
 
@@ -168,23 +183,24 @@ SpiderMan.setTheme(R.style.SpiderManTheme_Dark);
 
 ## 版本迭代
 
+* v1.1.9：增加`crash-callback`module，升级gradle版本
 * v1.1.8：使用`jitpack`仓库
-* 1.1.7 自动初始化
-* 1.1.6 解决view id重名引发的bug
-* 1.1.5 增加`cpu-abi`，`versionCode`，`versionName`输出
-* 1.1.4 切换到androidx
-* 1.1.3 change minSdkVersion to 14
-* 1.1.2 解决FileProvider file_path重名bug(bug来源LuckSiege/PictureSelector)
-* 1.1.1 新增直接显示错误页面的方法`SpiderMan.show(Throwable e)`，优化错误类型
-* 1.1.0  增加自定义界面主题和国际化
-* 1.0.9 增加appcompat包冲突解决方案
-* 1.0.8 发现很多小伙伴不会代理异常收集，所以删除了异常回调
-* 1.0.7 删除spiderman-no-op never-crash，优化报错类型显示
-* 1.0.6 增加spiderman-no-op
-* 1.0.5 奔溃文本分享美化排版
-* 1.0.4 崩溃输出改为error级别
-* 1.0.3 增加 拷贝/分享 崩溃文字/图片信息
-* 1.0.2 重构，新增设备信息
-* 1.0.1 去除 allowBackup，label
-* 1.0.0 首次上传
+* v1.1.7： 自动初始化
+* v1.1.6： 解决view id重名引发的bug
+* v1.1.5： 增加`cpu-abi`，`versionCode`，`versionName`输出
+* v1.1.4： 切换到androidx
+* v1.1.3： change minSdkVersion to 14
+* v1.1.2： 解决FileProvider file_path重名bug(bug来源LuckSiege/PictureSelector)
+* v1.1.1： 新增直接显示错误页面的方法`SpiderMan.show(Throwable e)`，优化错误类型
+* v1.1.0：  增加自定义界面主题和国际化
+* v1.0.9： 增加appcompat包冲突解决方案
+* v1.0.8： 发现很多小伙伴不会代理异常收集，所以删除了异常回调
+* v1.0.7： 删除spiderman-no-op never-crash，优化报错类型显示
+* v1.0.6： 增加spiderman-no-op
+* v1.0.5： 奔溃文本分享美化排版
+* v1.0.4： 崩溃输出改为error级别
+* v1.0.3： 增加 拷贝/分享 崩溃文字/图片信息
+* v1.0.2： 重构，新增设备信息
+* v1.0.1： 去除 allowBackup，label
+* v1.0.0： 首次上传
 
