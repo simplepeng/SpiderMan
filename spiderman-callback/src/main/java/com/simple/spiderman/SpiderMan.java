@@ -34,7 +34,7 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
     }
 
     public static void show(Throwable e) {
-        callbackCrash(Thread.currentThread(), e);
+
     }
 
     public static Context getContext() {

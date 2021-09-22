@@ -1,7 +1,6 @@
 package example.simple.spiderman;
 
 import android.app.Application;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.simple.spiderman.SpiderMan;
@@ -9,7 +8,6 @@ import com.simple.spiderman.utils.CrashModel;
 import com.simple.spiderman.utils.SpiderManUtils;
 
 import java.io.File;
-import java.io.FileWriter;
 
 
 /**
