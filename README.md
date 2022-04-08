@@ -17,14 +17,10 @@ SpiderMan能为您做的事：
 
 ## 引入依赖
 
-从`v1.1.8`开始使用`jitpack`仓库，记得在`项目根目录`的`build.gradle`添加`jitpack`仓库的引用。
+从`v1.1.8`开始使用`jitpack`仓库，记得添加`jitpack`仓库的引用。
 
 ```groovy
-allprojects {
-	repositories {
-		maven { url 'https://jitpack.io' }
-	}
-}
+maven { url 'https://jitpack.io' }
 ```
 
 在`app`的`build.gradle`引入依赖：
@@ -47,27 +43,6 @@ implementation "com.github.simplepeng.SpiderMan:spiderman:${spider_man}"
 ```
 
 上面`方式一`debug环境有奔溃信息提示，release环境则没有，`方式二`都有，但是记得添加混淆。
-
-从`v1.1.4`版本开始全面迁移到`androidx`（如不想迁移到`androidx`请继续使用`1.1.3`版本，并且需要自己初始化SpiderMan）。
-
-## 初始化
-
-从`1.1.7`版本开始使用自动初始化，所以就不需要下面的初始化代码了，没错就是这么简单，你只需要正确的引入依赖库就行了。
-
-~~放到Application的`onCreate()`初始化中，因为static了传入的context，并且最好放在其他Library初始化的前面。~~
-
-```java
-//从1.1.7版本开始不需要下面的初始化代码了
-public class App extends Application {
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        //放在其他库初始化前，v1.1.7不需要了，自动初始化
-        SpiderMan.init(this);
-    }
-}
-```
 
 ## 直接显示错误页面
 
@@ -97,6 +72,12 @@ SpiderMan.setOnCrashListener(new SpiderMan.OnCrashListener() {
 ```
 
 `SpiderManUtils`提供了一些封装好的方法，例如`saveTextToFile`，`parseCrash`，自行按需使用。
+
+如果release也需要回调，请使用release回调库，从`1.1.9`开始提供。
+
+```groovy
+releaseImplementation "com.github.simplepeng.SpiderMan:spiderman-callback:${spider_man}"
+```
 
 ## 冲突
 
@@ -169,7 +150,7 @@ SpiderMan.setTheme(R.style.SpiderManTheme_Dark);
 
 ## 赞助
 
-如果您觉得`SpideMan`帮助了您，可选择精准扶贫，要是`10.24`作者就在这里🙇🙇🙇啦！
+如果您觉得`SpideMan`帮助了您，可选择精准扶贫🙇🙇🙇
 
 您的支持是作者继续努力创作的动力😁😁😁
 
