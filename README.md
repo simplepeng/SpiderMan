@@ -20,18 +20,13 @@ SpiderMan能为您做的事：
 从`v1.1.8`开始使用`jitpack`仓库，记得在`项目根目录`的`build.gradle`添加`jitpack`仓库的引用。
 
 ```groovy
-allprojects {
-	repositories {
-		...
-		maven { url 'https://jitpack.io' }
-	}
-}
+maven { url 'https://jitpack.io' }
 ```
 
 在`app`的`build.gradle`引入依赖：
 
 ```groovy
-def spider_man = "v1.1.8"
+def spider_man = "1.1.8"
 ```
 
 ### 方式一
@@ -49,7 +44,7 @@ implementation "com.github.simplepeng.SpiderMan:spiderman:${spider_man}"
 
 上面`方式一`debug环境有奔溃信息提示，release环境则没有，`方式二`都有，但是记得添加混淆。
 
-从`v1.1.4`版本开始全面迁移到`androidx`（如不想迁移到`androidx`请继续使用`1.1.3`版本，并且需要自己初始化SpiderMan）。
+从`1.1.4`版本开始全面迁移到`androidx`（如不想迁移到`androidx`请继续使用`1.1.3`版本，并且需要自己初始化SpiderMan）。
 
 ## 初始化
 
@@ -168,7 +163,7 @@ SpiderMan.setTheme(R.style.SpiderManTheme_Dark);
 
 ## 版本迭代
 
-* v1.1.8：使用`jitpack`仓库
+* 1.1.8：使用`jitpack`仓库
 * 1.1.7 自动初始化
 * 1.1.6 解决view id重名引发的bug
 * 1.1.5 增加`cpu-abi`，`versionCode`，`versionName`输出
