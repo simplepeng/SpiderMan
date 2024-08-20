@@ -5,6 +5,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 
+import androidx.annotation.Nullable;
+
+import java.io.Serializable;
+
 /**
  * author : ChenPeng
  * date : 2018/4/21
@@ -15,6 +19,7 @@ public class CrashModel implements Parcelable {
     /**
      * 崩溃主体信息
      */
+    @Nullable
     private Throwable ex;
     /**
      * 包名，暂时未使用
@@ -55,7 +60,7 @@ public class CrashModel implements Parcelable {
     /**
      * 设备信息
      */
-    private Device device = new Device();
+    private final Device device = new Device();
     /**
      *
      */
@@ -63,17 +68,21 @@ public class CrashModel implements Parcelable {
     private String versionName;
 
     protected CrashModel(Parcel in) {
-        ex = (Throwable) in.readSerializable();
-        exceptionMsg = in.readString();
-        className = in.readString();
-        fileName = in.readString();
-        methodName = in.readString();
-        lineNumber = in.readInt();
-        exceptionType = in.readString();
-        fullException = in.readString();
-        time = in.readLong();
-        versionCode = in.readString();
-        versionName = in.readString();
+        try {
+            ex = (Throwable) in.readSerializable();
+            exceptionMsg = in.readString();
+            className = in.readString();
+            fileName = in.readString();
+            methodName = in.readString();
+            lineNumber = in.readInt();
+            exceptionType = in.readString();
+            fullException = in.readString();
+            time = in.readLong();
+            versionCode = in.readString();
+            versionName = in.readString();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
     public CrashModel() {
@@ -91,6 +100,7 @@ public class CrashModel implements Parcelable {
         }
     };
 
+    @Nullable
     public Throwable getEx() {
         return ex;
     }
@@ -194,17 +204,23 @@ public class CrashModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeSerializable(ex);
-        dest.writeString(exceptionMsg);
-        dest.writeString(className);
-        dest.writeString(fileName);
-        dest.writeString(methodName);
-        dest.writeInt(lineNumber);
-        dest.writeString(exceptionType);
-        dest.writeString(fullException);
-        dest.writeLong(time);
-        dest.writeString(versionCode);
-        dest.writeString(versionName);
+        try {
+            if (ex != null) {
+                dest.writeSerializable(((Serializable) ex));
+            }
+            dest.writeString(exceptionMsg);
+            dest.writeString(className);
+            dest.writeString(fileName);
+            dest.writeString(methodName);
+            dest.writeInt(lineNumber);
+            dest.writeString(exceptionType);
+            dest.writeString(fullException);
+            dest.writeLong(time);
+            dest.writeString(versionCode);
+            dest.writeString(versionName);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
     public static class Device implements Parcelable {
@@ -223,11 +239,15 @@ public class CrashModel implements Parcelable {
         }
 
         protected Device(Parcel in) {
-            model = in.readString();
-            brand = in.readString();
-            version = in.readString();
-            release = in.readString();
-            cpuAbi = in.readString();
+            try {
+                model = in.readString();
+                brand = in.readString();
+                version = in.readString();
+                release = in.readString();
+                cpuAbi = in.readString();
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
         }
 
         public static final Creator<Device> CREATOR = new Creator<Device>() {
@@ -269,11 +289,15 @@ public class CrashModel implements Parcelable {
 
         @Override
         public void writeToParcel(Parcel dest, int flags) {
-            dest.writeString(model);
-            dest.writeString(brand);
-            dest.writeString(version);
-            dest.writeString(release);
-            dest.writeString(cpuAbi);
+            try {
+                dest.writeString(model);
+                dest.writeString(brand);
+                dest.writeString(version);
+                dest.writeString(release);
+                dest.writeString(cpuAbi);
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
         }
     }
 
