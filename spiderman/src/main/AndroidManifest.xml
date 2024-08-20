@@ -16,7 +16,9 @@
                 android:resource="@xml/spiderman_file_paths" />
         </provider>
 
-        <activity android:name=".CrashActivity" />
+        <activity
+            android:name=".CrashActivity"
+            android:exported="true" />
 
         <provider
             android:name=".SpiderManInitProvider"

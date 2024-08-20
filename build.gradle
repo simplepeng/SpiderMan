@@ -35,9 +35,9 @@ ext {
     sm_version = "1.1.9"
     sm_no_op_version = "1.1.9"
 
-    compileSdkVersion = 30
-    minSdkVersion = 14
-    targetSdkVersion = 30
+    compileSdkVersion = 34
+    minSdkVersion = 21
+    targetSdkVersion = 34
 
     appcompat = "28.0.0"
 }
