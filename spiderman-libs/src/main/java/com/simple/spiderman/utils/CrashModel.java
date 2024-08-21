@@ -14,7 +14,7 @@ import java.io.Serializable;
  * date : 2018/4/21
  * description :
  */
-public class CrashModel implements Parcelable {
+public class CrashModel implements Serializable {
 
     /**
      * 崩溃主体信息
@@ -88,17 +88,17 @@ public class CrashModel implements Parcelable {
     public CrashModel() {
     }
 
-    public static final Creator<CrashModel> CREATOR = new Creator<CrashModel>() {
-        @Override
-        public CrashModel createFromParcel(Parcel in) {
-            return new CrashModel(in);
-        }
-
-        @Override
-        public CrashModel[] newArray(int size) {
-            return new CrashModel[size];
-        }
-    };
+//    public static final Creator<CrashModel> CREATOR = new Creator<CrashModel>() {
+//        @Override
+//        public CrashModel createFromParcel(Parcel in) {
+//            return new CrashModel(in);
+//        }
+//
+//        @Override
+//        public CrashModel[] newArray(int size) {
+//            return new CrashModel[size];
+//        }
+//    };
 
     @Nullable
     public Throwable getEx() {
@@ -197,33 +197,33 @@ public class CrashModel implements Parcelable {
         this.versionName = versionName;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel dest, int flags) {
+//        try {
+//            if (ex != null) {
+//                dest.writeSerializable(ex);
+//            }
+//            dest.writeString(exceptionMsg);
+//            dest.writeString(className);
+//            dest.writeString(fileName);
+//            dest.writeString(methodName);
+//            dest.writeInt(lineNumber);
+//            dest.writeString(exceptionType);
+//            dest.writeString(fullException);
+//            dest.writeLong(time);
+//            dest.writeString(versionCode);
+//            dest.writeString(versionName);
+//        } catch (Throwable e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        try {
-            if (ex != null) {
-                dest.writeSerializable(ex);
-            }
-            dest.writeString(exceptionMsg);
-            dest.writeString(className);
-            dest.writeString(fileName);
-            dest.writeString(methodName);
-            dest.writeInt(lineNumber);
-            dest.writeString(exceptionType);
-            dest.writeString(fullException);
-            dest.writeLong(time);
-            dest.writeString(versionCode);
-            dest.writeString(versionName);
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static class Device implements Parcelable {
+    public static class Device implements Serializable {
         //设备名
         private String model = Build.MODEL;
         //设备厂商
@@ -238,29 +238,29 @@ public class CrashModel implements Parcelable {
         public Device() {
         }
 
-        protected Device(Parcel in) {
-            try {
-                model = in.readString();
-                brand = in.readString();
-                version = in.readString();
-                release = in.readString();
-                cpuAbi = in.readString();
-            } catch (Throwable e) {
-                e.printStackTrace();
-            }
-        }
+//        protected Device(Parcel in) {
+//            try {
+//                model = in.readString();
+//                brand = in.readString();
+//                version = in.readString();
+//                release = in.readString();
+//                cpuAbi = in.readString();
+//            } catch (Throwable e) {
+//                e.printStackTrace();
+//            }
+//        }
 
-        public static final Creator<Device> CREATOR = new Creator<Device>() {
-            @Override
-            public Device createFromParcel(Parcel in) {
-                return new Device(in);
-            }
-
-            @Override
-            public Device[] newArray(int size) {
-                return new Device[size];
-            }
-        };
+//        public static final Creator<Device> CREATOR = new Creator<Device>() {
+//            @Override
+//            public Device createFromParcel(Parcel in) {
+//                return new Device(in);
+//            }
+//
+//            @Override
+//            public Device[] newArray(int size) {
+//                return new Device[size];
+//            }
+//        };
 
         public String getModel() {
             return model;
@@ -282,41 +282,41 @@ public class CrashModel implements Parcelable {
             return cpuAbi;
         }
 
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            try {
-                dest.writeString(model);
-                dest.writeString(brand);
-                dest.writeString(version);
-                dest.writeString(release);
-                dest.writeString(cpuAbi);
-            } catch (Throwable e) {
-                e.printStackTrace();
-            }
-        }
+//        @Override
+//        public int describeContents() {
+//            return 0;
+//        }
+//
+//        @Override
+//        public void writeToParcel(Parcel dest, int flags) {
+//            try {
+//                dest.writeString(model);
+//                dest.writeString(brand);
+//                dest.writeString(version);
+//                dest.writeString(release);
+//                dest.writeString(cpuAbi);
+//            } catch (Throwable e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
-    @Override
-    public String toString() {
-        return "CrashModel{" +
-                "ex=" + ex +
-                ", packageName='" + packageName + '\'' +
-                ", exceptionMsg='" + exceptionMsg + '\'' +
-                ", className='" + className + '\'' +
-                ", fileName='" + fileName + '\'' +
-                ", methodName='" + methodName + '\'' +
-                ", lineNumber=" + lineNumber +
-                ", exceptionType='" + exceptionType + '\'' +
-                ", fullException='" + fullException + '\'' +
-                ", time=" + time +
-                ", device=" + device +
-                ", versionCode='" + versionCode + '\'' +
-                ", versionName='" + versionName + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "CrashModel{" +
+//                "ex=" + ex +
+//                ", packageName='" + packageName + '\'' +
+//                ", exceptionMsg='" + exceptionMsg + '\'' +
+//                ", className='" + className + '\'' +
+//                ", fileName='" + fileName + '\'' +
+//                ", methodName='" + methodName + '\'' +
+//                ", lineNumber=" + lineNumber +
+//                ", exceptionType='" + exceptionType + '\'' +
+//                ", fullException='" + fullException + '\'' +
+//                ", time=" + time +
+//                ", device=" + device +
+//                ", versionCode='" + versionCode + '\'' +
+//                ", versionName='" + versionName + '\'' +
+//                '}';
+//    }
 }
