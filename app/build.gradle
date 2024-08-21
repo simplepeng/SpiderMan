@@ -60,8 +60,8 @@ dependencies {
 
 //    implementation project(':spiderman')
 
-    debugImplementation project(':spiderman')
-    releaseImplementation project(':spiderman-no-op')
+//    debugImplementation project(':spiderman')
+//    releaseImplementation project(':spiderman-no-op')
 //    debugImplementation project(':spiderman-callback')
 
 //    debugImplementation project(':spiderman-no-op')
@@ -86,7 +86,7 @@ dependencies {
 
     //开始使用jitpack
     def spider_man = "v1.2.0"
-//    debugImplementation "com.github.simplepeng.SpiderMan:spiderman:${spider_man}"
-//    releaseImplementation "com.github.simplepeng.SpiderMan:spiderman-no-op:${spider_man}"
+    debugImplementation "com.github.simplepeng.SpiderMan:spiderman:${spider_man}"
+    releaseImplementation "com.github.simplepeng.SpiderMan:spiderman-no-op:${spider_man}"
 //    releaseImplementation "com.github.simplepeng.SpiderMan:spiderman-callback:${spider_man}"
 }

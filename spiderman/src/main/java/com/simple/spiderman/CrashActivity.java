@@ -52,7 +52,13 @@ public class CrashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(SpiderMan.getThemeId());
         setContentView(R.layout.activity_crash);
-        model = ((CrashModel) getIntent().getSerializableExtra(CRASH_MODEL));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            model = getIntent().getSerializableExtra(CRASH_MODEL, CrashModel.class);
+        } else {
+            model = ((CrashModel) getIntent().getSerializableExtra(CRASH_MODEL));
+        }
+
         if (model == null) {
             return;
         }
