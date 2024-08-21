@@ -206,7 +206,7 @@ public class CrashModel implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         try {
             if (ex != null) {
-                dest.writeSerializable(((Serializable) ex));
+                dest.writeSerializable(ex);
             }
             dest.writeString(exceptionMsg);
             dest.writeString(className);

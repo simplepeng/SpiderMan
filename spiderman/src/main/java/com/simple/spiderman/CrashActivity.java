@@ -57,7 +57,11 @@ public class CrashActivity extends AppCompatActivity {
             return;
         }
         if (model.getEx() != null) {
-            Log.e("SpiderMan", Log.getStackTraceString(model.getEx()));
+            try {
+                Log.e("SpiderMan", Log.getStackTraceString(model.getEx()));
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
         }
 
         sScrollView = findViewById(R.id.sScrollView);
@@ -187,7 +191,8 @@ public class CrashActivity extends AppCompatActivity {
             out.flush();
             out.close();
             bitmap.recycle();
-        } catch (Exception e) {e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return imageFile;
     }
