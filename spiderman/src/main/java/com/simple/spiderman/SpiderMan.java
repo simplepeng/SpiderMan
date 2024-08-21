@@ -33,18 +33,16 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
     @Override
     public void uncaughtException(Thread t, Throwable ex) {
 
-        //处理自己的逻辑
+        //解析Throwable
         CrashModel model = SpiderManUtils.parseCrash(mContext, ex);
+        //跳转CrashActivity
         handleException(model);
-
         //回调异常
         callbackCrash(t, ex);
-
+        //打印异常
+        logThrowable(ex);
         //杀掉App进程
         SpiderManUtils.killApp();
-
-        //
-        logThrowable(ex);
     }
 
     public static void setTheme(@StyleRes int themeId) {
