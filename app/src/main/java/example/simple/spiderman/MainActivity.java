@@ -25,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_crash).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                viewModel.makeCrash();
-                String text = null;
-                text.toUpperCase();
+                viewModel.makeCrash();
+//                String text = null;
+//                text.toUpperCase();
 //                startActivity(new Intent(MainActivity.this,TestActivity.class));
             }
         });
