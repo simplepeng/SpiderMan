@@ -67,26 +67,26 @@ public class CrashModel implements Serializable {
     private String versionCode;
     private String versionName;
 
-    protected CrashModel(Parcel in) {
-        try {
-            ex = (Throwable) in.readSerializable();
-            exceptionMsg = in.readString();
-            className = in.readString();
-            fileName = in.readString();
-            methodName = in.readString();
-            lineNumber = in.readInt();
-            exceptionType = in.readString();
-            fullException = in.readString();
-            time = in.readLong();
-            versionCode = in.readString();
-            versionName = in.readString();
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
-    }
+//    protected CrashModel(Parcel in) {
+//        try {
+//            ex = (Throwable) in.readSerializable();
+//            exceptionMsg = in.readString();
+//            className = in.readString();
+//            fileName = in.readString();
+//            methodName = in.readString();
+//            lineNumber = in.readInt();
+//            exceptionType = in.readString();
+//            fullException = in.readString();
+//            time = in.readLong();
+//            versionCode = in.readString();
+//            versionName = in.readString();
+//        } catch (Throwable e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-    public CrashModel() {
-    }
+//    public CrashModel() {
+//    }
 
 //    public static final Creator<CrashModel> CREATOR = new Creator<CrashModel>() {
 //        @Override
@@ -235,8 +235,8 @@ public class CrashModel implements Serializable {
         //
         private String cpuAbi = Build.CPU_ABI;
 
-        public Device() {
-        }
+//        public Device() {
+//        }
 
 //        protected Device(Parcel in) {
 //            try {

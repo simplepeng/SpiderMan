@@ -40,7 +40,7 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         callbackCrash(t, ex);
 
         //杀掉App进程
-        SpiderManUtils.killApp();
+//        SpiderManUtils.killApp();
     }
 
     public static void setTheme(@StyleRes int themeId) {
