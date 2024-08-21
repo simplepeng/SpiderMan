@@ -3,6 +3,7 @@ package com.simple.spiderman.utils;
 import android.os.Build;
 import android.text.TextUtils;
 
+import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 
 import java.io.Serializable;
@@ -12,6 +13,7 @@ import java.io.Serializable;
  * date : 2018/4/21
  * description :
  */
+@Keep
 public class CrashModel implements Serializable {
 
     /**
@@ -83,8 +85,8 @@ public class CrashModel implements Serializable {
 //        }
 //    }
 
-    public CrashModel() {
-    }
+//    public CrashModel() {
+//    }
 
 //    public static final Creator<CrashModel> CREATOR = new Creator<CrashModel>() {
 //        @Override
@@ -221,6 +223,7 @@ public class CrashModel implements Serializable {
 //        }
 //    }
 
+    @Keep
     public static class Device implements Serializable {
         //设备名
         private String model = Build.MODEL;
@@ -233,8 +236,8 @@ public class CrashModel implements Serializable {
         //
         private String cpuAbi = Build.CPU_ABI;
 
-        public Device() {
-        }
+//        public Device() {
+//        }
 
 //        protected Device(Parcel in) {
 //            try {

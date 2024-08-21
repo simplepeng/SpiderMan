@@ -85,7 +85,7 @@ dependencies {
 //    }
 
     //开始使用jitpack
-//    def spider_man = "v1.1.9"
+    def spider_man = "v1.2.0"
 //    debugImplementation "com.github.simplepeng.SpiderMan:spiderman:${spider_man}"
 //    releaseImplementation "com.github.simplepeng.SpiderMan:spiderman-no-op:${spider_man}"
 //    releaseImplementation "com.github.simplepeng.SpiderMan:spiderman-callback:${spider_man}"
