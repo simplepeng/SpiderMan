@@ -3,6 +3,7 @@ package com.simple.spiderman;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import androidx.annotation.StyleRes;
 
@@ -40,7 +41,10 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         callbackCrash(t, ex);
 
         //杀掉App进程
-//        SpiderManUtils.killApp();
+        SpiderManUtils.killApp();
+
+        //
+        logThrowable(ex);
     }
 
     public static void setTheme(@StyleRes int themeId) {
@@ -52,15 +56,27 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
     }
 
     private static void handleException(CrashModel model) {
-        Intent intent = new Intent(getContext(), CrashActivity.class);
-        intent.putExtra(CrashActivity.CRASH_MODEL, model);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        mContext.startActivity(intent);
+        try {
+            Intent intent = new Intent(getContext(), CrashActivity.class);
+            intent.putExtra(CrashActivity.CRASH_MODEL, model);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(intent);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
     public static void show(Throwable e) {
         CrashModel model = SpiderManUtils.parseCrash(mContext, e);
         handleException(model);
+    }
+
+    public static void logThrowable(Throwable throwable) {
+        try {
+            Log.e("SpiderMan", Log.getStackTraceString(throwable));
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
     public static Context getContext() {

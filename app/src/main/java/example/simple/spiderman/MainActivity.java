@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_show).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                viewModel.makeCrashWithTryCatch();
                 try {
                     String text = null;
                     text.toUpperCase();

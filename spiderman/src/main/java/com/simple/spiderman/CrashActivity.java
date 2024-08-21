@@ -56,13 +56,13 @@ public class CrashActivity extends AppCompatActivity {
         if (model == null) {
             return;
         }
-        if (model.getEx() != null) {
-            try {
-                Log.e("SpiderMan", Log.getStackTraceString(model.getEx()));
-            } catch (Throwable e) {
-                e.printStackTrace();
-            }
-        }
+//        if (model.getEx() != null) {
+//            try {
+//                Log.e("SpiderMan", Log.getStackTraceString(model.getEx()));
+//            } catch (Throwable e) {
+//                e.printStackTrace();
+//            }
+//        }
 
         sScrollView = findViewById(R.id.sScrollView);
         sToolbar = findViewById(R.id.sToolbar);

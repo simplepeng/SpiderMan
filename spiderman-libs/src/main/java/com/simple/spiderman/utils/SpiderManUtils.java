@@ -23,7 +23,7 @@ public class SpiderManUtils {
     public static CrashModel parseCrash(Context context, Throwable ex) {
         CrashModel model = new CrashModel();
         try {
-            model.setEx(ex);
+//            model.setEx(ex);
             model.setTime(new Date().getTime());
             if (ex.getCause() != null) {
                 ex = ex.getCause();

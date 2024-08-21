@@ -1,8 +1,6 @@
 package com.simple.spiderman.utils;
 
 import android.os.Build;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
@@ -19,8 +17,8 @@ public class CrashModel implements Serializable {
     /**
      * 崩溃主体信息
      */
-    @Nullable
-    private Throwable ex;
+//    @Nullable
+//    private Throwable ex;
     /**
      * 包名，暂时未使用
      */
@@ -85,8 +83,8 @@ public class CrashModel implements Serializable {
 //        }
 //    }
 
-//    public CrashModel() {
-//    }
+    public CrashModel() {
+    }
 
 //    public static final Creator<CrashModel> CREATOR = new Creator<CrashModel>() {
 //        @Override
@@ -100,14 +98,14 @@ public class CrashModel implements Serializable {
 //        }
 //    };
 
-    @Nullable
-    public Throwable getEx() {
-        return ex;
-    }
+//    @Nullable
+//    public Throwable getEx() {
+//        return ex;
+//    }
 
-    public void setEx(Throwable ex) {
-        this.ex = ex;
-    }
+//    public void setEx(Throwable ex) {
+//        this.ex = ex;
+//    }
 
     public String getExceptionMsg() {
         return exceptionMsg;
@@ -235,8 +233,8 @@ public class CrashModel implements Serializable {
         //
         private String cpuAbi = Build.CPU_ABI;
 
-//        public Device() {
-//        }
+        public Device() {
+        }
 
 //        protected Device(Parcel in) {
 //            try {
