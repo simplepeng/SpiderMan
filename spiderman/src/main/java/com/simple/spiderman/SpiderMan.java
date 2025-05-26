@@ -21,7 +21,10 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     private static OnCrashListener mOnCrashListener;
 
+    private Thread.UncaughtExceptionHandler defaultUncaughtExceptionHandler;
+
     private SpiderMan() {
+        defaultUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(this);
     }
 
@@ -32,7 +35,6 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
 
     @Override
     public void uncaughtException(Thread t, Throwable ex) {
-
         //解析Throwable
         CrashModel model = SpiderManUtils.parseCrash(mContext, ex);
         //跳转CrashActivity
@@ -43,6 +45,10 @@ public class SpiderMan implements Thread.UncaughtExceptionHandler {
         logThrowable(ex);
         //杀掉App进程
         SpiderManUtils.killApp();
+        //回调给其他的UncaughtExceptionHandler
+        if (defaultUncaughtExceptionHandler != null && defaultUncaughtExceptionHandler != this) {
+            defaultUncaughtExceptionHandler.uncaughtException(t, ex);
+        }
     }
 
     public static void setTheme(@StyleRes int themeId) {
