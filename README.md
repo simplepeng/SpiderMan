@@ -26,7 +26,7 @@ maven { url 'https://jitpack.io' }
 在`app`的`build.gradle`引入依赖：
 
 ```groovy
-def spider_man = "v1.2.0"
+def spider_man = "v1.2.1"
 ```
 
 ### 方式一
