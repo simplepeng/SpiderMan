@@ -156,7 +156,7 @@ SpiderMan.setTheme(R.style.SpiderManTheme_Dark);
 
 萌戳下方链接精准扶贫⤵️⤵️⤵️
 
-**[扶贫方式](https://simplepeng.github.io/merge_pay_code/)** | [赞助列表](https://simplepeng.com/Sponsor/)
+**[扶贫方式](https://simplepeng.github.io/merge_pay_code/)** | **[赞助列表](https://simplepeng.com/Sponsor/)**
 
 ## 版本迭代
 
