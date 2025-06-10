@@ -156,14 +156,11 @@ SpiderMan.setTheme(R.style.SpiderManTheme_Dark);
 
 萌戳下方链接精准扶贫⤵️⤵️⤵️
 
-**[扶贫方式](https://simplepeng.github.io/merge_pay_code/)**
-
-## 技术支持Q群：1078185041
-
-<img src="statics/q_group.jpg" width="270px" height="370px">
+**[扶贫方式](https://simplepeng.github.io/merge_pay_code/)** | [赞助列表](https://simplepeng.com/Sponsor/)
 
 ## 版本迭代
 
+* v1.2.0：转发异常信息给其他的`defaultUncaughtExceptionHandler`
 * v1.2.0：解决协程Crash异常信息不对的问题
 * v1.1.9：增加`crash-callback`module，升级gradle版本
 * v1.1.8：使用`jitpack`仓库
