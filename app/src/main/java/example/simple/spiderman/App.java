@@ -20,6 +20,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        SpiderMan.init(this);
 
         //更改主题颜色
         SpiderMan.setTheme(R.style.SpiderManTheme_Dark);

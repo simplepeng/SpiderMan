@@ -9,7 +9,7 @@ public class SpiderMan {
     private SpiderMan() {
     }
 
-    protected static void init(Context context) {
+    public static void init(Context context) {
 
     }
 
