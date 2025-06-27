@@ -22,6 +22,9 @@ import android.widget.Toast;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.core.view.OnApplyWindowInsetsListener;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.simple.spiderman.utils.CrashModel;
 import com.simple.spiderman.utils.SpiderManUtils;
@@ -72,6 +75,12 @@ public class CrashActivity extends AppCompatActivity {
 
         sScrollView = findViewById(R.id.sScrollView);
         sToolbar = findViewById(R.id.sToolbar);
+
+        ViewCompat.setOnApplyWindowInsetsListener(sToolbar, (v, insets) -> {
+            sToolbar.setPadding(0, insets.getSystemWindowInsetTop(), 0, 0);
+            return insets;
+        });
+
 //        TextView tv_packageName = findViewById(R.id.tv_packageName);
         TextView textMessage = findViewById(R.id.sTextMessage);
         TextView tv_className = findViewById(R.id.sTvClassName);

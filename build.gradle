@@ -39,7 +39,7 @@ ext {
 
     compileSdkVersion = 34
     minSdkVersion = 21
-    targetSdkVersion = 34
+    targetSdkVersion = 35
 
     appcompat = "28.0.0"
 }

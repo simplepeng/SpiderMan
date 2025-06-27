@@ -11,38 +11,45 @@
     <RelativeLayout
         android:id="@+id/sToolbar"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="wrap_content"
         android:background="?attr/smToolbar">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/simpleTitle"
-            android:textColor="?attr/smToolbarText"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:paddingVertical="5dp">
 
-        <TextView
-            android:id="@+id/sTvMore"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:paddingLeft="10dp"
-            android:paddingRight="13dp"
-            android:text="@string/simpleShare"
-            android:textColor="?attr/smToolbarShareText"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/simpleTitle"
+                android:textColor="?attr/smToolbarText"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/sTvMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:paddingVertical="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="13dp"
+                android:text="@string/simpleShare"
+                android:textColor="?attr/smToolbarShareText"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
     </RelativeLayout>
 
     <ScrollView
         android:id="@+id/sScrollView"
         android:layout_width="match_parent"
-        android:background="?attr/smContentBackground"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?attr/smContentBackground">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,8 +68,8 @@
                 android:id="@+id/sTextMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
                 android:textColor="?attr/smDescText"
+                android:textSize="17sp"
                 tools:text="TextView" />
 
             <View
@@ -89,8 +96,8 @@
                     android:id="@+id/sTvClassName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/smDescText"
                     android:layout_marginLeft="7dp"
+                    android:textColor="?attr/smDescText"
                     android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
@@ -104,16 +111,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/smIdentText"
                     android:text="@string/simpleFunName"
+                    android:textColor="?attr/smIdentText"
                     android:textSize="@dimen/simple_text_item_size" />
 
                 <TextView
                     android:id="@+id/sTvMethodName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/smDescText"
                     android:layout_marginLeft="7dp"
+                    android:textColor="?attr/smDescText"
                     android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
@@ -135,8 +142,8 @@
                     android:id="@+id/sTvLineNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/smDescText"
                     android:layout_marginLeft="7dp"
+                    android:textColor="?attr/smDescText"
                     android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
@@ -158,8 +165,8 @@
                     android:id="@+id/sTvExceptionType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/smDescText"
                     android:layout_marginLeft="7dp"
+                    android:textColor="?attr/smDescText"
                     android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
@@ -181,8 +188,8 @@
                     android:id="@+id/sTvTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/smDescText"
                     android:layout_marginLeft="7dp"
+                    android:textColor="?attr/smDescText"
                     android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
@@ -211,8 +218,8 @@
                     android:id="@+id/sTvModel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/smDescText"
                     android:layout_marginLeft="7dp"
+                    android:textColor="?attr/smDescText"
                     android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
@@ -234,8 +241,8 @@
                     android:id="@+id/sTvBrand"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/smDescText"
                     android:layout_marginLeft="7dp"
+                    android:textColor="?attr/smDescText"
                     android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
@@ -257,8 +264,8 @@
                     android:id="@+id/sTvVersion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/smDescText"
                     android:layout_marginLeft="7dp"
+                    android:textColor="?attr/smDescText"
                     android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
@@ -280,8 +287,8 @@
                     android:id="@+id/sTvCpuAbi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/smDescText"
                     android:layout_marginLeft="7dp"
+                    android:textColor="?attr/smDescText"
                     android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
@@ -310,8 +317,8 @@
                     android:id="@+id/sTvVersionCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/smDescText"
                     android:layout_marginLeft="7dp"
+                    android:textColor="?attr/smDescText"
                     android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
@@ -333,8 +340,8 @@
                     android:id="@+id/sTvVersionName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/smDescText"
                     android:layout_marginLeft="7dp"
+                    android:textColor="?attr/smDescText"
                     android:textSize="@dimen/simple_text_item_size" />
 
             </LinearLayout>
