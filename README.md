@@ -26,7 +26,7 @@ maven { url 'https://jitpack.io' }
 在`app`的`build.gradle`引入依赖：
 
 ```groovy
-def spider_man = "v1.2.2"
+def spider_man = "v1.2.3"
 ```
 
 ### 方式一
@@ -160,6 +160,7 @@ SpiderMan.setTheme(R.style.SpiderManTheme_Dark);
 
 ## 版本迭代
 
+* v1.2.3: targetSdkVersion升级到35，解决edgeToEdge的问题
 * v1.2.2：fix:init方法在no-op callback module没public的问题
 * v1.2.0：转发异常信息给其他的`defaultUncaughtExceptionHandler`
 * v1.2.0：解决协程Crash异常信息不对的问题
